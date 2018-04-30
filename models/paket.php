@@ -44,8 +44,7 @@ class paket extends \yii\db\ActiveRecord
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
                 ],
                 // if you're using datetime instead of UNIX timestamp:
-                 'value' => new Expression('NOW()'),
-            ],
+                    'value' => new Expression('getdate()'),            ],
         ];
     }
     public static function tableName()
@@ -114,7 +113,7 @@ class paket extends \yii\db\ActiveRecord
           $out=[];
             $data=Paket::find()
                     ->select([
-                'id'=>'id_paket','name'=>'concat(kode_paket," - ",nama_paket)'
+                'id'=>'id_paket','name'=>"[kode_paket]+' - '+[nama_paket]"
                 ])
                 ->where(['id_jns_kendaraan'=>$id_jns_kendaraan])
                 ->asArray()      

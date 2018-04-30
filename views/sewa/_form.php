@@ -61,9 +61,9 @@ use mdm\widgets\GridInput;
     <?= $form->field($model, 'ket_jaminan')->textarea(['rows' => 8]) ?>
     </div>
     </div>
-
+    <div class="form-row"></div>
     <div class="form-row">
-    <h3>Data Kendaraan</h3>
+    <h4><u>Data Kendaraan</u></h4>
    </div>
     <div class="form-group">
      
@@ -96,7 +96,7 @@ use mdm\widgets\GridInput;
 
 </div>
 <div class="form-row">
-    <h3>Data Sopir</h3>
+    <h4><u>Data Sopir</u></h4>
    </div>
     <div class="form-group">
      

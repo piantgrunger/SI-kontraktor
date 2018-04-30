@@ -18,7 +18,7 @@ class m171010_073744_create_tb_dt_sewa_kendaraan_table extends Migration
             'id_jns_kendaraan' => $this->integer()->notNull(),
             'id_kendaraan' => $this->integer()->notNull(),
             'id_paket' => $this->integer()->notNull(),
-            'jenis_sewa' => "Enum('Harian','Total') NOT NULL " ,
+            'jenis_sewa' => $this->string(50)->notNull() ,
             'sub_tot' => $this->money(19,2)->notNull(),
             
 
@@ -29,27 +29,21 @@ class m171010_073744_create_tb_dt_sewa_kendaraan_table extends Migration
             'tb_dt_sewa_kendaraan',
             'id_jns_kendaraan',
             'tb_m_jns_kendaraan',
-            'id_jns_kendaraan',
-            'RESTRICT',
-            'CASCADE'    
+            'id_jns_kendaraan'
         );
           $this->addForeignKey(
             'fk-tb_dt_sewa_kendaraan-id_kendaraan',
             'tb_dt_sewa_kendaraan',
             'id_kendaraan',
             'tb_m_kendaraan',
-            'id_kendaraan',
-            'RESTRICT',
-            'CASCADE'    
+            'id_kendaraan'
         );
             $this->addForeignKey(
             'fk-tb_dt_sewa_kendaraan-id_paket',
             'tb_dt_sewa_kendaraan',
             'id_paket',
             'tb_m_paket',
-            'id_paket',
-            'RESTRICT',
-            'CASCADE'    
+            'id_paket'
         );
           
     }

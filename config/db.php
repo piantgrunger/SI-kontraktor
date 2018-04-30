@@ -2,8 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=db_travel',
-    'username' => 'root',
+    'dsn' => 'sqlsrv:Server=10.0.0.117\sql2008project;Database=test;encrypt=yes;',
+     
+    'username' => 'sa',
     'password' => '',
     'charset' => 'utf8',
 ];

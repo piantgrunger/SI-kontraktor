@@ -27,8 +27,8 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
         $hash=
         
-        $this->execute("INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, "
-                . "`password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES (NULL, 'admin', "
+        $this->execute("INSERT INTO [user] ( username, auth_key, password_hash, "
+                . "password_reset_token, email, status, created_at, updated_at) VALUES ( 'admin', "
                 . "'Bj2xEpff-WmRLtY4TyHPHxRp6eAxsNZ0', ".
                 '\'$2y$13$lyzLwLoeBeCxjFtGgQVPquL0qaL6F1ygdBgqTnKE22Q2x.dwAaQ9S\''.
                 ", NULL, 'piant.grunger@gmail.com', '10', '1485769884', '1488270381')");

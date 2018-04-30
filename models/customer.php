@@ -41,10 +41,12 @@ class customer extends \yii\db\ActiveRecord
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+         
                 ],
+                'value' => new Expression('getdate()'),
+
                 // if you're using datetime instead of UNIX timestamp:
-                 'value' => new Expression('NOW()'),
-            ],
+               ],
         ];
     }
     public static function tableName()
@@ -92,7 +94,7 @@ class customer extends \yii\db\ActiveRecord
      return ArrayHelper::map(
                      customer::find()
                                         ->select([
-                                                'id_customer','ket_customer' => "concat(kode_customer,' - ',nama_customer)"
+                                                'id_customer','ket_customer' => "[kode_customer]+' - '+[nama_customer]"
                                         ])
                                         ->asArray()
                                         ->all(), 'id_customer', 'ket_customer');

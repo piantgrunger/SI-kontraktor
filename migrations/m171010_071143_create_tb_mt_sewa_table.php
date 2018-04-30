@@ -24,7 +24,7 @@ class m171010_071143_create_tb_mt_sewa_table extends Migration
             
             'tgl_pengembalian' => $this->date()->notNull(),
             'jam_pengembalian' => $this->time()->notNull(),
-            'jaminan' =>"Enum('KTP/SIM','Uang Tunai','Kendaraan Bermotor') NOT NULL " ,
+            'jaminan' =>$this->string(50)->notNull(),
             'ket_jaminan' =>  $this->text(),
             'DP_rp' => $this->money(19,2)->notNull(),  
             'total_sewa_kendaraan' => $this->money(19,2)->notNull(
@@ -45,10 +45,8 @@ class m171010_071143_create_tb_mt_sewa_table extends Migration
             'tb_mt_sewa',
             'id_customer',
             'tb_m_customer',
-            'id_customer',
-            'RESTRICT',
-            'CASCADE'    
-        );
+            'id_customer'
+          );
     }
 
     /**

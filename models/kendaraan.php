@@ -120,7 +120,7 @@ class kendaraan extends \yii\db\ActiveRecord
           $out=[];
             $data=kendaraan::find()
                     ->select([
-                'id'=>'id_kendaraan','name'=>'concat(merk_kendaraan," - ",no_plat_kendaraan)'
+                'id'=>'id_kendaraan','name'=>"[merk_kendaraan]+' - '+[no_plat_kendaraan]"
                 ])
                 ->where(['id_jns_kendaraan'=>$id_jns_kendaraan])
                 ->asArray()      

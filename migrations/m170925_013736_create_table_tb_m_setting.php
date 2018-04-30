@@ -25,8 +25,7 @@ class m170925_013736_create_table_tb_m_setting extends Migration
             
         ]);
         $this->insert(self::TABLE_NAME,[
-            'id_setting' => 1,   
-            'nama_perusahaan' => 'Piant Tour And Travel',
+             'nama_perusahaan' => 'Piant Tour And Travel',
             'alamat_perusahaan' => 'Jl Jawa 12 Surabaya',
             
             'ket' => '',

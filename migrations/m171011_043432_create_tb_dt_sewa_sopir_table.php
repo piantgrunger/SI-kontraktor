@@ -17,7 +17,7 @@ class m171011_043432_create_tb_dt_sewa_sopir_table extends Migration
             'id_sewa' => $this->integer()->notNull(),
             'id_sopir' => $this->integer()->notNull(),
             'id_paket' => $this->integer()->notNull(),
-            'jenis_sewa' => "Enum('Harian','Total') NOT NULL " ,
+            'jenis_sewa' => $this->string(50)->notNull(),
             'sub_tot' => $this->money(19,2)->notNull(),
         ]);
 
@@ -26,18 +26,14 @@ class m171011_043432_create_tb_dt_sewa_sopir_table extends Migration
             'tb_dt_sewa_sopir',
             'id_sopir',
             'tb_m_sopir',
-            'id_sopir',
-            'RESTRICT',
-            'CASCADE'    
+            'id_sopir'
         );
             $this->addForeignKey(
             'fk-tb_dt_sewa_sopir-id_paket',
             'tb_dt_sewa_sopir',
             'id_paket',
             'tb_m_paket',
-            'id_paket',
-            'RESTRICT',
-            'CASCADE'    
+            'id_paket'
         );
           
 
