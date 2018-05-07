@@ -20,7 +20,8 @@ $menuItems =
                         'icon' => 'database',
                         'url' => '#',
                         'items' => [
-                    ['label' => 'Barang' , 'icon' =>  'gavel', 'url' => ['/barang/index'],'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'Material' , 'icon' =>  'gavel', 'url' => ['/material/index'],'visible' => !Yii::$app->user->isGuest],
+                   ['label' => 'Customer', 'icon' => 'address-book-o', 'url' => ['/customer/index'], 'visible' => !Yii::$app->user->isGuest],
 
                    ]]
 

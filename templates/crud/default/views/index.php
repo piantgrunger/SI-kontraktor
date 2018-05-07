@@ -20,7 +20,7 @@ use <?= $generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView" : "yii
 <?= $generator->enablePjax ? 'use yii\widgets\Pjax;' : '' ?>
 <?=" use kartik\\export\\ExportMenu;";?>
 
-<?php echo'$gridColumns=[[\'class\' => \'yii\grid\SerialColumn\'], ';?>
+<?php echo'$gridColumns=[[\'class\' => \'kartik\grid\SerialColumn\'], ';?>
 
 <?php
 $count = 0;
@@ -51,15 +51,10 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
 }
 ?>
 
-        <?php echo  " ['class' => 'yii\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
+        <?php echo  " ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
               'update','delete','view'],".
                 '$this->context->route),    ],    ];'?>
-<?php  
- echo ' echo ExportMenu::widget(['.
-    '\'dataProvider\' => $dataProvider,'.
-    '\'columns\' => $gridColumns';
-   echo "]);";
-?>
+
 
 
 /* @var $this yii\web\View */
@@ -86,9 +81,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= "<?= " ?>GridView::widget([
         'dataProvider' => $dataProvider,
         <?= !empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n        'columns' => \$gridColumns," : "'columns' => \$gridColumns, "; ?>
-        'responsive'=>true,
-        'hover'=>true,
-         'resizableColumns'=>true,    
+
+        'tableOptions' => ['class' => 'table  table-bordered table-hover'],
+        'striped'=>false,
+        'containerOptions'=>[true],
+        'pjax' => true,
+        'bordered' => true,
+        'striped' => false,
+        'condensed' => false,
+        'responsive' => true,
+        'hover' => true,
+
+        'showPageSummary' => true,
+        'panel' => [
+            'type' => GridView::TYPE_PRIMARY
+
+        ],
+         'resizableColumns'=>true,
+
     ]); ?>
 <?php else: ?>
     <?= "<?= " ?>ListView::widget([
