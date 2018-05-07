@@ -20,6 +20,7 @@ echo "<?php\n";
 namespace <?= $generator->ns ?>;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
 
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
@@ -57,6 +58,14 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
                 ],
                 // if you're using datetime instead of UNIX timestamp:
                  'value' => new Expression('getdate()'),
+            ],
+                    [
+                'class' => BlameableBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_by', 'updated_by'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_by'],
+                ],
+
             ],
         ];
     }

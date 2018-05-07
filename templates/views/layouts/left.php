@@ -14,35 +14,26 @@ $menuItems =
                     ['label' => 'User' , 'icon' => 'user', 'url' => ['/mimin/user/'],'visible' => !Yii::$app->user->isGuest],
                    ]]
                         ,
-            ['label' => 'Setting' , 'icon' => 'dashboard', 'url' => ['/setting/'],'visible' => !Yii::$app->user->isGuest],
-            
             [
                         'visible' => !Yii::$app->user->isGuest,
                         'label' => 'Master',
-                        'icon' => 'bus',
+                        'icon' => 'database',
                         'url' => '#',
                         'items' => [
-                    ['label' => 'Jns Kendaraan' , 'icon' =>  'car', 'url' => ['/jnskendaraan/'],'visible' => !Yii::$app->user->isGuest],
-              ['label' => 'Kendaraan' , 'icon' =>  'taxi', 'url' => ['/kendaraan/'],'visible' => !Yii::$app->user->isGuest],
-            ['label' => 'Sopir' , 'icon' =>  'drivers-license-o', 'url' => ['/sopir/'],'visible' => !Yii::$app->user->isGuest],
-           
+                    ['label' => 'Barang' , 'icon' =>  'gavel', 'url' => ['/barang/index'],'visible' => !Yii::$app->user->isGuest],
+
                    ]]
-                        ,
-           
-                  ['label' => 'Customer' , 'icon' =>  'user-o', 'url' => ['/customer/'],'visible' => !Yii::$app->user->isGuest],
-                  ['label' => 'Paket' , 'icon' =>  'money', 'url' => ['/paket/'],'visible' => !Yii::$app->user->isGuest],
-                  ['label' => 'Sewa' , 'icon' =>  'automobile', 'url' => ['/sewa/'],'visible' => !Yii::$app->user->isGuest],
-                  
-            
-                ];     
-                
+
+
+                ];
+
  if (!Yii::$app->user->isGuest)
-{             
- if (Yii::$app->user->identity->username !== 'admin') 
+{
+ if (Yii::$app->user->identity->username !== 'admin')
 {
   $menuItems = Mimin::filterMenu($menuItems);
 }
-}        
+}
 ?>
 <aside class="main-sidebar">
 

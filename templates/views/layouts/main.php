@@ -6,7 +6,7 @@ use yii\helpers\Html;
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/svg', 'href' => '/favicon.svg']);
 if ($this->title == "")
 { 
-    $this->title ='E-Travel';
+    $this->title ='SI-Kontraktor';
 }        
     
 

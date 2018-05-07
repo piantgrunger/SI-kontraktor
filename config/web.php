@@ -6,7 +6,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => '',
-    'name' => 'E-Travel',
+    'name' => 'SI-Kontraktor',
     // set target language to be Indonesia
   'language' => 'id-ID',
     'as access' => [

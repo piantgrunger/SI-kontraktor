@@ -57,18 +57,6 @@ $fieldOptions2 = [
 
     </div>
     <!-- /.login-box-body -->
-    <div class="footer">
-  <div class="container">
-     <div class="row">
-      <div class="col-xs-4 col-md-4 text-center">
-          <p></p>
-          <p class="footer">2017 App Version Developed by :</p>
-          <p> <?php echo Html::img('@web/logo.png') ?></p>
-      </div>
-    
-    </div>
-  </div>
-   </div>     
            
 
 </div><!-- /.login-box -->

@@ -76,14 +76,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
     
-         $modelSetting =  Setting::findOne(1);
-         $Jmlkendaraanready = kendaraan::find()->where("status='Ready'")->count();
-         $Jmlsopirready = sopir::find()->where("stat='Aktif'")->count();
-         $Jmlcustomerready = customer::find()->where("stat='Aktif'")->count();
-                    
           $model = new LoginForm();
-        return $this->render('index',['model'=>$model,'modelSetting'=>$modelSetting,'Jmlkendaraanready'=>$Jmlkendaraanready,
-            'Jmlsopirready'=>$Jmlsopirready,'Jmlcustomerready'=>$Jmlcustomerready]);
+        return $this->render('index',['model'=>$model]);
     }
 
     /**
