@@ -5,14 +5,14 @@ use yii\helpers\Html;
 /* @var $content string */
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/svg', 'href' => '/favicon.svg']);
 if ($this->title == "")
-{ 
+{
     $this->title ='SI-Kontraktor';
-}        
-    
+}
 
-if (Yii::$app->controller->action->id === 'login') { 
+
+if (Yii::$app->controller->action->id === 'login') {
 /**
- * Do not use this code in your template. Remove it. 
+ * Do not use this code in your template. Remove it.
  * Instead, use the code  $this->layout = '//main-login'; in your controller.
  */
     echo $this->render(
@@ -41,7 +41,7 @@ if (Yii::$app->controller->action->id === 'login') {
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
     <?php $this->beginBody() ?>
     <div class="wrapper">
 

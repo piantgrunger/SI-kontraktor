@@ -33,30 +33,35 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p> <?php if ((Mimin::checkRoute($this->context->id."/create"))){ ?>        <?=  Html::a(Yii::t('app', 'Pekerjaan  Baru'), ['create'], ['class' => 'btn btn-success']) ?>
-    <?php } ?>    </p>
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => $gridColumns,
         'tableOptions' => ['class' => 'table  table-bordered table-hover'],
-        'striped'=>false,
-        'containerOptions'=>[true],
+        'striped' => false,
+        'containerOptions' => [true],
         'pjax' => true,
         'bordered' => true,
         'striped' => false,
-        'condensed' => false,
+        'condensed' => true,
         'responsive' => true,
         'hover' => true,
 
-        'showPageSummary' => true,
+        'showPageSummary' => false,
         'panel' => [
-            'type' => GridView::TYPE_PRIMARY
+            'type' => GridView::TYPE_PRIMARY,
+            'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> Pekerjaan </strong>',
+
 
         ],
-         'resizableColumns'=>true,
-
+        'toolbar' => [
+            ['content' => ((Mimin::checkRoute($this->context->id . "/create"))) ? Html::a(Yii::t('app', 'Pekerjaan  Baru'), ['create'], ['class' => 'btn btn-success']) : ""],
+            '{export}',
+            '{toggleData}'
+        ],
+        'resizableColumns' => true,
     ]); ?>
     <?php Pjax::end(); ?>
 </div>

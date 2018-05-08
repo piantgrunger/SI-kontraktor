@@ -8,7 +8,7 @@ use yii\helpers\Html;
 
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini"></span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
@@ -20,11 +20,11 @@ use yii\helpers\Html;
 
             <ul class="nav navbar-nav">
 
-              
-               
-           
+
+
+
                 <!-- User Account: style can be found in dropdown.less -->
-                
+
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
@@ -37,23 +37,23 @@ use yii\helpers\Html;
                                  alt="User Image"/>
 
                             <p>
-                                <?=(Yii::$app->user->isGuest?'Guest':Yii::$app->user->identity->username);?> 
-                               
+                                <?=(Yii::$app->user->isGuest?'Guest':Yii::$app->user->identity->username);?>
+
                             </p>
                         </li>
                         <!-- Menu Body -->
-                 
+
                         <li class="user-body">
-                    
+
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                         
+
                             <div class="pull-right">
                                 <?=(Yii::$app->user->isGuest?Html::a(
                                     'Login',
                                     ['/site/login'],
-                                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat'] 
-                                    )    
+                                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                                    )
                                     :Html::a(
                                     'Sign out',
                                     ['/site/logout'],

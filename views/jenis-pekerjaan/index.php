@@ -5,7 +5,7 @@ use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
 use kartik\grid\GridView;
 use yii\widgets\Pjax; use kartik\export\ExportMenu;
-$gridColumns=[['class' => 'kartik\grid\SerialColumn'], 
+$gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             'kode_jenis_pekerjaan',
             'nama_jenis_pekerjaan',
             'keterangan:ntext',
@@ -26,12 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jenis-pekerjaan-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php Pjax::begin(); ?>
+     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p> <?php if ((Mimin::checkRoute($this->context->id."/create"))){ ?>        <?=  Html::a(Yii::t('app', 'Jenis Pekerjaan  Baru'), ['create'], ['class' => 'btn btn-success']) ?>
-    <?php } ?>    </p>
+
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -43,14 +42,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'pjax' => true,
         'bordered' => true,
         'striped' => false,
-        'condensed' => false,
+        'condensed' => true,
         'responsive' => true,
         'hover' => true,
 
-        'showPageSummary' => true,
+        'showPageSummary' => false,
         'panel' => [
-            'type' => GridView::TYPE_PRIMARY
+            'type' => GridView::TYPE_PRIMARY,
+                'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> Jenis Pekerjaan </strong>',
 
+
+        ],
+        'toolbar' => [
+            ['content' => ((Mimin::checkRoute($this->context->id . "/create")))? Html::a(Yii::t('app', 'Jenis Pekerjaan  Baru'), ['create'], ['class' => 'btn btn-success']) :""],
+            '{export}',
+            '{toggleData}'
         ],
          'resizableColumns'=>true,
 
