@@ -14,31 +14,6 @@ use yiimetroui\Tile;
 echo Tile::widget(array(
     'items' => array(
         array(
-            'content' => '<i class="fa fa-cubes"></i>',
-            'brand' => '<div class="name">Material</div>',
-
-        ),
-
-    ),
-    'options' => array('class' => 'icon bg-color-green'),
-    'url' => ['/material/index']
-));
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' =>  '<i class="fa fa-address-book-o"></i>' ,
-            'brand' => '<div class="name">Customer</div>',
-
-        ),
-
-    ),
-    'options' => array('class' => 'icon bg-color-blue'),
-    'url' => ['/customer/index']
-));
-
-echo Tile::widget(array(
-    'items' => array(
-        array(
             'content' => '<i class="fa fa-folder"></i>',
             'brand' => '<div class="name">Jenis Pekerjaan</div>',
 
@@ -52,14 +27,65 @@ echo Tile::widget(array(
 echo Tile::widget(array(
     'items' => array(
         array(
+            'content' => '<i class="fa fa-unsorted"></i>',
+            'brand' => '<div class="name">Level Jabatan</div>',
+            ),
+
+    ),
+    'options' => array('class' => 'icon bg-color-purple'),
+    'url' => ['/level-jabatan/index']
+
+));
+
+echo Tile::widget(array(
+    'items' => array(
+        array(
             'content' => '<i class="fa fa-gavel"></i>',
             'brand' => '<div class="name">Pekerjaan</div>',
-            ),
+        ),
 
     ),
     'options' => array('class' => 'icon bg-color-grey'),
     'url' => ['/pekerjaan/index']
 
+));
+
+
+echo Tile::widget(array(
+    'items' => array(
+        array(
+            'content' => '<i class="fa fa-cubes"></i>',
+            'brand' => '<div class="name">Material / Peralatan</div>',
+
+        ),
+
+    ),
+    'options' => array('class' => 'icon bg-color-green'),
+    'url' => ['/material/index']
+));
+echo Tile::widget(array(
+    'items' => array(
+        array(
+            'content' => '<i class="fa fa-address-book-o"></i>',
+            'brand' => '<div class="name">Customer</div>',
+
+        ),
+
+    ),
+    'options' => array('class' => 'icon bg-color-blue'),
+    'url' => ['/customer/index']
+));
+echo Tile::widget(array(
+    'items' => array(
+        array(
+            'content' => '<i class="fa fa-users"></i>',
+            'brand' => '<div class="name">Karyawan</div>',
+
+        ),
+
+    ),
+    'options' => array('class' => 'icon bg-color-pink'),
+    'url' => ['/karyawan/index']
 ));
 
 ?>

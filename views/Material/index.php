@@ -6,6 +6,7 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 use yii\widgets\Pjax; use kartik\export\ExportMenu;
 $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
+            'jenis',
             'kode_material',
             'nama_material',
             'spesifikasi',
@@ -24,7 +25,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
 /* @var $searchModel app\models\MaterialSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Daftar Material');
+$this->title = Yii::t('app', 'Daftar Material / Peralatan');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="material-index">
@@ -49,12 +50,12 @@ $this->params['breadcrumbs'][] = $this->title;
     'showPageSummary' => false,
     'panel' => [
         'type' => GridView::TYPE_PRIMARY,
-        'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> Material </strong>',
+        'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> Material / Peralatan </strong>',
 
 
     ],
     'toolbar' => [
-        ['content' => ((Mimin::checkRoute($this->context->id . "/create"))) ? Html::a(Yii::t('app', 'Material Baru'), ['create'], ['class' => 'btn btn-success']) : ""],
+        ['content' => ((Mimin::checkRoute($this->context->id . "/create"))) ? Html::a(Yii::t('app', 'Material / Peralatan Baru'), ['create'], ['class' => 'btn btn-success']) : ""],
         '{export}',
         '{toggleData}'
     ],

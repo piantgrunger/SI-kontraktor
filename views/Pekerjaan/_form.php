@@ -8,6 +8,16 @@ use kartik\select2\Select2;
 /* @var $this yii\web\View */
 /* @var $model app\models\Pekerjaan */
 /* @var $form yii\widgets\ActiveForm */
+$data= ArrayHelper::map(
+    JenisPekerjaan::find()
+        ->select([
+            'id_jenis_pekerjaan', "ket" => "[kode_jenis_pekerjaan]+' - '+[nama_jenis_pekerjaan]"
+        ])
+        ->asArray()
+        ->all(),
+    'id_jenis_pekerjaan',
+    'ket'
+        );
 ?>
 
 <div class="pekerjaan-form">
@@ -21,16 +31,7 @@ use kartik\select2\Select2;
     <?= $form->field($model, 'nama_pekerjaan')->textInput() ?>
 
  <?= $form->field($model, 'id_jenis_pekerjaan')->widget(Select2::className(),[
-    'data' => ArrayHelper::map(
-        JenisPekerjaan::find()
-            ->select([
-                'id_jenis_pekerjaan', "ket"=>"[kode_jenis_pekerjaan]+' - '+[nama_jenis_pekerjaan]"
-            ])
-            ->asArray()
-            ->all(),
-        'id_jenis_pekerjaan',
-        'ket'
-    ),
+    'data' => $data,
     'options' => ['placeholder' => 'Pilih Jenis Pekerjaan ...'],
     'pluginOptions' => [
         'allowClear' => true

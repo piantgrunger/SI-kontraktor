@@ -72,10 +72,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
 <?php endif; ?>
 
-    <p> <?php echo '<?php if ((Mimin::checkRoute($this->context->id."/create"))){ ?>'; ?>
-        <?= "<?=  " ?>Html::a(<?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass).' Baru')) ?>, ['create'], ['class' => 'btn btn-success']) ?>
-    <?="<?php } ?>" ?>
-    </p>
 
 <?php if ($generator->indexWidgetType === 'grid'): ?>
     <?= "<?= " ?>GridView::widget([
@@ -94,9 +90,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
         'showPageSummary' => true,
         'panel' => [
-            'type' => GridView::TYPE_PRIMARY
+            'type' => GridView::TYPE_PRIMARY,
+           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.<?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass) )) ?>. '</strong>',
 
         ],
+            'toolbar' => [
+        ['content' => ((Mimin::checkRoute($this->context->id . "/create"))) ?         Html::a(<?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass) . ' Baru')) ?>, ['create'], ['class' => 'btn btn-success']) :""],
+
+        '{export}',
+        '{toggleData}'
+    ],
+
          'resizableColumns'=>true,
 
     ]); ?>

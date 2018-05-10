@@ -11,20 +11,18 @@ use yii\db\Expression;
 
 
 /**
- * This is the model class for table "tb_m_material".
+ * This is the model class for table "tb_m_level_jabatan".
  *
- * @property int $id_material
- * @property string $kode_material
- * @property string $nama_material
- * @property string $spesifikasi
- * @property string $satuan
+ * @property int $id_level_jabatan
+ * @property string $kode_level_jabatan
+ * @property string $nama_level_jabatan
  * @property string $keterangan
  * @property string $created_at
  * @property string $updated_at
  * @property int $created_by
  * @property int $updated_by
  */
-class Material extends \yii\db\ActiveRecord
+class LevelJabatan extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -55,7 +53,7 @@ class Material extends \yii\db\ActiveRecord
     }
     public static function tableName()
     {
-        return 'tb_m_material';
+        return 'tb_m_level_jabatan';
     }
 
     /**
@@ -64,11 +62,11 @@ class Material extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kode_material', 'nama_material', 'satuan','jenis'], 'required'],
-            [['kode_material', 'nama_material', 'spesifikasi', 'satuan', 'keterangan'], 'string'],
+            [['kode_level_jabatan', 'nama_level_jabatan'], 'required'],
+            [['kode_level_jabatan', 'nama_level_jabatan', 'keterangan'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],
-            [['kode_material'], 'unique'],
+            [['kode_level_jabatan'], 'unique'],
         ];
     }
 
@@ -78,11 +76,9 @@ class Material extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_material' => Yii::t('app', 'Id Material'),
-            'kode_material' => Yii::t('app', 'Kode Material / Peralatan '),
-            'nama_material' => Yii::t('app', 'Nama Material / Peralatan '),
-            'spesifikasi' => Yii::t('app', 'Spesifikasi'),
-            'satuan' => Yii::t('app', 'Satuan'),
+            'id_level_jabatan' => Yii::t('app', 'Id Level Jabatan'),
+            'kode_level_jabatan' => Yii::t('app', 'Kode Level Jabatan'),
+            'nama_level_jabatan' => Yii::t('app', 'Nama Level Jabatan'),
             'keterangan' => Yii::t('app', 'Keterangan'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
