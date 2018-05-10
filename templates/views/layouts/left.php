@@ -27,7 +27,18 @@ $menuItems =
                ['label' => 'Level Jabatan', 'icon' => 'unsorted', 'url' => ['/level-jabatan/index'], 'visible' => !Yii::$app->user->isGuest],
              ['label' => 'Karyawan', 'icon' => 'users', 'url' => ['/karyawan/index'], 'visible' => !Yii::$app->user->isGuest],
 
-                   ]]
+                   ]],
+
+    [
+        'visible' => !Yii::$app->user->isGuest,
+        'label' => 'Transaksi',
+        'icon' => 'money',
+        'url' => '#',
+        'items' => [
+            ['label' => 'Proyek', 'icon' => 'building', 'url' => ['/proyek/index'], 'visible' => !Yii::$app->user->isGuest],
+
+        ]
+    ],
 
 
                 ];

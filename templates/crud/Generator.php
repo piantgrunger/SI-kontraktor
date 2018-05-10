@@ -212,7 +212,7 @@ class Generator extends \yii\gii\Generator
     public function getNameAttribute()
     {
         foreach ($this->getColumnNames() as $name) {
-            if (!strcasecmp($name, 'name') || !strcasecmp($name, 'title') || strpos($name,'kode')!==false) {
+            if (!strcasecmp($name, 'name') || !strcasecmp($name, 'title') || strpos($name,'kode') || strpos($name, 'no') !==false) {
                 return $name;
             }
         }
@@ -245,8 +245,8 @@ class Generator extends \yii\gii\Generator
             return "\$form->field(\$model, '$attribute')->checkbox()";
         } elseif ($column->type === 'text') {
             return "\$form->field(\$model, '$attribute')->textarea(['rows' => 6])";
-        } 
-        
+        }
+
         else {
             if (preg_match('/^(password|pass|passwd|passcode)$/i', $column->name)) {
                 $input = 'passwordInput';

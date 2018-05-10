@@ -10,6 +10,8 @@ use yiimetroui\Tile;
 
 ?>
 <div class="site-index">
+<div class="row">
+<div class="col-md-12">
 <?php
 echo Tile::widget(array(
     'items' => array(
@@ -88,7 +90,28 @@ echo Tile::widget(array(
     'url' => ['/karyawan/index']
 ));
 
+
 ?>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
 
+<?php
+echo Tile::widget(array(
+    'items' => array(
+        array(
+            'content' => '<i class="fa fa-building"></i>',
+            'brand' => '<div class="name">Proyek</div>',
 
+        ),
+
+    ),
+    'options' => array('class' => 'icon bg-color-blue'),
+    'url' => ['/proyek/index']
+));
+
+?>
+</div>
+</div>
 </div>
