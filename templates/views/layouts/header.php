@@ -9,13 +9,11 @@ use yii\helpers\Html;
 <header class="main-header">
 
     <?= Html::a('<span class="logo-mini"><i class="fa fa-line-chart" aria-hidden="true"></i>
-</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+</span><span class="logo-lg">SI-Kontraktor</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-        </a>
+
 
         <div class="navbar-custom-menu">
 

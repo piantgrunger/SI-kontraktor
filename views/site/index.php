@@ -11,8 +11,72 @@ use yiimetroui\Tile;
 ?>
 <div class="site-index">
 <div class="row">
-<div class="col-md-12">
+<div class="col-md-4">
+
 <?php
+echo Tile::widget(array(
+    'items' => array(
+        array(
+            'content' => '<i class="fa fa-user"></i>',
+            'brand' => '<div class="name">Role</div>',
+        ),
+
+    ),
+    'options' => array('class' => 'icon bg-color-green'),
+    'url' => ['/mimin/role']
+
+));
+
+echo Tile::widget(array(
+    'items' => array(
+        array(
+            'content' => '<i class="fa fa-user"></i>',
+            'brand' => '<div class="name">User</div>',
+
+        ),
+
+    ),
+    'options' => array('class' => 'icon bg-color-orange'),
+    'url' => ['/mimin/user']
+));
+
+?>
+</div>
+<div class="col-md-4">
+
+<?php
+echo Tile::widget(array(
+    'items' => array(
+        array(
+            'content' => '<i class="fa fa-unsorted"></i>',
+            'brand' => '<div class="name">Level Jabatan</div>',
+        ),
+
+    ),
+    'options' => array('class' => 'icon bg-color-purple'),
+    'url' => ['/level-jabatan/index']
+
+));
+
+echo Tile::widget(array(
+    'items' => array(
+        array(
+            'content' => '<i class="fa fa-users"></i>',
+            'brand' => '<div class="name">Karyawan</div>',
+
+        ),
+
+    ),
+    'options' => array('class' => 'icon bg-color-pink'),
+    'url' => ['/karyawan/index']
+));
+
+?>
+</div>
+<div class="col-md-4">
+
+<?php
+
 echo Tile::widget(array(
     'items' => array(
         array(
@@ -26,18 +90,7 @@ echo Tile::widget(array(
     'url' => ['/jenis-pekerjaan/index']
 ));
 
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-unsorted"></i>',
-            'brand' => '<div class="name">Level Jabatan</div>',
-            ),
 
-    ),
-    'options' => array('class' => 'icon bg-color-purple'),
-    'url' => ['/level-jabatan/index']
-
-));
 
 echo Tile::widget(array(
     'items' => array(
@@ -77,25 +130,10 @@ echo Tile::widget(array(
     'options' => array('class' => 'icon bg-color-blue'),
     'url' => ['/customer/index']
 ));
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-users"></i>',
-            'brand' => '<div class="name">Karyawan</div>',
-
-        ),
-
-    ),
-    'options' => array('class' => 'icon bg-color-pink'),
-    'url' => ['/karyawan/index']
-));
 
 
 ?>
-</div>
-</div>
-<div class="row">
-<div class="col-md-12">
+
 
 <?php
 echo Tile::widget(array(
@@ -112,6 +150,5 @@ echo Tile::widget(array(
 ));
 
 ?>
-</div>
 </div>
 </div>
