@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'sqlsrv:Server=10.0.0.117\SQL2008Project;Database=test;encrypt=yes;',
+    'dsn' => 'sqlsrv:Server=ALFIAN-PC\SERVERKU;Database=test;encrypt=yes;',
 
     'username' => 'sa',
-    'password' => '',
+    'password' => 'sa1234',
     'charset' => 'utf8',
 ];

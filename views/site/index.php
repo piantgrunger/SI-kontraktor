@@ -3,152 +3,77 @@
 use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
 
-use yiimetroui\Tile;
-
+$this->registerCSSFile('css/metro-all.css');
+$this->registerJSFile(Yii::$app->homeUrl .'js/metro.min.js', ['depends' => [yii\web\JqueryAsset::className()]]);
 /* @var $this yii\web\View */
 
 
 ?>
 <div class="site-index">
-<div class="row">
-<div class="col-md-4">
 
-<?php
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-user"></i>',
-            'brand' => '<div class="name">Role</div>',
-        ),
+<div class="tiles-grid tiles-group size-2"  >
+    <?=Html::a("
 
-    ),
-    'options' => array('class' => 'icon bg-color-green'),
-    'url' => ['/mimin/role']
+        <span class='mif-user icon'></span>
+        <span class='branding-bar'>Route</span>
+         ",["/mimin/route"],["data-role" => 'tile', "class "=>'bg-indigo' ]) ?>
+    <?= Html::a("
 
-));
+        <span class='mif-user icon'></span>
+        <span class='branding-bar'>Role</span>
+         ", ["/mimin/role"], ["data-role" => 'tile', "class " => 'bg-cyan']) ?>
+    <?= Html::a("
 
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-user"></i>',
-            'brand' => '<div class="name">User</div>',
+        <span class='mif-user icon'></span>
+        <span class='branding-bar'>User</span>
+         ", ["/mimin/user"], ["data-role" => 'tile', "class " => 'bg-red' ,"data-size"=>"wide"]) ?>
 
-        ),
-
-    ),
-    'options' => array('class' => 'icon bg-color-orange'),
-    'url' => ['/mimin/user']
-));
-
-?>
 </div>
-<div class="col-md-4">
 
-<?php
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-unsorted"></i>',
-            'brand' => '<div class="name">Level Jabatan</div>',
-        ),
+<div class="tiles-grid tiles-group size-2" data-group-title="" >
+    <?= Html::a("
 
-    ),
-    'options' => array('class' => 'icon bg-color-purple'),
-    'url' => ['/level-jabatan/index']
+        <span class='mif-flow-tree icon'></span>
+        <span class='branding-bar'>Level Jabatan</span>
+         ", ["/level-jabatan"], ["data-role" => 'tile', "class " => 'bg-pink']) ?>
+    <?= Html::a("
 
-));
+        <span class='mif-users icon'></span>
+        <span class='branding-bar'>Karyawan</span>
+         ", ["/karyawan"], ["data-role" => 'tile', "class " => 'bg-cyan']) ?>
+    <?= Html::a("
 
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-users"></i>',
-            'brand' => '<div class="name">Karyawan</div>',
+        <span class='mif-folder icon'></span>
+        <span class='branding-bar'>Jenis-Pekerjaan</span>
+         ", ["/jenis-pekerjaan"], ["data-role" => 'tile', "class " => 'bg-blue']) ?>
+ <?= Html::a("
 
-        ),
+        <span class='mif-hammer icon'></span>
+        <span class='branding-bar'>Pekerjaan</span>
+         ", ["/pekerjaan"], ["data-role" => 'tile', "class " => 'bg-green']) ?>
 
-    ),
-    'options' => array('class' => 'icon bg-color-pink'),
-    'url' => ['/karyawan/index']
-));
+ <?= Html::a("
 
-?>
+        <span class='mif-layers icon'></span>
+        <span class=branding-bar'>Alat dan Material</span>
+         ", ["/material"], ["data-role" => 'tile', "class " => "bg-yellow","data-size"=>"wide"]) ?>
+
+
 </div>
-<div class="col-md-4">
+<div class="tiles-grid tiles-group size-2" data-group-title="" >
 
-<?php
+ <?= Html::a("
 
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-folder"></i>',
-            'brand' => '<div class="name">Jenis Pekerjaan</div>',
+        <span class='mif-user-check icon'></span>
+        <span class='branding-bar'>Customer</span>
+         ", ["/customer"], ["data-role" => 'tile', "class " => "bg-red", "data-size" => "wide"]) ?>
 
-        ),
+   <?= Html::a("
 
-    ),
-    'options' => array('class' => 'icon bg-color-red'),
-    'url' => ['/jenis-pekerjaan/index']
-));
+        <span class='mif-location-city icon'></span>
+        <span class='branding-bar'>Proyek</span>
+         ", ["/proyek"], ["data-role" => 'tile', "class " => 'bg-pink', "data-size" => "wide"]) ?>
 
-
-
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-gavel"></i>',
-            'brand' => '<div class="name">Pekerjaan</div>',
-        ),
-
-    ),
-    'options' => array('class' => 'icon bg-color-grey'),
-    'url' => ['/pekerjaan/index']
-
-));
-
-
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-cubes"></i>',
-            'brand' => '<div class="name">Material / Peralatan</div>',
-
-        ),
-
-    ),
-    'options' => array('class' => 'icon bg-color-green'),
-    'url' => ['/material/index']
-));
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-address-book-o"></i>',
-            'brand' => '<div class="name">Customer</div>',
-
-        ),
-
-    ),
-    'options' => array('class' => 'icon bg-color-blue'),
-    'url' => ['/customer/index']
-));
-
-
-?>
-
-
-<?php
-echo Tile::widget(array(
-    'items' => array(
-        array(
-            'content' => '<i class="fa fa-building"></i>',
-            'brand' => '<div class="name">Proyek</div>',
-
-        ),
-
-    ),
-    'options' => array('class' => 'icon bg-color-blue'),
-    'url' => ['/proyek/index']
-));
-
-?>
 </div>
+
 </div>
