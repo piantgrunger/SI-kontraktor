@@ -33,7 +33,7 @@ $data = ArrayHelper::map(
 
     <?= $form->field($model, 'id_customer')->widget(Select2::className(), [
         'data' => $data,
-        'options' => ['placeholder' => 'Pilih Customet...'],
+        'options' => ['placeholder' => 'Pilih Customer...'],
         'pluginOptions' => [
             'allowClear' => true
         ],

@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 
+use yii\bootstrap\NavBar;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -8,10 +9,18 @@ use yii\helpers\Html;
 
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini"><i class="fa fa-line-chart" aria-hidden="true"></i>
-</span><span class="logo-lg">SI-Kontraktor</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+<?php
+NavBar::begin([
+    'renderInnerContainer' => false, 'brandLabel' => "SI-Kontraktor",
+    'brandOptions' => ['class' => 'logo'],//options of the brand
+    'options' => [
+        'class' => 'navbar navbar-default navbar-inverse',
+        'role' => 'navigation',
+    ],
+]);
+?>
 
-    <nav class="navbar navbar-static-top" role="navigation">
+
 
 
 
@@ -65,5 +74,5 @@ use yii\helpers\Html;
 
             </ul>
         </div>
-    </nav>
+ <?php NavBar::end() ?>
 </header>
