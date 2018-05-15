@@ -8,6 +8,8 @@ use yii\behaviors\BlameableBehavior;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use mdm\behaviors\ar\RelationTrait;
+
 
 
 /**
@@ -36,7 +38,7 @@ class RAB extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-
+   use RelationTrait;
 
     public function behaviors()
     {
@@ -111,5 +113,14 @@ class RAB extends \yii\db\ActiveRecord
     public function getProyek()
     {
         return $this->hasOne(Proyek::className(), ['id_proyek' => 'id_proyek']);
+    }
+
+    public function getDetailRab()
+    {
+        return $this->hasMany(d_RAB::className(), ['id_rab' => 'id_rab']);
+    }
+    public function setDetailRab($value)
+    {
+        return $this->loadRelated('detailRab', $value);
     }
 }

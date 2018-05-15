@@ -1,0 +1,72 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "tb_sdt_rab_material".
+ *
+ * @property int $id_sd_rab
+ * @property int $id_d_rab
+ * @property int $id_material
+ * @property string $Qty
+ * @property string $sub_total
+ *
+ * @property TbDtRab $dRab
+ * @property TbMMaterial $material
+ */
+class sd_RAB_material extends \yii\db\ActiveRecord
+{
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'tb_sdt_rab_material';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['id_d_rab', 'id_material'], 'required'],
+            [['id_d_rab', 'id_material'], 'integer'],
+            [['Qty', 'sub_total'], 'number'],
+            [['id_d_rab'], 'exist', 'skipOnError' => true, 'targetClass' => d_RAB::className(), 'targetAttribute' => ['id_d_rab' => 'id_d_rab']],
+            [['id_material'], 'exist', 'skipOnError' => true, 'targetClass' => Material::className(), 'targetAttribute' => ['id_material' => 'id_material']],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id_sd_rab' => Yii::t('app', 'Id Sd Rab'),
+            'id_d_rab' => Yii::t('app', 'Id D Rab'),
+            'id_material' => Yii::t('app', 'Id Material'),
+            'Qty' => Yii::t('app', 'Qty'),
+            'sub_total' => Yii::t('app', 'Sub Total'),
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDRab()
+    {
+        return $this->hasOne(d_RAB::className(), ['id_d_rab' => 'id_d_rab']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMaterial()
+    {
+        return $this->hasOne(Material::className(), ['id_material' => 'id_material']);
+    }
+}

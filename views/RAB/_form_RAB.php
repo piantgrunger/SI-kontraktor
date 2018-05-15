@@ -6,6 +6,8 @@ use app\models\Proyek;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use kartik\datecontrol\DateControl;
+use mdm\widgets\TabularInput;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Pekerjaan */
 /* @var $form yii\widgets\ActiveForm */
@@ -45,4 +47,31 @@ $data = ArrayHelper::map(
 
 
 
+<div class="panel panel-primary" id="databantuan"  >
+<div class="panel-heading"> Data Pekerjaan
+
+</div>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>Pekerjaan</th>
+
+            <th><a id="btn-add2" href="#"><span class="glyphicon glyphicon-plus"></span></a></th>
+        </tr>
+    </thead>
+    <?= \mdm\widgets\TabularInput::widget([
+        'id' => 'detail-grid2',
+        'allModels' => $model->detailRab,
+        'model' => \app\models\d_RAB::className(),
+        'tag' => 'tbody',
+        'form' => $form,
+        'itemOptions' => ['tag' => 'tr'],
+        'itemView' => '_item_pekerjaan',
+        'clientOptions' => [
+            'btnAddSelector' => '#btn-add2',
+        ]
+    ]);
+    ?>
+    </table>
 </div>

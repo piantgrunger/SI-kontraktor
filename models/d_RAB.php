@@ -71,4 +71,14 @@ class d_RAB extends \yii\db\ActiveRecord
     {
         return $this->hasOne(RAB::className(), ['id_rab' => 'id_rab']);
     }
+
+    public function getSDetailRab()
+    {
+        return $this->hasMany(sd_RAB_material::className(), ['id_d_rab' => 'id_d_rab']);
+    }
+    public function setSDetailRab($value)
+    {
+        return $this->loadRelated('SDetailRab', $value);
+    }
+
 }
