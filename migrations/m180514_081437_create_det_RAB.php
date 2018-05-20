@@ -17,9 +17,9 @@ class m180514_081437_create_det_RAB extends Migration
             'id_rab' => "integer not null FOREIGN KEY  REFERENCES  tb_mt_rab (id_rab)  ON UPDATE CASCADE   ON DELETE CASCADE",
             'id_pekerjaan' => "integer not null FOREIGN KEY  REFERENCES  tb_m_pekerjaan (id_pekerjaan)  ON UPDATE CASCADE   ON DELETE CASCADE",
 
-            'total_biaya_material' => "money not null default 0",
-            'total_biaya_pekerja' => "money not null default 0",
-            'total_biaya_peralatan' => "money not null default 0",
+            'total_biaya_material' => "decimal(19,2) not null default 0",
+            'total_biaya_pekerja' => "decimal(19,2) not null default 0",
+            'total_biaya_peralatan' => "decimal(19,2) not null default 0",
 
         ]);
 
@@ -30,9 +30,7 @@ class m180514_081437_create_det_RAB extends Migration
      */
     public function safeDown()
     {
-        echo "m180514_081437_create_det_RAB cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('tb_dt_rab');
     }
 
     /*

@@ -8,7 +8,7 @@ use app\models\RABSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\d_RAB;
 /**
  * RABController implements the CRUD actions for RAB model.
  */
@@ -65,9 +65,32 @@ class RabController extends Controller
     {
         $model = new RAB();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_rab]);
-        } else {
+        if ($model->load(Yii::$app->request->post())) {
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+                $model->detailRab = Yii::$app->request->post('d_RAB', []);
+
+                if (($model->save()) && (count($model->detailRab) > 0)
+                   ) {
+                    $transaction->commit();
+                    return $this->redirect(['view', 'id' => $model->id_rab]);
+                }
+                $transaction->rollBack();
+            } catch (\Exception $ecx) {
+
+                $transaction->rollBack();
+                throw $ecx;
+            }
+            if (count($model->detailRab) == 0) {
+                $model->addError('detailRAB', 'RAB Harus memiliki detail Pekerjaan');
+            }
+
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+            } else {
+             $model->tgl_rab=date('Y-m-d');
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -84,10 +107,67 @@ class RabController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_rab]);
-        } else {
+        if ($model->load(Yii::$app->request->post())) {
+
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+                $model->detailRab = Yii::$app->request->post('d_RAB', []);
+
+                if (($model->save()) && (count($model->detailRab) > 0)) {
+                    $transaction->commit();
+                    return $this->redirect(['view', 'id' => $model->id_rab]);
+                }
+                $transaction->rollBack();
+            } catch (\Exception $ecx) {
+
+                $transaction->rollBack();
+                throw $ecx;
+            }
+            if (count($model->detailRab) == 0) {
+                $model->addError('detailRAB', 'RAB Harus memiliki detail Pekerjaan');
+            }
+
+
             return $this->render('update', [
+                'model' => $model,
+            ]);
+        }  else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+    public function actionPekerjaan($id)
+    {
+        $model = d_RAB::findOne($id);
+
+        if ($model->load(Yii::$app->request->post(),'')) {
+
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+                $model->sDetailRabMaterial = Yii::$app->request->post('sd_RAB_material', []);
+                $model->sDetailRabPeralatan = Yii::$app->request->post('sd_RAB_peralatan', []);
+                $model->sDetailRabPekerja = Yii::$app->request->post('sd_RAB_pekerja', []);
+
+
+                if (($model->save()) ) {
+
+                    $transaction->commit();
+                    return $this->redirect(['view', 'id' => $model->id_rab]);
+                }
+                $transaction->rollBack();
+            } catch (\Exception $ecx) {
+
+                $transaction->rollBack();
+                throw $ecx;
+            }
+
+
+            return $this->render('pekerjaan', [
+                'model' => $model,
+            ]);
+        } else {
+            return $this->render('pekerjaan', [
                 'model' => $model,
             ]);
         }

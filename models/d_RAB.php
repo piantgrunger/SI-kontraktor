@@ -2,6 +2,9 @@
 
 namespace app\models;
 
+use mdm\behaviors\ar\RelationTrait;
+
+
 use Yii;
 
 /**
@@ -22,6 +25,7 @@ class d_RAB extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    use RelationTrait;
     public static function tableName()
     {
         return 'tb_dt_rab';
@@ -33,7 +37,7 @@ class d_RAB extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_rab', 'id_pekerjaan'], 'required'],
+            [[ 'id_pekerjaan'], 'required'],
             [['id_rab', 'id_pekerjaan'], 'integer'],
             [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan'], 'number'],
             [['id_pekerjaan'], 'exist', 'skipOnError' => true, 'targetClass' => Pekerjaan::className(), 'targetAttribute' => ['id_pekerjaan' => 'id_pekerjaan']],
@@ -64,21 +68,48 @@ class d_RAB extends \yii\db\ActiveRecord
         return $this->hasOne(Pekerjaan::className(), ['id_pekerjaan' => 'id_pekerjaan']);
     }
 
+    public function getNama_pekerjaan()
+    {
+        return is_null($this->pekerjaan) ? "" : $this->pekerjaan ->nama_pekerjaan;
+   }
+
     /**
+     *
      * @return \yii\db\ActiveQuery
      */
     public function getRab()
     {
         return $this->hasOne(RAB::className(), ['id_rab' => 'id_rab']);
     }
+    public function getNo_rab()
+    {
+        return is_null($this->rab) ? "" : $this->rab->no_rab;
+    }
 
-    public function getSDetailRab()
+    public function getSDetailRabMaterial()
     {
         return $this->hasMany(sd_RAB_material::className(), ['id_d_rab' => 'id_d_rab']);
     }
-    public function setSDetailRab($value)
+    public function setSDetailRabMaterial($value)
     {
-        return $this->loadRelated('SDetailRab', $value);
+        return $this->loadRelated('sDetailRabMaterial', $value);
+    }
+
+    public function getSDetailRabPeralatan()
+    {
+        return $this->hasMany(sd_RAB_peralatan::className(), ['id_d_rab' => 'id_d_rab']);
+    }
+    public function setSDetailRabPeralatan($value)
+    {
+        return $this->loadRelated('sDetailRabPeralatan', $value);
+    }
+    public function getSDetailRabPekerja()
+    {
+        return $this->hasMany(sd_RAB_pekerja::className(), ['id_d_rab' => 'id_d_rab']);
+    }
+    public function setSDetailRabPekerja($value)
+    {
+        return $this->loadRelated('sDetailRabPekerja', $value);
     }
 
 }

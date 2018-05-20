@@ -114,6 +114,11 @@ class RAB extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Proyek::className(), ['id_proyek' => 'id_proyek']);
     }
+    public function getNo_Proyek()
+    {
+        return is_null($this->proyek)?"":$this->proyek->no_proyek;
+    }
+
 
     public function getDetailRab()
     {

@@ -29,21 +29,34 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id_proyek',
+            'no_proyek',
             'no_rab',
             'tgl_rab',
-            'total_biaya_material',
-            'total_biaya_pekerja',
-            'total_biaya_peralatan',
-            'margin',
-            'dana_cadangan',
-            'total_rab',
-            'keterangan:ntext',
-            'created_at',
-            'updated_at',
-            'created_by',
-            'updated_by',
         ],
     ]) ?>
+
+
+
+<div class="panel panel-primary"   >
+<div class="panel-heading"> Data Pekerjaan
+
+</div>
+<div class="detail">
+
+   <?= \mdm\widgets\TabularInput::widget([
+        'id' => 'detail-grid2',
+        'allModels' => $model->detailRab,
+        'model' => \app\models\d_RAB::className(),
+        'tag' => 'div',
+        'form' => null,
+        'itemOptions' => ['tag' => 'div'],
+        'itemView' => '_item_pekerjaan_view',
+        'clientOptions' => [
+            'btnAddSelector' => '#btn-add2',
+        ]
+    ]);
+    ?>
+ </div>
+</div>
 
 </div>

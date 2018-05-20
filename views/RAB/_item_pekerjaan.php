@@ -37,31 +37,6 @@ $data = ArrayHelper::map(
     ])->label(false) ?>
 </td>
 <td>
-<table class="table">
-    <thead>
-        <tr>
-
-            <th>Material</th>
-           <th>Qty</th>
-           <th>Bahan</th>
-
-            <th><a id="btn-add3" href="#"><span class="glyphicon glyphicon-plus"></span></a></th>
-        </tr>
-    </thead>
-    <?= \mdm\widgets\TabularInput::widget([
-        'id' => 'detail-grid2',
-        'allModels' => $model->sDetailRab,
-        'model' => \app\models\sd_RAB_material::className(),
-        'tag' => 'tbody',
-        'form' => $form,
-        'itemOptions' => ['tag' => 'tr'],
-        'itemView' => '_item_material',
-        'clientOptions' => [
-            'btnAddSelector' => '#btn-add3',
-        ]
-    ]);
-    ?>
-    </table>
 
 </td>
   <td>

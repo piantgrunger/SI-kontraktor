@@ -16,8 +16,7 @@ $data = ArrayHelper::map(
         ->select([
             'id_Material', "ket" => "[kode_Material]+' - '+[nama_Material]"
         ])
-        ->where("jenis='Material'")
-
+        ->where("jenis='Peralatan'")
         ->asArray()
         ->all(),
     'id_Material',
@@ -32,7 +31,7 @@ $data = ArrayHelper::map(
 <td>
     <?= $form->field($model, "[$key]id_material")->widget(Select2::className(), [
         'data' => $data,
-        'options' => ['placeholder' => 'Pilih Material...'],
+        'options' => ['placeholder' => 'Pilih Peralatan...'],
         'pluginOptions' => [
             'allowClear' => true
         ],

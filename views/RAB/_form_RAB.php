@@ -44,10 +44,12 @@ $data = ArrayHelper::map(
 
     <?= $form->field($model, 'tgl_rab')->widget(DateControl::className()) ?>
 
+    <?= $form->field($model, 'margin')->textInput() ?>
+    <?= $form->field($model, 'dana_cadangan')->textInput() ?>
 
 
 
-<div class="panel panel-primary" id="databantuan"  >
+<div class="panel panel-primary"   >
 <div class="panel-heading"> Data Pekerjaan
 
 </div>

@@ -2,25 +2,24 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use app\models\Material;
+use app\models\LevelJabatan;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use kartik\datecontrol\DateControl;
 use mdm\widgets\TabularInput;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Material */
+/* @var $model app\models\LevelJabatan */
 /* @var $form yii\widgets\ActiveForm */
 $data = ArrayHelper::map(
-    Material::find()
+    LevelJabatan::find()
         ->select([
-            'id_Material', "ket" => "[kode_Material]+' - '+[nama_Material]"
+            'id_Level_Jabatan', "ket" => "[kode_Level_Jabatan]+' - '+[nama_Level_Jabatan]"
         ])
-        ->where("jenis='Material'")
 
         ->asArray()
         ->all(),
-    'id_Material',
+    'id_Level_Jabatan',
     'ket'
         );
 
@@ -30,9 +29,9 @@ $data = ArrayHelper::map(
 ?>
 
 <td>
-    <?= $form->field($model, "[$key]id_material")->widget(Select2::className(), [
+    <?= $form->field($model, "[$key]id_level_jabatan")->widget(Select2::className(), [
         'data' => $data,
-        'options' => ['placeholder' => 'Pilih Material...'],
+        'options' => ['placeholder' => 'Pilih Level Jabatan...'],
         'pluginOptions' => [
             'allowClear' => true
         ],
@@ -44,7 +43,7 @@ $data = ArrayHelper::map(
 </td>
 
 <td>
-<?= $form->field($model, "[$key]harga")->textInput()->label(false) ?>
+<?= $form->field($model, "[$key]gaji")->textInput()->label(false) ?>
 
 </td>
 <td>
