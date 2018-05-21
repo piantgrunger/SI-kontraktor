@@ -21,13 +21,14 @@ $data = ArrayHelper::map(
     'id_Pekerjaan',
     'ket'
         );
-
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <td>
+<?= $form->field($model, "[$key]id_d_rab")->hiddenInput()->label(false); ?>
+
     <?= $form->field($model,"[$key]id_pekerjaan")->widget(Select2::className(), [
         'data' => $data,
         'options' => ['placeholder' => 'Pilih Pekerjaan...'],

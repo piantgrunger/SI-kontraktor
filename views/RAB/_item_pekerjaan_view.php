@@ -52,6 +52,16 @@ use mdm\widgets\TabularInput;
 
       ?>
  </tbody>
+ <tfoot>
+ <tr>
+ <td></td>
+ <td></td>
+ <th>Total</th>
+ <th><?=$model->total_biaya_material?></th>
+
+ </tr>
+ </tfoot>
+
 </table>
 
 <h4> Data Peralatan</h4>
@@ -80,6 +90,16 @@ use mdm\widgets\TabularInput;
 
         ?>
  </tbody>
+ <tfoot>
+ <tr>
+ <td></td>
+ <td></td>
+ <th>Total</th>
+ <th><?= $model->total_biaya_peralatan ?></th>
+
+ </tr>
+ </tfoot>
+
 </table>
 
 <h4> Data Pekerja</h4>
@@ -108,5 +128,15 @@ use mdm\widgets\TabularInput;
 
         ?>
  </tbody>
+  <tfoot>
+ <tr>
+ <td></td>
+ <td></td>
+ <th>Total</th>
+ <th><?= $model->total_biaya_pekerja ?></th>
+
+ </tr>
+ </tfoot>
+
 </table>
 </div>

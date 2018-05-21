@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'no_proyek',
             'no_rab',
-            'tgl_rab',
+            'tgl_rab:date',
         ],
     ]) ?>
 
@@ -58,5 +58,19 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
  </div>
 </div>
+
+ <?= DetailView::widget([
+    'model' => $model,
+    'attributes' => [
+       'total_biaya_material',
+       'total_biaya_pekerja',
+       'total_biaya_peralatan',
+       'margin',
+       'dana_cadangan',
+       'total_rab'
+
+    ],
+]) ?>
+
 
 </div>

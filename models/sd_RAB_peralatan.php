@@ -73,4 +73,16 @@ class sd_RAB_peralatan extends \yii\db\ActiveRecord
     {
         return is_null($this->material) ? "" : $this->material->nama_material;
     }
+    public function loadDefaultValues($skipIfSet = true)
+    {
+        $this->harga = 0; //contoh set default value active true
+        $this->qty = 0; //contoh set default value active true
+
+    }
+    public function init()
+    {
+        if ($this->isNewRecord) {
+            $this->loadDefaultValues($skipIfSet = true);
+        }
+    }
 }

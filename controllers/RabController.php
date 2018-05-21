@@ -3,12 +3,21 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\RAB;
 use app\models\RABSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\RAB;
 use app\models\d_RAB;
+use app\models\sd_RAB_material;
+use app\models\sd_RAB_pekerja;
+use app\models\sd_RAB_peralatan;
+use app\models\RAB_history;
+use app\models\d_RAB_history;
+use app\models\sd_RAB_history_material;
+use app\models\sd_RAB_history_pekerja;
+use app\models\sd_RAB_history_peralatan;
+
 /**
  * RABController implements the CRUD actions for RAB model.
  */
@@ -106,6 +115,54 @@ class RabController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+/*
+        $historyModel = new RAB_history;
+        $historyModel ->setAttributes($model->getAttributes(null,['id_rab']), false);
+        $historyModel->no_rab = $model->no_rab .' Revisi :'.date("Y-m-d H:i:s");
+       $dhistoryModel1=[];
+        foreach ($model->detailRab as  $dmodel1 )
+        {
+            $dhistoryModel = new d_RAB_history;
+            $dhistoryModel->setAttributes($dmodel1->getAttributes(null, ['id_rab','id_d_rab']), false);
+
+            $sdHistoryMaterial = [];
+            foreach($dmodel1->sDetailRabMaterial as $sdModel1)
+            {
+                $SModelMaterial = new sd_RAB_history_material;
+                $SModelMaterial ->setAttributes($sdModel1->getAttributes(null, ['id_d_rab', 'id_sd_rab']), false);
+
+                $sdHistoryMaterial[] = $SModelMaterial;
+            }
+            $dhistoryModel->sDetailRabMaterial =$sdHistoryMaterial;
+
+            $sdHistoryPeralatan = [];
+            foreach ($dmodel1->sDetailRabPeralatan as $sdModel1) {
+                $SModelPeralatan = new sd_RAB_history_peralatan;
+                $SModelPeralatan -> setAttributes($sdModel1->getAttributes(null, ['id_d_rab', 'id_sd_rab']), false);
+
+                $sdHistoryPeralatan[] = $SModelPeralatan;
+            }
+            $dhistoryModel->sDetailRabPeralatan = $sdHistoryPeralatan;
+
+            $sdHistoryPekerja = [];
+            foreach ($dmodel1->sDetailRabPekerja as $sdModel1) {
+                $SModelPekerja = new sd_RAB_history_pekerja;
+                $SModelPekerja -> setAttributes($sdModel1->getAttributes(null, ['id_d_rab', 'id_sd_rab']), false);
+
+                $sdHistoryPekerja[] = $SModelPekerja;
+            }
+            $dhistoryModel->sDetailRabPekerja = $sdHistoryPekerja;
+
+
+
+
+
+            $dhistoryModel1[] = $dhistoryModel;
+
+
+        }
+        $historyModel->detailRab = $dhistoryModel1;
+*/
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -115,6 +172,11 @@ class RabController extends Controller
 
                 if (($model->save()) && (count($model->detailRab) > 0)) {
                     $transaction->commit();
+
+
+
+//                    $historyModel->save(false);
+
                     return $this->redirect(['view', 'id' => $model->id_rab]);
                 }
                 $transaction->rollBack();
@@ -153,6 +215,28 @@ class RabController extends Controller
                 if (($model->save()) ) {
 
                     $transaction->commit();
+
+                    $modelRAB = d_RAB::findOne($model->id_d_rab);
+                    $model_d_material = sd_RAB_material::find() ->where(['id_d_rab' =>$model->id_d_rab]);
+                    $modelRAB->total_biaya_material = is_null($model_d_material->sum('sub_total')) ? 0 : $model_d_material->sum('sub_total');
+                    $model_d_peralatan = sd_RAB_peralatan::find()->where(['id_d_rab' => $model->id_d_rab]);
+                    $modelRAB->total_biaya_peralatan = is_null($model_d_peralatan->sum('sub_total')) ? 0 : $model_d_peralatan->sum('sub_total');
+                    $model_d_pekerja = sd_RAB_pekerja::find()->where(['id_d_rab' => $model->id_d_rab]);
+                    $modelRAB->total_biaya_pekerja = is_null($model_d_pekerja->sum('sub_total'))?0: $model_d_pekerja->sum('sub_total');
+
+                    $modelRAB->save();
+
+
+                    $modelRAB = RAB::findOne($model->id_rab);
+                    $model_d = d_RAB::find()->where(['id_rab' => $model->id_rab]);
+                    $modelRAB->total_biaya_material = is_null($model_d->sum('total_biaya_material')) ? 0 : $model_d->sum('total_biaya_material');
+                    $modelRAB->total_biaya_peralatan = is_null($model_d->sum('total_biaya_peralatan')) ? 0 : $model_d->sum('total_biaya_peralatan');
+                    $modelRAB->total_biaya_pekerja = is_null($model_d->sum('total_biaya_pekerja')) ? 0 : $model_d->sum('total_biaya_pekerja');
+                    $modelRAB->total_rab = $modelRAB->total_biaya_material+ $modelRAB->total_biaya_peralatan+ $modelRAB->total_biaya_pekerja+
+                        $modelRAB->margin+ $modelRAB->dana_cadangan;
+                    $modelRAB->save();
+
+
                     return $this->redirect(['view', 'id' => $model->id_rab]);
                 }
                 $transaction->rollBack();

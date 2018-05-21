@@ -38,12 +38,20 @@ $data = ArrayHelper::map(
     ])->label(false) ?>
 </td>
 <td>
-<?= $form->field($model, "[$key]qty")->textInput()->label(false) ?>
+<?= $form->field($model, "[$key]qty")->textInput([
+
+    'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_rab_pekerja-' . $key . '-gaji").val()) ; $("#sd_rab_pekerja-' . $key . '-sub_total").val(total)   ',
+
+])->label(false) ?>
 
 </td>
 
 <td>
-<?= $form->field($model, "[$key]gaji")->textInput()->label(false) ?>
+<?= $form->field($model, "[$key]gaji")->textInput([
+
+    'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_rab_pekerja-' . $key . '-qty").val()) ; $("#sd_rab_pekerja-' . $key . '-sub_total").val(total)   ',
+
+])->label(false) ?>
 
 </td>
 <td>

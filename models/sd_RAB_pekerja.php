@@ -75,4 +75,16 @@ class sd_RAB_pekerja extends \yii\db\ActiveRecord
     {
         return is_null($this->levelJabatan) ? "" : $this->levelJabatan->nama_level_jabatan;
     }
+    public function loadDefaultValues($skipIfSet = true)
+    {
+        $this->gaji = 0; //contoh set default value active true
+        $this->qty = 0; //contoh set default value active true
+
+    }
+    public function init()
+    {
+        if ($this->isNewRecord) {
+            $this->loadDefaultValues($skipIfSet = true);
+        }
+    }
 }

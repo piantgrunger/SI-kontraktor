@@ -18,13 +18,12 @@ use mdm\widgets\TabularInput;
 ?>
 
 <div class="rab-form">
-        <?= $form->errorSummary($model) ?> <!-- ADDED HERE -->
 
 <div class="panel panel-primary"   >
 <div class="panel-heading"> Data Material
 
 </div>
-<table class="table">
+<table class="table table-condensed table-striped table-hover table-bordered">
     <thead>
         <tr>
 

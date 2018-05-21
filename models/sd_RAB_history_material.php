@@ -16,14 +16,14 @@ use Yii;
  * @property TbDtRab $dRab
  * @property TbMMaterial $material
  */
-class sd_RAB_material extends \yii\db\ActiveRecord
+class sd_RAB_history_material extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'tb_sdt_rab_material';
+        return 'tb_sdt_rab_history_material';
     }
 
     /**
