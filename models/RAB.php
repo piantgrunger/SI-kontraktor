@@ -4,7 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\BlameableBehavior;
-
+use yii\web\UploadedFile;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
@@ -38,7 +38,8 @@ class RAB extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-   use RelationTrait;
+  public $old_file_acuan_revisi;
+     use RelationTrait;
 
     public function behaviors()
     {
@@ -76,8 +77,10 @@ class RAB extends \yii\db\ActiveRecord
             [['id_proyek', 'no_rab', 'tgl_rab'], 'required'],
             [['id_proyek', 'created_by', 'updated_by'], 'integer'],
             [['no_rab', 'keterangan'], 'string'],
-            [['tgl_rab', 'created_at', 'updated_at'], 'safe'],
+            [['tgl_rab', 'created_at', 'updated_at','revisi'], 'safe'],
             [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'margin', 'dana_cadangan', 'total_rab'], 'number'],
+            [['file_acuan_revisi'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg,bmp,pdf,jpeg,doc,docx', 'maxSize' => 512000000],
+
             [['no_rab'], 'unique'],
             [['id_proyek'], 'exist', 'skipOnError' => true, 'targetClass' =>Proyek::className(), 'targetAttribute' => ['id_proyek' => 'id_proyek']],
         ];
@@ -127,5 +130,31 @@ class RAB extends \yii\db\ActiveRecord
     public function setDetailRab($value)
     {
         return $this->loadRelated('detailRab', $value);
+    }
+    public function upload($fieldName)
+    {
+        $path = Yii::getAlias('@app') . '/web/media/';
+
+        $image = UploadedFile::getInstance($this, $fieldName);
+
+        if (!empty($image) && $image->size !== 0) {
+            $fileNames =  md5($this->no_rab) . '.' . $image->extension;
+
+            if ($image->saveAs($path . $fileNames)) {
+                $this->attributes = array($fieldName => $fileNames);
+
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if ($fieldName === 'file_acuan_revisi') {
+                $this->attributes = array($fieldName => $this->old_file_acuan_revisi);
+            }
+
+
+
+            return true;
+        }
     }
 }

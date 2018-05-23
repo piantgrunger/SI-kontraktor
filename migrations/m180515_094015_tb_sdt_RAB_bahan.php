@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m180515_094015_tb_sdt_RAB_bahan
+ * Class m180515_094015_tb_sdt_rab_bahan
  */
-class m180515_094015_tb_sdt_RAB_bahan extends Migration
+class m180515_094015_tb_sdt_rab_bahan extends Migration
 {
     /**
      * {@inheritdoc}
@@ -41,7 +41,7 @@ class m180515_094015_tb_sdt_RAB_bahan extends Migration
 
     public function down()
     {
-        echo "m180515_094015_tb_sdt_RAB_bahan cannot be reverted.\n";
+        echo "m180515_094015_tb_sdt_rab_bahan cannot be reverted.\n";
 
         return false;
     }

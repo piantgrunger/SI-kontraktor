@@ -72,7 +72,7 @@ $this->registerJSFile(Yii::$app->homeUrl .'js/metro.min.js', ['depends' => [yii\
 
         <span class='mif-location-city icon'></span>
         <span class='branding-bar'>Proyek</span>
-         ", ["/proyek"], ["data-role" => 'tile', "class " => 'bg-pink', ]) ?>
+         ", ["/proyek"], ["data-role" => 'tile', "class " => 'bg-pink', "data-size" => "wide" ]) ?>
 
 
   <?= Html::a("
@@ -80,6 +80,13 @@ $this->registerJSFile(Yii::$app->homeUrl .'js/metro.min.js', ['depends' => [yii\
         <span class='mif-calculator icon'></span>
         <span class='branding-bar'>R A B</span>
          ", ["/rab"], ["data-role" => 'tile', "class " => 'bg-green',]) ?>
+
+
+  <?= Html::a("
+
+        <span class='mif-calculator icon'></span>
+        <span class='branding-bar'>History R A B</span>
+         ", ["/history"], ["data-role" => 'tile', "class " => 'bg-blue', ]) ?>
 
 </div>
 

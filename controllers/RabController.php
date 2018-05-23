@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\RABSearch;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -17,6 +18,7 @@ use app\models\d_RAB_history;
 use app\models\sd_RAB_history_material;
 use app\models\sd_RAB_history_pekerja;
 use app\models\sd_RAB_history_peralatan;
+use Mpdf\Tag\Dd;
 
 /**
  * RABController implements the CRUD actions for RAB model.
@@ -82,7 +84,9 @@ class RabController extends Controller
                 if (($model->save()) && (count($model->detailRab) > 0)
                    ) {
                     $transaction->commit();
-                    return $this->redirect(['view', 'id' => $model->id_rab]);
+                     return $this->render('edit_pekerjaan', [
+                        'model' => $this->findModel($id),
+                    ]);
                 }
                 $transaction->rollBack();
             } catch (\Exception $ecx) {
@@ -115,7 +119,9 @@ class RabController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-/*
+        $old_revisi= $model->revisi;
+        $model->old_file_acuan_revisi= $model->file_acuan_revisi;
+
         $historyModel = new RAB_history;
         $historyModel ->setAttributes($model->getAttributes(null,['id_rab']), false);
         $historyModel->no_rab = $model->no_rab .' Revisi :'.date("Y-m-d H:i:s");
@@ -159,10 +165,9 @@ class RabController extends Controller
 
             $dhistoryModel1[] = $dhistoryModel;
 
-
         }
         $historyModel->detailRab = $dhistoryModel1;
-*/
+
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -170,14 +175,14 @@ class RabController extends Controller
             try {
                 $model->detailRab = Yii::$app->request->post('d_RAB', []);
 
-                if (($model->save()) && (count($model->detailRab) > 0)) {
+                if (($model->upload('file_acuan_revisi'))&& ($model->save()) && (count($model->detailRab) > 0)) {
                     $transaction->commit();
+                    if ($old_revisi !== $model->revisi)
+                       $historyModel->save(false);
 
-
-
-//                    $historyModel->save(false);
-
-                    return $this->redirect(['view', 'id' => $model->id_rab]);
+                    return $this->render('edit_pekerjaan', [
+                        'model' => $this->findModel($id),
+                    ]);
                 }
                 $transaction->rollBack();
             } catch (\Exception $ecx) {
@@ -237,7 +242,9 @@ class RabController extends Controller
                     $modelRAB->save();
 
 
-                    return $this->redirect(['view', 'id' => $model->id_rab]);
+              return $this->render('edit_pekerjaan', [
+            'model' => $this->findModel($model->id_rab),
+        ]);
                 }
                 $transaction->rollBack();
             } catch (\Exception $ecx) {

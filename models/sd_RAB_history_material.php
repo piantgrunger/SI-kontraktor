@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "tb_sdt_rab_material".
  *
  * @property int $id_sd_rab
- * @property int $id_d_rab
+ * @property int $id_d_RAB
  * @property int $id_material
  * @property string $qty
  * @property string $sub_total
@@ -46,8 +46,8 @@ class sd_RAB_history_material extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_sd_rab' => Yii::t('app', 'Id Sd Rab'),
-            'id_d_rab' => Yii::t('app', 'Id D Rab'),
+            'id_sd_rab' => Yii::t('app', 'Id Sd RAB'),
+            'id_d_rab' => Yii::t('app', 'Id D RAB'),
             'id_material' => Yii::t('app', 'Id Material'),
             'qty' => Yii::t('app', 'qty'),
             'sub_total' => Yii::t('app', 'Sub Total'),

@@ -10,7 +10,7 @@ use Yii;
 /**
  * This is the model class for table "tb_dt_rab".
  *
- * @property int $id_d_rab
+ * @property int $id_d_RAB
  * @property int $id_rab
  * @property int $id_pekerjaan
  * @property string $total_biaya_material
@@ -51,8 +51,8 @@ class d_RAB_history extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_d_rab' => Yii::t('app', 'Id D Rab'),
-            'id_rab' => Yii::t('app', 'Id Rab'),
+            'id_d_rab' => Yii::t('app', 'Id D RAB'),
+            'id_rab' => Yii::t('app', 'Id RAB'),
             'id_pekerjaan' => Yii::t('app', 'Pekerjaan'),
             'total_biaya_material' => Yii::t('app', 'Total Biaya Material'),
             'total_biaya_pekerja' => Yii::t('app', 'Total Biaya Pekerja'),
@@ -83,12 +83,12 @@ class d_RAB_history extends \yii\db\ActiveRecord
     }
     public function getNo_rab()
     {
-        return is_null($this->rab) ? "" : $this->rab->no_rab;
+        return is_null($this->RAB) ? "" : $this->rab->no_rab;
     }
 
     public function getSDetailRabMaterial()
     {
-        return $this->hasMany(sd_RAB_material::className(), ['id_d_rab' => 'id_d_rab']);
+        return $this->hasMany(sd_RAB_history_material::className(), ['id_d_rab' => 'id_d_rab']);
     }
     public function setSDetailRabMaterial($value)
     {
@@ -97,7 +97,7 @@ class d_RAB_history extends \yii\db\ActiveRecord
 
     public function getSDetailRabPeralatan()
     {
-        return $this->hasMany(sd_RAB_peralatan::className(), ['id_d_rab' => 'id_d_rab']);
+        return $this->hasMany(sd_RAB_history_peralatan::className(), ['id_d_rab' => 'id_d_rab']);
     }
     public function setSDetailRabPeralatan($value)
     {
@@ -105,7 +105,7 @@ class d_RAB_history extends \yii\db\ActiveRecord
     }
     public function getSDetailRabPekerja()
     {
-        return $this->hasMany(sd_RAB_pekerja::className(), ['id_d_rab' => 'id_d_rab']);
+        return $this->hasMany(sd_RAB_history_pekerja::className(), ['id_d_rab' => 'id_d_rab']);
     }
     public function setSDetailRabPekerja($value)
     {

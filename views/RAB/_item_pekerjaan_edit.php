@@ -21,6 +21,9 @@ use mdm\widgets\TabularInput;
 <div class="col-sm-6">
     <?= $model->nama_pekerjaan ?></div>
 
+<div class="col-sm-6">
+    <?=Html::a(Yii::t('app', 'Ubah'), ['pekerjaan', 'id' => $model->id_d_rab], ['class' => 'btn btn-primary'])?>
+</div>
 </div>
 <h4> Data Material</h4>
 <table class="table table-condensed table-striped table-hover table-bordered">

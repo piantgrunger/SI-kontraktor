@@ -21,7 +21,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'updated_by',
 
          ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
-              'view'],$this->context->route),    ],    ];
+             'view'],$this->context->route),    ],    ];
 
 
 /* @var $this yii\web\View */
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         ],
             'toolbar' => [
-        ['content' => ((Mimin::checkRoute($this->context->id . "/create"))) ?         Html::a(Yii::t('app', 'R A B Baru'), ['create'], ['class' => 'btn btn-success']) :""],
+
 
         '{export}',
         '{toggleData}'

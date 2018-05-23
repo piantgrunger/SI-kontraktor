@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m180514_073308_create_RAB
+ * Class m180514_073308_create_rab
  */
-class m180514_073308_create_RAB extends Migration
+class m180514_073308_create_rab extends Migration
 {
     /**
      * {@inheritdoc}
@@ -51,7 +51,7 @@ class m180514_073308_create_RAB extends Migration
 
     public function down()
     {
-        echo "m180514_073308_create_RAB cannot be reverted.\n";
+        echo "m180514_073308_create_rab cannot be reverted.\n";
 
         return false;
     }
