@@ -84,7 +84,7 @@ $this->registerJSFile(Yii::$app->homeUrl .'js/metro.min.js', ['depends' => [yii\
 
   <?= Html::a("
 
-        <span class='mif-calculator icon'></span>
+        <span class='mif-copy icon'></span>
         <span class='branding-bar'>History R A B</span>
          ", ["/history"], ["data-role" => 'tile', "class " => 'bg-blue', ]) ?>
 
