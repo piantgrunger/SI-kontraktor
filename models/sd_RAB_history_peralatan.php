@@ -23,7 +23,7 @@ class sd_RAB_history_peralatan extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'tb_sdt_rab_peralatan';
+        return 'tb_sdt_rab_history_peralatan';
     }
 
     /**
@@ -59,7 +59,7 @@ class sd_RAB_history_peralatan extends \yii\db\ActiveRecord
      */
     public function getDRab()
     {
-        return $this->hasOne(d_RAB::className(), ['id_d_rab' => 'id_d_rab']);
+        return $this->hasOne(d_RAB_history::className(), ['id_d_rab' => 'id_d_rab']);
     }
 
     /**

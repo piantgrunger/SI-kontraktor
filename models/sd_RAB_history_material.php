@@ -59,7 +59,7 @@ class sd_RAB_history_material extends \yii\db\ActiveRecord
      */
     public function getDRab()
     {
-        return $this->hasOne(d_RAB::className(), ['id_d_rab' => 'id_d_rab']);
+        return $this->hasOne(d_RAB_history::className(), ['id_d_rab' => 'id_d_rab']);
     }
 
     /**

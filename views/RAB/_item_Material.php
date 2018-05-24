@@ -41,7 +41,7 @@ $data = ArrayHelper::map(
 <td>
 <?= $form->field($model, "[$key]qty")->textInput([
 
-        'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_RAB_material-'.$key. '-harga").val()) ; $("#sd_RAB_material-' . $key . '-sub_total").val(total)   ',
+        'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_rab_material-'.$key. '-harga").val()) ; $("#sd_rab_material-' . $key . '-sub_total").val(total)   ',
 
 ])->label(false) ?>
 
@@ -50,7 +50,7 @@ $data = ArrayHelper::map(
 <td>
 <?= $form->field($model, "[$key]harga")->textInput([
 
-    'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_RAB_material-' . $key . '-qty").val()) ; $("#sd_RAB_material-' . $key . '-sub_total").val(total)   ',
+    'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_rab_material-' . $key . '-qty").val()) ; $("#sd_rab_material-' . $key . '-sub_total").val(total)   ',
 
 ])->label(false) ?>
 

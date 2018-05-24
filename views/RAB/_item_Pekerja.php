@@ -24,7 +24,7 @@ $data = ArrayHelper::map(
         );
 
 /* @var $this yii\web\View */
-/* @var $model app\models\RAB */
+/* @var $model app\models\rab */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -40,7 +40,7 @@ $data = ArrayHelper::map(
 <td>
 <?= $form->field($model, "[$key]qty")->textInput([
 
-    'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_RAB_pekerja-' . $key . '-gaji").val()) ; $("#sd_RAB_pekerja-' . $key . '-sub_total").val(total)   ',
+    'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_rab_pekerja-' . $key . '-gaji").val()) ; $("#sd_rab_pekerja-' . $key . '-sub_total").val(total)   ',
 
 ])->label(false) ?>
 
@@ -49,7 +49,7 @@ $data = ArrayHelper::map(
 <td>
 <?= $form->field($model, "[$key]gaji")->textInput([
 
-    'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_RAB_pekerja-' . $key . '-qty").val()) ; $("#sd_RAB_pekerja-' . $key . '-sub_total").val(total)   ',
+    'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_rab_pekerja-' . $key . '-qty").val()) ; $("#sd_rab_pekerja-' . $key . '-sub_total").val(total)   ',
 
 ])->label(false) ?>
 

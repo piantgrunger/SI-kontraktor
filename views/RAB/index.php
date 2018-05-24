@@ -21,7 +21,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'updated_by',
 
          ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
-              'view'],$this->context->route),    ],    ];
+             'update','delete', 'view'],$this->context->route),    ],    ];
 
 
 /* @var $this yii\web\View */

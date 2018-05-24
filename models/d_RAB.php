@@ -83,7 +83,7 @@ class d_RAB extends \yii\db\ActiveRecord
     }
     public function getNo_rab()
     {
-        return is_null($this->RAB) ? "" : $this->rab->no_rab;
+        return is_null($this->rab) ? "" : $this->rab->no_rab;
     }
 
     public function getSDetailRabMaterial()

@@ -85,7 +85,7 @@ class RabController extends Controller
                    ) {
                     $transaction->commit();
                      return $this->render('edit_pekerjaan', [
-                        'model' => $this->findModel($id),
+                        'model' => $this->findModel($model->id_rab),
                     ]);
                 }
                 $transaction->rollBack();
@@ -142,18 +142,18 @@ class RabController extends Controller
             $dhistoryModel->sDetailRabMaterial =$sdHistoryMaterial;
 
             $sdHistoryPeralatan = [];
-            foreach ($dmodel1->sDetailRabPeralatan as $sdModel1) {
+            foreach ($dmodel1->sDetailRabPeralatan as $sdModel2) {
                 $SModelPeralatan = new sd_RAB_history_peralatan;
-                $SModelPeralatan -> setAttributes($sdModel1->getAttributes(null, ['id_d_rab', 'id_sd_rab']), false);
+                $SModelPeralatan -> setAttributes($sdModel2->getAttributes(null, ['id_d_rab', 'id_sd_rab']), false);
 
                 $sdHistoryPeralatan[] = $SModelPeralatan;
             }
             $dhistoryModel->sDetailRabPeralatan = $sdHistoryPeralatan;
 
             $sdHistoryPekerja = [];
-            foreach ($dmodel1->sDetailRabPekerja as $sdModel1) {
+            foreach ($dmodel1->sDetailRabPekerja as $sdModel3) {
                 $SModelPekerja = new sd_RAB_history_pekerja;
-                $SModelPekerja -> setAttributes($sdModel1->getAttributes(null, ['id_d_rab', 'id_sd_rab']), false);
+                $SModelPekerja -> setAttributes($sdModel3->getAttributes(null, ['id_d_rab', 'id_sd_rab']), false);
 
                 $sdHistoryPekerja[] = $SModelPekerja;
             }

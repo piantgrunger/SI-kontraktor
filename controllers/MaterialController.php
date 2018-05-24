@@ -101,16 +101,16 @@ class MaterialController extends Controller
      */
     public function actionDelete($id)
     {
-        
+
        try
       {
         $this->findModel($id)->delete();
-      
+
       }
       catch(\yii\db\IntegrityException  $e)
       {
 	Yii::$app->session->setFlash('error', "Data Tidak Dapat Dihapus Karena Dipakai Modul Lain");
-       } 
+       }
          return $this->redirect(['index']);
     }
 
