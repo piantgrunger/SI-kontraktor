@@ -1,0 +1,111 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+use yii\behaviors\BlameableBehavior;
+
+use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+
+
+/**
+ * This is the model class for table "tb_mt_realisasi".
+ *
+ * @property int $id_realisasi
+ * @property int $id_d_rab
+ * @property string $no_realisasi
+ * @property string $tgl_aw_realisasi
+ * @property string $tgl_ak_realisasi
+ * @property string $total_biaya_material
+ * @property string $total_biaya_pekerja
+ * @property string $total_biaya_peralatan
+ * @property string $keterangan
+ * @property string $created_at
+ * @property string $updated_at
+ * @property int $created_by
+ * @property int $updated_by
+ *
+ * @property TbDtRab $dRab
+ */
+class Realisasi extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                // if you're using datetime instead of UNIX timestamp:
+                 'value' => new Expression('getdate()'),
+            ],
+                    [
+                'class' => BlameableBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_by', 'updated_by'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_by'],
+                ],
+
+            ],
+        ];
+    }
+    public static function tableName()
+    {
+        return 'tb_mt_realisasi';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['id_d_rab', 'no_realisasi', 'tgl_aw_realisasi', 'tgl_ak_realisasi'], 'required'],
+            [['id_d_rab', 'created_by', 'updated_by'], 'integer'],
+            [['no_realisasi', 'keterangan'], 'string'],
+            [['tgl_aw_realisasi', 'tgl_ak_realisasi', 'created_at', 'updated_at'], 'safe'],
+            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan'], 'number'],
+            [['no_realisasi'], 'unique'],
+            [['id_d_rab'], 'exist', 'skipOnError' => true, 'targetClass' => d_RAB::className(), 'targetAttribute' => ['id_d_rab' => 'id_d_rab']],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id_realisasi' => Yii::t('app', 'Id Realisasi'),
+            'id_d_rab' => Yii::t('app', 'Id D Rab'),
+            'no_realisasi' => Yii::t('app', 'No Realisasi'),
+            'tgl_aw_realisasi' => Yii::t('app', 'Awal Realisasi'),
+            'tgl_ak_realisasi' => Yii::t('app', 'Akhir Realisasi'),
+            'total_biaya_material' => Yii::t('app', 'Total Biaya Material'),
+            'total_biaya_pekerja' => Yii::t('app', 'Total Biaya Pekerja'),
+            'total_biaya_peralatan' => Yii::t('app', 'Total Biaya Peralatan'),
+            'keterangan' => Yii::t('app', 'Keterangan'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'created_by' => Yii::t('app', 'Created By'),
+            'updated_by' => Yii::t('app', 'Updated By'),
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDRab()
+    {
+        return $this->hasOne(d_RAB::className(), ['id_d_rab' => 'id_d_rab']);
+    }
+}

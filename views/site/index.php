@@ -66,13 +66,13 @@ $this->registerJSFile(Yii::$app->homeUrl .'js/metro.min.js', ['depends' => [yii\
 
         <span class='mif-user-check icon'></span>
         <span class='branding-bar'>Customer</span>
-         ", ["/customer"], ["data-role" => 'tile', "class " => "bg-red", "data-size" => "wide"]) ?>
+         ", ["/customer"], ["data-role" => 'tile', "class " => "bg-red", ]) ?>
 
    <?= Html::a("
 
         <span class='mif-location-city icon'></span>
         <span class='branding-bar'>Proyek</span>
-         ", ["/proyek"], ["data-role" => 'tile', "class " => 'bg-pink', "data-size" => "wide" ]) ?>
+         ", ["/proyek"], ["data-role" => 'tile', "class " => 'bg-pink',  ]) ?>
 
 
   <?= Html::a("
@@ -87,6 +87,14 @@ $this->registerJSFile(Yii::$app->homeUrl .'js/metro.min.js', ['depends' => [yii\
         <span class='mif-copy icon'></span>
         <span class='branding-bar'>History R A B</span>
          ", ["/history"], ["data-role" => 'tile', "class " => 'bg-blue', ]) ?>
+
+<?= Html::a("
+
+        <span class='mif-library icon'></span>
+        <span class='branding-bar'>Realisasi</span>
+         ", ["/realisasi"], ["data-role" => 'tile', "class " => 'bg-purple',"data-size"=>"wide" ]) ?>
+
+
 
 </div>
 
