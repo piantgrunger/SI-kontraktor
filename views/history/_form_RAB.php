@@ -7,6 +7,7 @@ use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use kartik\datecontrol\DateControl;
 use mdm\widgets\TabularInput;
+$file_acuan_revisi = explode('.', $model->file_acuan_revisi);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pekerjaan */
@@ -35,6 +36,18 @@ $data = ArrayHelper::map(
     echo $form->field($model, 'revisi')->textInput();
 
 }
+
+echo $form->field($model, 'file_acuan_revisi')->widget(FileInput::classname(), [
+       // 'options' => ['accept' => 'PDF'],
+    'pluginOptions' => [
+        'overwriteInitial' => true,
+        'showUpload' => false,
+        'initialPreview' => [Url::to(['/media\/' . $model->file_acuan_revisi], true), ],
+        'initialPreviewFileType' => end($file_acuan_revisi) === 'pdf' ? 'pdf' : 'image', // image is the default and can be overridden in config below
+        'initialCaption' => $model->file_acuan_revisi,
+        'initialPreviewAsData' => true,
+    ],
+])->label('Acuan Revisi');
 
 ?>
 

@@ -116,10 +116,11 @@ class RabController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionRevisi($id)
     {
         $model = $this->findModel($id);
-        $old_revisi= $model->revisi;
+        $model->scenario='revisi';
+        $old_revisi= $model->tgl_revisi;
         $model->old_file_acuan_revisi= $model->file_acuan_revisi;
 
         $historyModel = new RAB_history;
@@ -177,7 +178,7 @@ class RabController extends Controller
 
                 if (($model->upload('file_acuan_revisi'))&& ($model->save()) && (count($model->detailRab) > 0)) {
                     $transaction->commit();
-                    if ($old_revisi !== $model->revisi)
+                    if ($old_revisi !== $model->tgl_revisi)
                        $historyModel->save(false);
 
                     return $this->render('edit_pekerjaan', [
@@ -199,6 +200,43 @@ class RabController extends Controller
                 'model' => $model,
             ]);
         }  else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+                $model->detailRab = Yii::$app->request->post('d_RAB', []);
+
+                if (($model->upload('file_acuan_revisi')) && ($model->save()) && (count($model->detailRab) > 0)) {
+                    $transaction->commit();
+
+                    return $this->render('edit_pekerjaan', [
+                        'model' => $this->findModel($id),
+                    ]);
+                }
+                $transaction->rollBack();
+            } catch (\Exception $ecx) {
+
+                $transaction->rollBack();
+                throw $ecx;
+            }
+            if (count($model->detailRab) == 0) {
+                $model->addError('detailRAB', 'RAB Harus memiliki detail Pekerjaan');
+            }
+
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        } else {
             return $this->render('update', [
                 'model' => $model,
             ]);

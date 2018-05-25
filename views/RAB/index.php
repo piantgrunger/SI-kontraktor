@@ -21,7 +21,29 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'updated_by',
 
          ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
-             'update','delete', 'view'],$this->context->route),    ],    ];
+             'delete', 'view']
+             ,$this->context->route)
+            . ' {revisi} ',
+        'buttons' => ['revisi' =>
+            function ($url, $model) {
+            if (Mimin::checkRoute($this->context->id . "/revisi"))
+            {
+                return
+                    Html::a(
+                '<span class="glyphicon glyphicon-ok"></span>',
+                ['revisi', 'id' => $model->id_rab],
+                [
+                    'title' => Yii::t('app', 'Revisi'),
+                ]
+            );
+          } else
+          {
+              return " ";
+          }
+        }, ]
+
+
+             ,    ],    ];
 
 
 /* @var $this yii\web\View */

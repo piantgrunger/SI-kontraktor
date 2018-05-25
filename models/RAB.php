@@ -77,11 +77,12 @@ class RAB extends \yii\db\ActiveRecord
             [['id_proyek', 'no_rab', 'tgl_rab'], 'required'],
             [['id_proyek', 'created_by', 'updated_by'], 'integer'],
             [['no_rab', 'keterangan'], 'string'],
-            [['tgl_rab', 'created_at', 'updated_at','revisi'], 'safe'],
+            [['tgl_rab', 'created_at', 'updated_at','tgl_revisi'], 'safe'],
             [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'margin', 'dana_cadangan', 'total_rab'], 'number'],
             [['file_acuan_revisi'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg,bmp,pdf,jpeg,doc,docx', 'maxSize' => 512000000],
 
             [['no_rab'], 'unique'],
+            [['tgl_revisi', 'file_acuan_revisi'],'required','on'=>'revisi'],
             [['id_proyek'], 'exist', 'skipOnError' => true, 'targetClass' =>Proyek::className(), 'targetAttribute' => ['id_proyek' => 'id_proyek']],
         ];
     }

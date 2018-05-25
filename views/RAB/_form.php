@@ -47,8 +47,8 @@ $data = ArrayHelper::map(
         <?= $form->errorSummary($model) ?> <!-- ADDED HERE -->
 
 <?php
-if (!$model->isNewRecord) {
-    echo $form->field($model, 'revisi')->textInput();
+if ($this->context->action->id == 'revisi') {
+ echo   $form->field($model, 'tgl_revisi')->widget(DateControl::className());
 
 
     echo $form->field ($model, 'file_acuan_revisi')->widget (FileInput::classname (), [
