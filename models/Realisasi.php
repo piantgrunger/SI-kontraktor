@@ -10,6 +10,9 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 
 
+
+
+
 /**
  * This is the model class for table "tb_mt_realisasi".
  *
@@ -35,7 +38,7 @@ class Realisasi extends \yii\db\ActiveRecord
      * @inheritdoc
      */
 
-
+   use \mdm\behaviors\ar\RelationTrait;
     public function behaviors()
     {
         return [
@@ -69,13 +72,15 @@ class Realisasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_d_rab', 'no_realisasi', 'tgl_aw_realisasi', 'tgl_ak_realisasi'], 'required'],
-            [['id_d_rab', 'created_by', 'updated_by'], 'integer'],
+            [['id_d_rab','id_rab', 'no_realisasi', 'tgl_aw_realisasi', 'tgl_ak_realisasi'], 'required'],
+            [['id_d_rab', 'id_rab' ,'created_by', 'updated_by'], 'integer'],
             [['no_realisasi', 'keterangan'], 'string'],
             [['tgl_aw_realisasi', 'tgl_ak_realisasi', 'created_at', 'updated_at'], 'safe'],
             [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan'], 'number'],
             [['no_realisasi'], 'unique'],
             [['id_d_rab'], 'exist', 'skipOnError' => true, 'targetClass' => d_RAB::className(), 'targetAttribute' => ['id_d_rab' => 'id_d_rab']],
+            [['id_rab'], 'exist', 'skipOnError' => true, 'targetClass' => RAB::className(), 'targetAttribute' => ['id_rab' => 'id_rab']],
+
         ];
     }
 
@@ -86,7 +91,9 @@ class Realisasi extends \yii\db\ActiveRecord
     {
         return [
             'id_realisasi' => Yii::t('app', 'Id Realisasi'),
-            'id_d_rab' => Yii::t('app', 'Id D Rab'),
+            'id_d_rab' => Yii::t('app', 'Pekerjaan'),
+            'id_rab' => Yii::t('app', 'RAB'),
+
             'no_realisasi' => Yii::t('app', 'No Realisasi'),
             'tgl_aw_realisasi' => Yii::t('app', 'Awal Realisasi'),
             'tgl_ak_realisasi' => Yii::t('app', 'Akhir Realisasi'),
@@ -107,5 +114,33 @@ class Realisasi extends \yii\db\ActiveRecord
     public function getDRab()
     {
         return $this->hasOne(d_RAB::className(), ['id_d_rab' => 'id_d_rab']);
+
     }
+    public function getRab()
+    {
+        return $this->hasOne(RAB::className(), ['id_rab' => 'id_rab']);
+    }
+    public function getDet_realisasi_material()
+    {
+        return $this->hasMany(d_realisasi_material::className(), ['id_realisasi' => 'id_realisasi']);
+
+    }
+
+    public function setDet_realisasi_material($value)
+    {
+        return $this->loadRelated('det_realisasi_material',$value);
+
+    }
+    public function getDet_realisasi_peralatan()
+    {
+        return $this->hasMany(d_realisasi_peralatan::className(), ['id_realisasi' => 'id_realisasi']);
+
+    }
+
+    public function setDet_realisasi_peralatan($value)
+    {
+        return $this->loadRelated('det_realisasi_peralatan', $value);
+
+    }
+
 }

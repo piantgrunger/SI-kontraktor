@@ -14,7 +14,7 @@ class m180525_103342_create_pengerjaan extends Migration
     {
         $this->createTable('tb_mt_realisasi', [
             'id_realisasi' => $this->primaryKey(),
-            'id_d_rab' => "integer not null FOREIGN KEY  REFERENCES  tb_dt_rab(id_d_rab)  ON UPDATE CASCADE",
+            'id_d_rab' => "integer not null FOREIGN KEY  REFERENCES  tb_dt_rab(id_d_rab)  ",
             'no_realisasi' => "varchar(50) not null unique",
             'tgl_aw_realisasi' => "date not null ",
             'tgl_ak_realisasi' => "date not null ",
@@ -37,9 +37,7 @@ class m180525_103342_create_pengerjaan extends Migration
      */
     public function safeDown()
     {
-        echo "m180525_103342_create_pengerjaan cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('tb_mt_realisasi');
     }
 
     /*

@@ -29,7 +29,7 @@ $file_acuan_revisi = explode('.', $model->file_acuan_revisi);
 $data = ArrayHelper::map(
     Proyek::find()
         ->select([
-            'id_Proyek', "ket" => "[no_Proyek]+' - '+[nama_customer]"
+            'id_Proyek', "ket" => "[no_Proyek]+'-'+cast(tb_mt_proyek.[keterangan] as varchar(255))+' - '+[nama_customer]"
         ])
         ->innerJoin('tb_m_customer', 'tb_m_customer.id_customer=tb_mt_proyek.id_customer')
         ->asArray()

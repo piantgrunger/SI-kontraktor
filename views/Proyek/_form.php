@@ -41,9 +41,14 @@ $data = ArrayHelper::map(
 
     <?= $form->field($model, 'no_proyek')->textInput() ?>
 
-    <?= $form->field($model, 'tgl_mulai')->widget(DateControl::classname()) ?>
+    <div class="row">
+        <div class="col-sm-6">   <?= $form->field($model, 'tgl_mulai')->widget(DateControl::classname()) ?></div>
+   <div class="col-sm-6">   <?= $form->field($model, 'tgl_selesai')->widget(DateControl::classname()) ?></div>
+    </div>
 
-    <?= $form->field($model, 'tgl_selesai')->widget(DateControl::classname()) ?>
+
+
+    <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'status_proyek')->dropDownList(["Survey"=>"Survey",
         "Kontrak" => "Kontrak",
@@ -53,7 +58,6 @@ $data = ArrayHelper::map(
         "Batal" => "Batal",
     ]) ?>
 
-    <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

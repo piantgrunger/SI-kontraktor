@@ -4,14 +4,16 @@
 use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\widgets\Pjax; use kartik\export\ExportMenu;
+use yii\widgets\Pjax;
+use kartik\export\ExportMenu;
+
 $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             'nama_customer',
             'no_proyek',
-            'tgl_mulai',
-            'tgl_selesai',
-            // 'status_proyek',
-            // 'keterangan:ntext',
+            'tgl_mulai:date',
+            'tgl_selesai:date',
+            'status_proyek',
+             'keterangan:ntext',
             // 'created_at',
             // 'updated_at',
             // 'created_by',
@@ -32,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php /*echo $this->render('_search', ['model' => $searchModel]);*/ ?>
 
 
     <?= GridView::widget([
@@ -48,15 +50,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'condensed' => false,
         'responsive' => true,
         'hover' => true,
-
         'showPageSummary' => true,
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
            'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'Proyek'). '</strong>',
-
+           'before'=> $this->render('_search', ['model' => $searchModel])
         ],
             'toolbar' => [
-        ['content' => ((Mimin::checkRoute($this->context->id . "/create"))) ?         Html::a(Yii::t('app', 'Proyek Baru'), ['create'], ['class' => 'btn btn-success']) :""],
+                ['content' => ((Mimin::checkRoute($this->context->id . "/create"))) ?         Html::a(Yii::t('app', 'Proyek Baru'), ['create'], ['class' => 'btn btn-success']) :""
+    ],
+
 
         '{export}',
         '{toggleData}'

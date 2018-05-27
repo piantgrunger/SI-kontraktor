@@ -8,6 +8,13 @@ use app\models\RealisasiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\d_RAB;
+use yii\helpers\Json;
+use app\models\sd_RAB_material;
+use app\models\sd_RAB_peralatan;
+use app\models\d_realisasi_peralatan;
+use app\models\d_realisasi_material;
+
 
 /**
  * RealisasiController implements the CRUD actions for Realisasi model.
@@ -64,10 +71,35 @@ class RealisasiController extends Controller
     public function actionCreate()
     {
         $model = new Realisasi();
+        if ($model->load(Yii::$app->request->post())) {
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+        $model->det_realisasi_material = Yii::$app->request->post('d_realisasi_material', []);
+
+                $model->det_realisasi_peralatan = Yii::$app->request->post('d_realisasi_peralatan', []);
+
+        if (($model->save()) && (count($model->det_realisasi_material) > 0)) {
+            $transaction->commit();
             return $this->redirect(['view', 'id' => $model->id_realisasi]);
-        } else {
+         }
+        $transaction->rollBack();
+    } catch (\Exception $ecx) {
+
+        $transaction->rollBack();
+        throw $ecx;
+    }
+    if (count($model->det_realisasi_material) == 0) {
+        $model->addError('Detail Realisasi Material', 'Realisasi Harus memiliki detail material');
+    }
+
+
+
+    return $this->render('create', [
+        'model' => $model,
+    ]);
+}  else {
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -84,9 +116,42 @@ class RealisasiController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_realisasi]);
-        } else {
+        if ($model->load(Yii::$app->request->post())) {
+            $transaction = Yii::$app->db->beginTransaction();
+            try {
+
+
+                $model->det_realisasi_material = Yii::$app->request->post('d_realisasi_material', []);
+
+                $model->det_realisasi_peralatan = Yii::$app->request->post('d_realisasi_peralatan', []);
+
+                if (($model->save()) && (count($model->det_realisasi_peralatan) > 0)) {
+                    $transaction->commit();
+
+                    $model_d_material = d_realisasi_material::find()->where(['id_realisasi' => $model->id_realisasi]);
+                    $model->total_biaya_material = is_null($model_d_material->sum('sub_total')) ? 0 : $model_d_material->sum('sub_total');
+                    $model_d_peralatan = d_realisasi_peralatan::find()->where(['id_realisasi' => $model->id_realisasi]);
+                    $model->total_biaya_peralatan = is_null($model_d_peralatan->sum('sub_total')) ? 0 : $model_d_peralatan->sum('sub_total');
+                    $model->save();
+
+                    return $this->redirect(['view', 'id' => $model->id_realisasi]);
+                }
+                $transaction->rollBack();
+            } catch (\Exception $ecx) {
+
+                $transaction->rollBack();
+                throw $ecx;
+            }
+            if (count($model->det_realisasi_material) == 0) {
+                $model->addError('Detail Realisasi Material', 'Realisasi Harus memiliki detail material');
+            }
+
+
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }  else {
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -101,19 +166,140 @@ class RealisasiController extends Controller
      */
     public function actionDelete($id)
     {
-        
+
        try
       {
         $this->findModel($id)->delete();
-      
+
       }
       catch(\yii\db\IntegrityException  $e)
       {
 	Yii::$app->session->setFlash('error', "Data Tidak Dapat Dihapus Karena Dipakai Modul Lain");
-       } 
+       }
          return $this->redirect(['index']);
     }
 
+    public function actionPekerjaan()
+    {
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $id_rab = $_POST['depdrop_parents'];
+
+            $out = [];
+            $data = d_RAB::find()
+                ->select([
+                    'id' => 'id_d_rab', 'name' => "[kode_pekerjaan]+'-'+[nama_pekerjaan]"
+                ])
+                ->innerJoin('tb_m_pekerjaan', "tb_m_pekerjaan.id_pekerjaan = tb_dt_rab.id_pekerjaan ")
+
+                ->where(['id_rab' => $id_rab])
+                ->asArray()
+                ->all();
+            foreach ($data as $i => $list) {
+                $out[] = ['id' => $list['id'], 'name' => $list['name']];
+            }
+            // and return the default sub cat for the cat_id
+            echo Json::encode(['output' => $out, 'selected' => '']);
+            return;
+        }
+        echo Json::encode(['output' => '', 'selected' => '']);
+    }
+
+    public function actionMaterial()
+    {
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $id_rab = $_POST['depdrop_parents'];
+
+            $out = [];
+            $data = sd_RAB_material::find()
+                ->select([
+                    'id' => 'id_sd_rab', 'name' => "[kode_material]+'-'+[nama_material]"
+                ])
+                ->innerJoin('tb_m_material', "tb_m_material.id_material = tb_sdt_rab_material.id_material ")
+
+                ->where(['id_d_rab' => $id_rab])
+                ->asArray()
+                ->all();
+            foreach ($data as $i => $list) {
+                $out[] = ['id' => $list['id'], 'name' => $list['name']];
+            }
+
+            if (!empty($_POST['depdrop_params']))
+            {
+                $params = $_POST['depdrop_params'];
+                $param1 = $params[0]; // get the value of input-type-1
+                $param2 = $params[1]; // get the value of input-type-2
+                if($param1!=="")
+                {
+                    $selected[]=['id'=>$param1,'name'=>$param2];
+                } else
+                {
+                    $selected="";
+                }
+            } else
+            {
+              $selected = '';
+            }
+            // and return the default sub cat for the cat_id
+            echo Json::encode(['output' => $out, 'selected' => $selected]);
+            return;
+        }
+        echo Json::encode(['output' => '', 'selected' => '']);
+    }
+    public function actionPeralatan()
+    {
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $id_rab = $_POST['depdrop_parents'];
+
+            $out = [];
+            $data = sd_RAB_peralatan::find()
+                ->select([
+                    'id' => 'id_sd_rab', 'name' => "[kode_material]+'-'+[nama_material]"
+                ])
+                ->innerJoin('tb_m_material', "tb_m_material.id_material = tb_sdt_rab_peralatan.id_material ")
+
+                ->where(['id_d_rab' => $id_rab])
+                ->asArray()
+                ->all();
+            foreach ($data as $i => $list) {
+                $out[] = ['id' => $list['id'], 'name' => $list['name']];
+            }
+
+            if (!empty($_POST['depdrop_params'])) {
+                $params = $_POST['depdrop_params'];
+                $param1 = $params[0]; // get the value of input-type-1
+                $param2 = $params[1]; // get the value of input-type-2
+                if ($param1 !== "") {
+                    $selected[] = ['id' => $param1, 'name' => $param2];
+                } else {
+                    $selected = "";
+                }
+            } else {
+                $selected = '';
+            }
+            // and return the default sub cat for the cat_id
+            echo Json::encode(['output' => $out, 'selected' => $selected]);
+            return;
+        }
+        echo Json::encode(['output' => '', 'selected' => '']);
+    }
+
+    public function actionQtyrab($id)
+    {
+        $model = sd_RAB_material::findOne(['id_sd_rab' => $id]);
+        return Json::encode([
+            'qty_rab' => $model->qty_sisa(null),
+        ]);
+    }
+    public function actionQtyrabperalatan($id)
+    {
+        $model = sd_RAB_peralatan::findOne(['id_sd_rab' => $id]);
+        return Json::encode([
+            'qty_rab' => $model->qty_sisa(null),
+        ]);
+    }
     /**
      * Finds the Realisasi model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

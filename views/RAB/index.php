@@ -13,7 +13,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'total_biaya_peralatan',
             // 'margin',
             // 'dana_cadangan',
-            // 'total_rab',
+             'total_rab',
             // 'keterangan:ntext',
             // 'created_at',
             // 'updated_at',
@@ -78,6 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
            'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'R A B'). '</strong>',
+            'before' => $this->render('_search', ['model' => $searchModel])
 
         ],
             'toolbar' => [

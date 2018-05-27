@@ -28,7 +28,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
 /* @var $searchModel app\models\RABSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Daftar R A B');
+$this->title = Yii::t('app', 'Daftar History R A B');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rab-index">
@@ -56,6 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
            'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'R A B'). '</strong>',
+            'before' => $this->render('_search', ['model' => $searchModel])
 
         ],
             'toolbar' => [

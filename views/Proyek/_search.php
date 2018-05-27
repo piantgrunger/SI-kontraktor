@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\datecontrol\DateControl;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\ProyekSearch */
@@ -13,36 +15,16 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
+
     ]); ?>
+ <div class="row">
+        <div class="col-sm-4">   <?= $form->field($model, 'tgl_aw')->widget(DateControl::classname()) ?></div>
 
-    <?= $form->field($model, 'id_proyek') ?>
-
-    <?= $form->field($model, 'id_customer') ?>
-
-    <?= $form->field($model, 'no_proyek') ?>
-
-    <?= $form->field($model, 'tgl_mulai') ?>
-
-    <?= $form->field($model, 'tgl_selesai') ?>
-
-    <?php // echo $form->field($model, 'status_proyek') ?>
-
-    <?php // echo $form->field($model, 'keterangan') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
-
-    <?php // echo $form->field($model, 'created_by') ?>
-
-    <?php // echo $form->field($model, 'updated_by') ?>
+    <div class="col-sm-4">   <?= $form->field($model, 'tgl_ak')->widget(DateControl::classname()) ?></div>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

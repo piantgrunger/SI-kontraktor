@@ -15,12 +15,16 @@ class ProyekSearch extends Proyek
     /**
      * @inheritdoc
      */
+    public $tgl_aw;
+     public $tgl_ak;
+
+
     public function rules()
     {
         return [
             [['id_proyek', 'id_customer', 'created_by', 'updated_by'], 'integer'],
-            [['no_proyek', 'tgl_mulai', 'tgl_selesai', 'status_proyek', 'keterangan', 'created_at', 'updated_at'], 'safe'],
-        ];
+            [['no_proyek', 'tgl_mulai', 'tgl_selesai', 'status_proyek', 'keterangan', 'created_at', 'updated_at','tgl_aw','tgl_ak'], 'safe'],
+                 ];
     }
 
     /**
@@ -72,6 +76,11 @@ class ProyekSearch extends Proyek
         $query->andFilterWhere(['like', 'no_proyek', $this->no_proyek])
             ->andFilterWhere(['like', 'status_proyek', $this->status_proyek])
             ->andFilterWhere(['like', 'keterangan', $this->keterangan]);
+         if((!$this->tgl_aw==null)  && (!$this->tgl_ak == null) )
+         {
+                $query->andFilterWhere(['between', 'tgl_mulai', $this->tgl_aw, $this->tgl_ak]);
+                $query->andFilterWhere(['between', 'tgl_selesai', $this->tgl_aw, $this->tgl_ak]);
+         }
 
         return $dataProvider;
     }

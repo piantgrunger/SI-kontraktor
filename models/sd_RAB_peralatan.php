@@ -85,4 +85,14 @@ class sd_RAB_peralatan extends \yii\db\ActiveRecord
             $this->loadDefaultValues($skipIfSet = true);
         }
     }
+    public function qty_sisa($id)
+    {
+        $qty_realisasi = d_realisasi_peralatan::find()
+            ->where(['id_sd_rab' => $this->id_sd_rab])
+            ->andWhere(['<>', 'id_realisasi', $id])
+            ->sum('qty');
+                                  //die(var_dump(is_null($qty_realisasi)));
+        return $this->qty - (is_null($qty_realisasi) ? 0 : $qty_realisasi);
+    }
+
 }

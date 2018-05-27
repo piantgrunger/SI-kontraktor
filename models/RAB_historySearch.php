@@ -15,11 +15,14 @@ class RAB_historySearch extends RAB_history
     /**
      * @inheritdoc
      */
+    public $tgl_aw;
+    public $tgl_ak;
+
     public function rules()
     {
         return [
             [['id_rab', 'id_proyek', 'created_by', 'updated_by'], 'integer'],
-            [['no_rab', 'tgl_rab', 'keterangan', 'created_at', 'updated_at'], 'safe'],
+            [['no_rab', 'tgl_rab', 'keterangan', 'created_at', 'updated_at','tgl_aw','tgl_ak'], 'safe'],
             [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'margin', 'dana_cadangan', 'total_rab'], 'number'],
         ];
     }
@@ -76,7 +79,9 @@ class RAB_historySearch extends RAB_history
         ]);
 
         $query->andFilterWhere(['like', 'no_rab', $this->no_rab])
-            ->andFilterWhere(['like', 'keterangan', $this->keterangan]);
+            ->andFilterWhere(['like', 'keterangan', $this->keterangan])
+            ->andFilterWhere(['between', 'tgl_rab', $this->tgl_aw, $this->tgl_ak]);
+
 
         return $dataProvider;
     }

@@ -88,7 +88,7 @@ class Proyek extends \yii\db\ActiveRecord
             'tgl_mulai' => Yii::t('app', 'Tgl Mulai'),
             'tgl_selesai' => Yii::t('app', 'Tgl Selesai'),
             'status_proyek' => Yii::t('app', 'Status Proyek'),
-            'keterangan' => Yii::t('app', 'Keterangan'),
+            'keterangan' => Yii::t('app', 'Deskripsi Proyek'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'created_by' => Yii::t('app', 'Created By'),

@@ -32,7 +32,7 @@ $data = ArrayHelper::map(
 
     <?= $form->field($model, 'id_level_jabatan')->widget(Select2::className(), [
         'data' => $data,
-        'options' => ['placeholder' => 'Pilih Level Jabatan\ ...'],
+        'options' => ['placeholder' => 'Pilih Level Jabatan ...'],
         'pluginOptions' => [
             'allowClear' => true
         ],
