@@ -43,7 +43,6 @@ $fieldOptions2 = [
             <div class="col-xs-8">
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
     
-              <?= $form->field($model, 'verifyCode')->widget(Captcha::className())->label(false) ?>
                        </div>
         
 </div>
