@@ -33,7 +33,7 @@ class d_realisasi_peralatan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_realisasi', 'id_sd_rab', 'qty', 'harga', 'sub_total'], 'required'],
+            [['id_sd_rab', 'qty', 'harga', 'sub_total'], 'required'],
             [['id_realisasi', 'id_sd_rab'], 'integer'],
             [['qty', 'harga', 'sub_total'], 'number'],
             [['qty'],'cekQty'],
@@ -64,7 +64,7 @@ class d_realisasi_peralatan extends \yii\db\ActiveRecord
     {
          $qty=is_null($this->sdRab)?0: $this->sdRab->qty;
         if (($this->qty > $qty) && ($qty>0)) {
-            Yii::$app->session->setFlash('warning',  'Qty peralatan '.$this->sdRab->peralatan->nama_peralatan.' Melebihi RAB ' .$qty);
+            Yii::$app->session->setFlash('warning',  'Qty peralatan '.$this->sdRab->material->nama_material.' Melebihi RAB ' .$qty);
 
 
         }

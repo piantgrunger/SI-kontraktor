@@ -33,7 +33,7 @@ class d_realisasi_material extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_realisasi', 'id_sd_rab', 'qty', 'harga', 'sub_total'], 'required'],
+            [[ 'id_sd_rab', 'qty', 'harga', 'sub_total'], 'required'],
             [['id_realisasi', 'id_sd_rab'], 'integer'],
             [['qty', 'harga', 'sub_total'], 'number'],
             [['qty'],'cekQty'],
