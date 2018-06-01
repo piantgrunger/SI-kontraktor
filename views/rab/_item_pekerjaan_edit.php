@@ -30,10 +30,10 @@ use mdm\widgets\TabularInput;
 <thead>
 <tr>
 
-            <th>Material</th>
-            <th>Qty</th>
-           <th>Harga</th>
-           <th>Sub Total</th>
+            <th >Material</th>
+            <th align="Right">Qty</th>
+           <th align="Right">Harga</th>
+           <th align="Right">Sub Total</th>
         </tr>
  </thead>
  <tbody>
@@ -70,9 +70,9 @@ use mdm\widgets\TabularInput;
 <tr>
 
             <th>Peralatan</th>
-            <th>Qty</th>
-           <th>Harga</th>
-           <th>Sub Total</th>
+            <th align="Right">Qty</th>
+           <th align="Right">Harga</th>
+           <th align="Right">Sub Total</th>
         </tr>
  </thead>
  <tbody>
@@ -108,9 +108,9 @@ use mdm\widgets\TabularInput;
 <tr>
 
             <th>Level Jabatan</th>
-            <th>Qty</th>
-           <th>Gaji</th>
-           <th>Sub Total</th>
+            <th align="Right">Qty</th>
+           <th align="Right">Gaji</th>
+           <th align="Right">Sub Total</th>
         </tr>
  </thead>
  <tbody>

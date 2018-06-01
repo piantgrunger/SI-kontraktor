@@ -60,6 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
  <?= DetailView::widget([
     'model' => $model,
     'attributes' => [
+
        'total_biaya_material',
        'total_biaya_pekerja',
        'total_biaya_peralatan',

@@ -54,7 +54,7 @@ $.post( '".Url::to(['realisasi/qtyrab'])."?id=' +$(this).val(), function(data) {
 <td>
 <?= $form->field($model, "[$key]qty")->textInput([
 
-    'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#d_realisasi_material-' . $key . '-harga").val()) ; $("#d_realisasi_material-' . $key . '-sub_total").val(total)   ',
+    'onChange' => ' var total =  parseFloat($(this).val())*parseFloat($("#d_realisasi_material-' . $key . '-harga").val()) ; $("#d_realisasi_material-' . $key . '-sub_total").val(total)   ',
 
 ])->label(false) ?>
 
@@ -63,7 +63,7 @@ $.post( '".Url::to(['realisasi/qtyrab'])."?id=' +$(this).val(), function(data) {
 <td>
 <?= $form->field($model, "[$key]harga")->textInput([
 
-    'onKeyUp' => ' var total =  parseFloat($(this).val())*parseFloat($("#d_realisasi_material-' . $key . '-qty").val()) ; $("#d_realisasi_material-' . $key . '-sub_total").val(total)   ',
+    'onChange' => ' var total =  parseFloat($(this).val())*parseFloat($("#d_realisasi_material-' . $key . '-qty").val()) ; $("#d_realisasi_material-' . $key . '-sub_total").val(total)   ',
 
 ])->label(false) ?>
 

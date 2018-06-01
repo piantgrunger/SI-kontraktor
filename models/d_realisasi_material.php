@@ -88,6 +88,11 @@ class d_realisasi_material extends \yii\db\ActiveRecord
         return is_null($this->sdRab) ? 0 : $this->sdRab->qty_sisa($this->id_realisasi);
     }
 
+    public function getNama_material()
+    {
+        return is_null($this->sdRab) ? "" : $this->sdRab->nama_material;
+    }
+
     public function loadDefaultValues($skipIfSet = true)
     {
         $this->harga = 0; //contoh set default value active true

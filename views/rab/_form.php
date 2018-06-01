@@ -52,7 +52,7 @@ if ($this->context->action->id == 'revisi') {
 
 
     echo $form->field ($model, 'file_acuan_revisi')->widget (FileInput::classname (), [
-   // 'options' => ['accept' => 'PDF'],
+    'options' => ['multiple ' => false],
     'pluginOptions' => ['overwriteInitial' => true,
         'showUpload' => false,
         'initialPreview' => [Url::to (['/media\/' . $model->file_acuan_revisi], true),],

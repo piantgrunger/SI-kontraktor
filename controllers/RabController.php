@@ -186,6 +186,10 @@ class RabController extends Controller
                     ]);
                 }
                 $transaction->rollBack();
+            } catch (\yii\db\IntegrityException $e) {
+                $transaction->rollBack();
+
+                Yii::$app->session->setFlash('error', "Data Tidak Dapat Direvisi Karena Dipakai Modul Lain");
             } catch (\Exception $ecx) {
 
                 $transaction->rollBack();
@@ -223,6 +227,10 @@ class RabController extends Controller
                     ]);
                 }
                 $transaction->rollBack();
+            } catch (\yii\db\IntegrityException $e) {
+                $transaction->rollBack();
+
+                Yii::$app->session->setFlash('error', "Data Tidak Dapat Diubah Karena Dipakai Modul Lain");
             } catch (\Exception $ecx) {
 
                 $transaction->rollBack();
@@ -285,11 +293,16 @@ class RabController extends Controller
         ]);
                 }
                 $transaction->rollBack();
+            } catch (\yii\db\IntegrityException $e) {
+                $transaction->rollBack();
+
+                Yii::$app->session->setFlash('error', "Data Tidak Dapat Dihapus Karena Dipakai Modul Lain");
             } catch (\Exception $ecx) {
 
                 $transaction->rollBack();
                 throw $ecx;
             }
+
 
 
             return $this->render('pekerjaan', [

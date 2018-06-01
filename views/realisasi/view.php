@@ -37,11 +37,95 @@ $this->params['breadcrumbs'][] = $this->title;
             'total_biaya_pekerja',
             'total_biaya_peralatan',
             'keterangan:ntext',
-            'created_at',
-            'updated_at',
-            'created_by',
-            'updated_by',
         ],
     ]) ?>
+
+
+<div class="panel panel-primary"   >
+<div class="panel-heading"> Data Realisasi
+
+</div>
+<div style ="margin-top:10px;margin-bottom:10px;margin-left:10px">
+
+<h4> Data Material</h4>
+<table class="table table-condensed table-striped table-hover table-bordered">
+<thead>
+<tr>
+
+            <th>Material</th>
+            <th align="right">Qty</th>
+           <th align="right">Harga</th>
+           <th align="right">Sub Total</th>
+        </tr>
+ </thead>
+ <tbody>
+      <?php
+        foreach ($model->det_realisasi_material as $material) {
+            echo "<tr>";
+            echo "<td>$material->nama_material </td>";
+            echo "<td>$material->qty </td>";
+            echo "<td>$material->harga </td>";
+            echo "<td>$material->sub_total </td>";
+
+            echo "</tr>";
+
+        }
+
+        ?>
+ </tbody>
+ <tfoot>
+ <tr>
+ <td></td>
+ <td></td>
+ <th>Total</th>
+ <th><?= $model->total_biaya_material ?></th>
+
+ </tr>
+ </tfoot>
+
+</table>
+
+<h4> Data Peralatan</h4>
+<table class="table table-condensed table-striped table-hover table-bordered">
+<thead>
+<tr>
+
+            <th>Peralatan</th>
+            <th align="right">Qty</th>
+           <th align="right">Harga</th>
+           <th align="right">Sub Total</th>
+        </tr>
+ </thead>
+ <tbody>
+      <?php
+        foreach ($model->det_realisasi_peralatan as $material) {
+            echo "<tr>";
+            echo "<td>$material->nama_material </td>";
+            echo "<td>$material->qty </td>";
+            echo "<td>$material->harga </td>";
+            echo "<td>$material->sub_total </td>";
+
+            echo "</tr>";
+
+        }
+
+        ?>
+ </tbody>
+ <tfoot>
+ <tr>
+ <td></td>
+ <td></td>
+ <th>Total</th>
+ <th><?= $model->total_biaya_peralatan ?></th>
+
+ </tr>
+ </tfoot>
+
+</table>
+
+</div>
+
+
+</div>
 
 </div>
