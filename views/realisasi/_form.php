@@ -90,6 +90,8 @@ $item =
 
     <?= $form->field($model, 'tgl_ak_realisasi')->widget(DateControl::className()) ?>
 
+    <?= $form->field($model, 'qty')->textInput() ?>
+
     <?= Tabs::widget([
         'items' => $item
     ]);

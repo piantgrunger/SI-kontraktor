@@ -21,14 +21,14 @@ $data = ArrayHelper::map(
     'id_Pekerjaan',
     'ket'
         );
+
+
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <td>
-<?= $form->field($model, "[$key]id_d_rab")->hiddenInput()->label(false); ?>
-
     <?= $form->field($model,"[$key]id_pekerjaan")->widget(Select2::className(), [
         'data' => $data,
         'options' => ['placeholder' => 'Pilih Pekerjaan...'],
@@ -38,8 +38,21 @@ $data = ArrayHelper::map(
     ])->label(false) ?>
 </td>
 <td>
+<?= $form->field($model, "[$key]qty")->textInput()->label(false); ?>
+</td>
+<td>
+<?= $form->field($model, "[$key]status_pekerjaan")->dropDownList(["Internal" => "Internal", "Subkon" => "Subkon"]) ->label(false); ?>
 
 </td>
+<td>
+<?= $form->field($model, "[$key]hari_kerja")->textInput()->label(false); ?>
+
+</td>
+
   <td>
+
     <a data-action="delete"><span class="glyphicon glyphicon-trash">
+
+<?=$form->field($model, "[$key]id_d_rab")->hiddenInput()->label(false); ?>
+
 </td>

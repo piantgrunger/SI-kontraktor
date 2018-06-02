@@ -8,8 +8,9 @@ return [
     'password' => 'admin1234',
     'charset' => 'utf8',
 ];
-/*
 
+
+/*
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'sqlsrv:Server=ALFIAN-PC\SERVERKU;Database=db_kontraktor;encrypt=yes;',

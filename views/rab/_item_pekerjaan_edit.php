@@ -18,10 +18,14 @@ use mdm\widgets\TabularInput;
 ?>
 <div style ="margin-top:10px;margin-bottom:10px;margin-left:10px">
 <div class="row">
-<div class="col-sm-6">
-    <?= $model->nama_pekerjaan ?></div>
+<div class="col-sm-4">
+    <?= $model->nama_pekerjaan ?>(  <?= $model->status_pekerjaan ?> )</div>
+<div class="col-sm-2">
+  Qty :  <?= $model->qty ?> <?= $model->satuan ?> </div>
+<div class="col-sm-2">
+ Hari Kerja :   <?= $model->hari_kerja ?> Hari</div>
 
-<div class="col-sm-6">
+<div class="col-sm-2">
     <?=Html::a(Yii::t('app', 'Ubah'), ['pekerjaan', 'id' => $model->id_d_rab], ['class' => 'btn btn-primary'])?>
 </div>
 </div>

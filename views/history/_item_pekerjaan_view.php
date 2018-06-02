@@ -18,8 +18,12 @@ use mdm\widgets\TabularInput;
 ?>
 <div style ="margin-top:10px;margin-bottom:10px;margin-left:10px">
 <div class="row">
-<div class="col-sm-6">
-    <?= $model->nama_pekerjaan ?></div>
+<div class="col-sm-4">
+    <?= $model->nama_pekerjaan ?>(  <?= $model->status_pekerjaan ?> )</div>
+<div class="col-sm-2">
+  Qty :  <?= $model->qty ?> <?= $model->satuan ?> </div>
+<div class="col-sm-2">
+ Hari Kerja :   <?= $model->hari_kerja ?> Hari</div>
 
 </div>
 <h4> Data Material</h4>

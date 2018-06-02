@@ -95,6 +95,11 @@ if ($this->context->action->id == 'revisi') {
 
             <th>Pekerjaan</th>
 
+            <th>Qty</th>
+            <th>Status Pekerjaan</th>
+
+            <th>Hari Kerja</th>
+
             <th><a id="btn-add2" href="#"><span class="glyphicon glyphicon-plus"></span></a></th>
         </tr>
     </thead>

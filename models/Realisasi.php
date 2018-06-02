@@ -72,11 +72,11 @@ class Realisasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_d_rab','id_rab', 'no_realisasi', 'tgl_aw_realisasi', 'tgl_ak_realisasi'], 'required'],
+            [['id_d_rab','id_rab', 'no_realisasi', 'tgl_aw_realisasi', 'tgl_ak_realisasi','qty'], 'required'],
             [['id_d_rab', 'id_rab' ,'created_by', 'updated_by'], 'integer'],
             [['no_realisasi', 'keterangan'], 'string'],
             [['tgl_aw_realisasi', 'tgl_ak_realisasi', 'created_at', 'updated_at'], 'safe'],
-            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan'], 'number'],
+            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan','qty'], 'number'],
             [['no_realisasi'], 'unique'],
             [['id_d_rab'], 'exist', 'skipOnError' => true, 'targetClass' => d_RAB::className(), 'targetAttribute' => ['id_d_rab' => 'id_d_rab']],
             [['id_rab'], 'exist', 'skipOnError' => true, 'targetClass' => RAB::className(), 'targetAttribute' => ['id_rab' => 'id_rab']],
