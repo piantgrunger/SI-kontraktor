@@ -1,5 +1,5 @@
 <?php
-/*
+
 $server="db-desikon.ckroxmief1m9.us-east-2.rds.amazonaws.com";
 return [
     'class' => 'yii\db\Connection',
@@ -8,7 +8,7 @@ return [
     'password' => 'admin1234',
     'charset' => 'utf8',
 ];
-*/
+/*
 
 return [
     'class' => 'yii\db\Connection',
@@ -18,3 +18,4 @@ return [
     'password' => 'sa1234',
     'charset' => 'utf8',
 ];
+*/
