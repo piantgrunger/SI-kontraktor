@@ -116,9 +116,23 @@ class Realisasi extends \yii\db\ActiveRecord
         return $this->hasOne(d_RAB::className(), ['id_d_rab' => 'id_d_rab']);
 
     }
+
+    public function getNama_pekerjaan()
+    {
+        return is_null($this->dRab) ?"":$this->dRab->nama_pekerjaan;
+
+    }
+
+
     public function getRab()
     {
         return $this->hasOne(RAB::className(), ['id_rab' => 'id_rab']);
+    }
+
+    public function getNo_rab()
+    {
+        return is_null($this->rab) ? "" : $this->rab->no_rab;
+
     }
     public function getDet_realisasi_material()
     {

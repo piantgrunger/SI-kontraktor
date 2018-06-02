@@ -82,7 +82,14 @@ class RealisasiController extends Controller
 
         if (($model->save()) && (count($model->det_realisasi_material) > 0)) {
             $transaction->commit();
-            return $this->redirect(['view', 'id' => $model->id_realisasi]);
+            $model_d_material = d_realisasi_material::find()->where(['id_realisasi' => $model->id_realisasi]);
+            $model->total_biaya_material = is_null($model_d_material->sum('sub_total')) ? 0 : $model_d_material->sum('sub_total');
+            $model_d_peralatan = d_realisasi_peralatan::find()->where(['id_realisasi' => $model->id_realisasi]);
+            $model->total_biaya_peralatan = is_null($model_d_peralatan->sum('sub_total')) ? 0 : $model_d_peralatan->sum('sub_total');
+            $model->save();
+
+
+           return $this->redirect(['index']);// 'id' => $model->id_realisasi]);
          }
         $transaction->rollBack();
     } catch (\Exception $ecx) {
@@ -125,16 +132,17 @@ class RealisasiController extends Controller
 
                 $model->det_realisasi_peralatan = Yii::$app->request->post('d_realisasi_peralatan', []);
 
-                if (($model->save()) && (count($model->det_realisasi_peralatan) > 0)) {
-                    $transaction->commit();
+                if (($model->save()) && (count($model->det_realisasi_material) > 0)) {
 
+
+                    $transaction->commit();
                     $model_d_material = d_realisasi_material::find()->where(['id_realisasi' => $model->id_realisasi]);
                     $model->total_biaya_material = is_null($model_d_material->sum('sub_total')) ? 0 : $model_d_material->sum('sub_total');
                     $model_d_peralatan = d_realisasi_peralatan::find()->where(['id_realisasi' => $model->id_realisasi]);
                     $model->total_biaya_peralatan = is_null($model_d_peralatan->sum('sub_total')) ? 0 : $model_d_peralatan->sum('sub_total');
                     $model->save();
 
-                    return $this->redirect(['view', 'id' => $model->id_realisasi]);
+                   return $this->redirect(['index']);// 'id' => $model->id_realisasi]);
                 }
                 $transaction->rollBack();
             } catch (\Exception $ecx) {

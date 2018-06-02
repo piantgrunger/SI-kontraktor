@@ -9,8 +9,10 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             'no_proyek',
             'no_rab',
             'tgl_rab:date',
-            // 'total_biaya_pekerja',
-            // 'total_biaya_peralatan',
+            'total_biaya_material',
+
+            'total_biaya_pekerja',
+             'total_biaya_peralatan',
             // 'margin',
             // 'dana_cadangan',
              'total_rab',
@@ -21,7 +23,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'updated_by',
 
          ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
-             'delete', 'view']
+              'view']
              ,$this->context->route)
             . ' {revisi} ',
         'buttons' => ['revisi' =>

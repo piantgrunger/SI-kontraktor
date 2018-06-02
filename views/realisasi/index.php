@@ -5,14 +5,17 @@ use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
 use kartik\grid\GridView;
 use yii\widgets\Pjax; use kartik\export\ExportMenu;
-$gridColumns=[['class' => 'kartik\grid\SerialColumn'], 
-            'id_d_rab',
+$gridColumns=[['class' => 'kartik\grid\SerialColumn'],
+
             'no_realisasi',
             'tgl_aw_realisasi',
             'tgl_ak_realisasi',
-            // 'total_biaya_material',
+            'no_rab',
+            'nama_pekerjaan',
+
+             'total_biaya_material',
             // 'total_biaya_pekerja',
-            // 'total_biaya_peralatan',
+             'total_biaya_peralatan',
             // 'keterangan:ntext',
             // 'created_at',
             // 'updated_at',

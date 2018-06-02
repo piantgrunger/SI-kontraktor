@@ -1,10 +1,17 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Inflector;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/svg', 'href' => '/favicon.svg']);
+
 $this->title ='SI-Kontraktor';
+if( (Yii::$app->controller->id !== "") && (Yii::$app->controller->id !== "site"))
+{
+    $this->title = 'SIKON '. Inflector::camel2words(Yii::$app->controller->id);
+
+}
 
 
 

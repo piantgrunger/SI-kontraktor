@@ -66,7 +66,7 @@ class KaryawanController extends Controller
         $model = new Karyawan();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_karyawan]);
+           return $this->redirect(['index']);// 'id' => $model->id_karyawan]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class KaryawanController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_karyawan]);
+           return $this->redirect(['index']);// 'id' => $model->id_karyawan]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -101,16 +101,16 @@ class KaryawanController extends Controller
      */
     public function actionDelete($id)
     {
-        
+
        try
       {
         $this->findModel($id)->delete();
-      
+
       }
       catch(\yii\db\IntegrityException  $e)
       {
 	Yii::$app->session->setFlash('error', "Data Tidak Dapat Dihapus Karena Dipakai Modul Lain");
-       } 
+       }
          return $this->redirect(['index']);
     }
 

@@ -66,7 +66,7 @@ class Jns_absenController extends Controller
         $model = new Jns_absen();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_jns_absen]);
+           return $this->redirect(['index']);// 'id' => $model->id_jns_absen]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +85,7 @@ class Jns_absenController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_jns_absen]);
+           return $this->redirect(['index']);// 'id' => $model->id_jns_absen]);
         } else {
             return $this->render('update', [
                 'model' => $model,

@@ -19,15 +19,15 @@ class SeksiController extends Controller
     /**
      * @inheritdoc
      */
-    
+
      public function getDataBrowseDepartemen()
-    {        
+    {
      return ArrayHelper::map(
                      Departemen::find()
                                         ->select([
                                                 'id_departemen','ket_departemen' => 'CONCAT(kode_departemen," - ",nama_departemen)','nama_divisi'
                                         ])
-                                        ->join('left join','tb_m_divisi',['tb_m_divisi.id_divisi'=>'tb_m_departemen.id_divisi'])   
+                                        ->join('left join','tb_m_divisi',['tb_m_divisi.id_divisi'=>'tb_m_departemen.id_divisi'])
                                         ->asArray()
                                         ->all(), 'id_departemen', 'ket_departemen','nama_divisi');
     }
@@ -81,7 +81,7 @@ class SeksiController extends Controller
         $dataBrowse = $this->getDataBrowseDepartemen();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_seksi]);
+           return $this->redirect(['index']);// 'id' => $model->id_seksi]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -102,13 +102,13 @@ class SeksiController extends Controller
         $dataBrowse = $this->getDataBrowseDepartemen();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_seksi]);
+           return $this->redirect(['index']);// 'id' => $model->id_seksi]);
         } else {
             return $this->render('update', [
                 'model' => $model,
                 'dataBrowse'=>$dataBrowse,
-                
-                
+
+
             ]);
         }
     }

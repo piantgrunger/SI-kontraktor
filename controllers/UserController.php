@@ -67,7 +67,7 @@ class UserController extends Controller
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            return $this->redirect(['view', 'username' => $model->username]);
+           return $this->redirect(['index']);// 'username' => $model->username]);
         } else {
             return $this->render('signup', [
                 'model' => $model,
@@ -86,7 +86,7 @@ class UserController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+           return $this->redirect(['index']);// 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,

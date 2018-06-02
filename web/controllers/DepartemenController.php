@@ -20,7 +20,7 @@ class DepartemenController extends Controller
      * @inheritdoc
      */
     public function getDataBrowseDivisi()
-    {        
+    {
      return ArrayHelper::map(
                                 Divisi::find()
                                         ->select([
@@ -29,7 +29,7 @@ class DepartemenController extends Controller
                                         ->asArray()
                                         ->all(), 'id_divisi', 'ket_divisi');
     }
-    
+
     public function behaviors()
     {
         return [
@@ -50,11 +50,11 @@ class DepartemenController extends Controller
     {
         $searchModel = new DepartemenSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            
+
         ]);
     }
 
@@ -82,7 +82,7 @@ class DepartemenController extends Controller
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_departemen]);
+           return $this->redirect(['index']);// 'id' => $model->id_departemen]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -104,7 +104,7 @@ class DepartemenController extends Controller
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_departemen]);
+           return $this->redirect(['index']);// 'id' => $model->id_departemen]);
         } else {
             return $this->render('update', [
                 'model' => $model,
