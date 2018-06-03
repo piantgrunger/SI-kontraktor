@@ -156,5 +156,16 @@ class Realisasi extends \yii\db\ActiveRecord
         return $this->loadRelated('det_realisasi_peralatan', $value);
 
     }
+    public function getDet_realisasi_pekerja()
+    {
+        return $this->hasMany(d_realisasi_pekerja::className(), ['id_realisasi' => 'id_realisasi']);
+
+    }
+
+    public function setDet_realisasi_pekerja($value)
+    {
+        return $this->loadRelated('det_realisasi_pekerja', $value);
+
+    }
 
 }

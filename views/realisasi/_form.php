@@ -43,12 +43,12 @@ $item =
         'label' => 'Data Peralatan',
         'content' => $this->render('_form_peralatan', ['model' => $model, 'form' => $form]),
     ],
-/*
+
     [
         'label' => 'Data Pekerja',
         'content' => $this->render('_form_pekerja', ['model' => $model, 'form' => $form]),
     ],
-*/
+
 
 
 ];

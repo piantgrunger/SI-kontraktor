@@ -15,7 +15,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             'qty',
 
              'total_biaya_material',
-            // 'total_biaya_pekerja',
+             'total_biaya_pekerja',
              'total_biaya_peralatan',
             // 'keterangan:ntext',
             // 'created_at',

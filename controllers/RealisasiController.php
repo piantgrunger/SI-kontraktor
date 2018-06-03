@@ -12,8 +12,12 @@ use app\models\d_RAB;
 use yii\helpers\Json;
 use app\models\sd_RAB_material;
 use app\models\sd_RAB_peralatan;
+use app\models\sd_RAB_pekerja;
+use app\models\Karyawan;
 use app\models\d_realisasi_peralatan;
 use app\models\d_realisasi_material;
+use app\models\d_realisasi_pekerja;
+
 
 
 /**
@@ -79,14 +83,17 @@ class RealisasiController extends Controller
         $model->det_realisasi_material = Yii::$app->request->post('d_realisasi_material', []);
 
                 $model->det_realisasi_peralatan = Yii::$app->request->post('d_realisasi_peralatan', []);
+                $model->det_realisasi_pekerja = Yii::$app->request->post('d_realisasi_pekerja', []);
 
         if (($model->save()) && (count($model->det_realisasi_material) > 0)) {
-            $transaction->commit();
-            $model_d_material = d_realisasi_material::find()->where(['id_realisasi' => $model->id_realisasi]);
-            $model->total_biaya_material = is_null($model_d_material->sum('sub_total')) ? 0 : $model_d_material->sum('sub_total');
-            $model_d_peralatan = d_realisasi_peralatan::find()->where(['id_realisasi' => $model->id_realisasi]);
-            $model->total_biaya_peralatan = is_null($model_d_peralatan->sum('sub_total')) ? 0 : $model_d_peralatan->sum('sub_total');
-            $model->save();
+                    $transaction->commit();
+                    $model_d_material = d_realisasi_material::find()->where(['id_realisasi' => $model->id_realisasi]);
+                    $model->total_biaya_material = is_null($model_d_material->sum('sub_total')) ? 0 : $model_d_material->sum('sub_total');
+                    $model_d_peralatan = d_realisasi_peralatan::find()->where(['id_realisasi' => $model->id_realisasi]);
+                    $model->total_biaya_peralatan = is_null($model_d_peralatan->sum('sub_total')) ? 0 : $model_d_peralatan->sum('sub_total');
+                    $model_d_pekerja = d_realisasi_pekerja::find()->where(['id_realisasi' => $model->id_realisasi]);
+                    $model->total_biaya_pekerja = is_null($model_d_pekerja->sum('sub_total')) ? 0 : $model_d_pekerja->sum('sub_total');
+
 
 
            return $this->redirect(['index']);// 'id' => $model->id_realisasi]);
@@ -131,6 +138,7 @@ class RealisasiController extends Controller
                 $model->det_realisasi_material = Yii::$app->request->post('d_realisasi_material', []);
 
                 $model->det_realisasi_peralatan = Yii::$app->request->post('d_realisasi_peralatan', []);
+                $model->det_realisasi_pekerja = Yii::$app->request->post('d_realisasi_pekerja', []);
 
                 if (($model->save()) && (count($model->det_realisasi_material) > 0)) {
 
@@ -140,6 +148,9 @@ class RealisasiController extends Controller
                     $model->total_biaya_material = is_null($model_d_material->sum('sub_total')) ? 0 : $model_d_material->sum('sub_total');
                     $model_d_peralatan = d_realisasi_peralatan::find()->where(['id_realisasi' => $model->id_realisasi]);
                     $model->total_biaya_peralatan = is_null($model_d_peralatan->sum('sub_total')) ? 0 : $model_d_peralatan->sum('sub_total');
+                    $model_d_pekerja = d_realisasi_pekerja::find()->where(['id_realisasi' => $model->id_realisasi]);
+                    $model->total_biaya_pekerja = is_null($model_d_pekerja->sum('sub_total')) ? 0 : $model_d_pekerja->sum('sub_total');
+
                     $model->save();
 
                    return $this->redirect(['index']);// 'id' => $model->id_realisasi]);
@@ -255,6 +266,86 @@ class RealisasiController extends Controller
         }
         echo Json::encode(['output' => '', 'selected' => '']);
     }
+
+
+    public function actionLeveljabatan()
+    {
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $id_rab = $_POST['depdrop_parents'];
+
+            $out = [];
+            $data = sd_RAB_pekerja::find()
+                ->select([
+                    'id' => 'id_sd_rab', 'name' => "[kode_level_jabatan]+'-'+[nama_level_jabatan]"
+                ])
+                ->innerJoin('tb_m_level_jabatan', "tb_m_level_jabatan.id_level_jabatan = tb_sdt_rab_pekerja.id_level_jabatan ")
+
+                ->where(['id_d_rab' => $id_rab])
+                ->asArray()
+                ->all();
+            foreach ($data as $i => $list) {
+                $out[] = ['id' => $list['id'], 'name' => $list['name']];
+            }
+
+            if (!empty($_POST['depdrop_params'])) {
+                $params = $_POST['depdrop_params'];
+                $param1 = $params[0]; // get the value of input-type-1
+                $param2 = $params[1]; // get the value of input-type-2
+                if ($param1 !== "") {
+                    $selected[] = ['id' => $param1, 'name' => $param2];
+                } else {
+                    $selected = "";
+                }
+            } else {
+                $selected = '';
+            }
+            // and return the default sub cat for the cat_id
+            echo Json::encode(['output' => $out, 'selected' => $selected]);
+            return;
+        }
+        echo Json::encode(['output' => '', 'selected' => '']);
+    }
+
+    public function actionKaryawan()
+    {
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $id_rab = $_POST['depdrop_parents'];
+
+            $out = [];
+            $data = Karyawan::find()
+                ->select([
+                    'id' => 'id_karyawan', 'name' => "[kode_karyawan]+'-'+[nama_karyawan]"
+                ])
+                ->innerJoin('tb_sdt_rab_pekerja', "tb_m_karyawan.id_level_jabatan = tb_sdt_rab_pekerja.id_level_jabatan ")
+
+                ->where(['id_sd_rab' => $id_rab])
+                ->asArray()
+                ->all();
+            foreach ($data as $i => $list) {
+                $out[] = ['id' => $list['id'], 'name' => $list['name']];
+            }
+
+            if (!empty($_POST['depdrop_params'])) {
+                $params = $_POST['depdrop_params'];
+                $param1 = $params[0]; // get the value of input-type-1
+                $param2 = $params[1]; // get the value of input-type-2
+                if ($param1 !== "") {
+                    $selected[] = ['id' => $param1, 'name' => $param2];
+                } else {
+                    $selected = "";
+                }
+            } else {
+                $selected = '';
+            }
+            // and return the default sub cat for the cat_id
+            echo Json::encode(['output' => $out, 'selected' => $selected]);
+            return;
+        }
+        echo Json::encode(['output' => '', 'selected' => '']);
+    }
+
     public function actionPeralatan()
     {
         $out = [];
@@ -306,6 +397,14 @@ class RealisasiController extends Controller
         $model = sd_RAB_peralatan::findOne(['id_sd_rab' => $id]);
         return Json::encode([
             'qty_rab' => $model->qty_sisa(null),
+        ]);
+    }
+
+    public function actionGajipekerja($id)
+    {
+        $model = sd_RAB_pekerja::findOne(['id_sd_rab' => $id]);
+        return Json::encode([
+            'gaji' => $model->gaji,
         ]);
     }
     /**

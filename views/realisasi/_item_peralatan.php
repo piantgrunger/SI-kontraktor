@@ -15,8 +15,8 @@ use yii\helpers\Url;
 ?>
 
 <td>
-<?= Html::hiddenInput("input-$key-id", '', ['id' => "input-$key-id"]); ?>
-<?= Html::hiddenInput("input-$key-ket", '', ['id' => "input-$key-ket"]); ?>
+<?= Html::hiddenInput("input1-$key-id", '', ['id' => "input1-$key-id"]); ?>
+<?= Html::hiddenInput("input1-$key-ket", '', ['id' => "input1-$key-ket"]); ?>
 
 
    <?= $form->field($model, "[$key]id_sd_rab")->widget(DepDrop::classname(), [
@@ -26,7 +26,7 @@ use yii\helpers\Url;
         'select2Options' => ['pluginOptions' => ['allowClear' => true],
 
             'pluginEvents' => [
-                "select2:select" => "function(e) {    $('input[name=input-".$key."-id]').val(e.params.data.id);$('input[name=input-".$key."-ket]').val(e.params.data.text);
+                "select2:select" => "function(e) {    $('input[name=input1-".$key."-id]').val(e.params.data.id);$('input[name=input1-".$key."-ket]').val(e.params.data.text);
 $.post( '".Url::to(['realisasi/qtyrabperalatan'])."?id=' +$(this).val(), function(data) {
 
                                                   data1 = JSON.parse(data)
@@ -45,7 +45,7 @@ $.post( '".Url::to(['realisasi/qtyrabperalatan'])."?id=' +$(this).val(), functio
             'url' => Url::to(['/realisasi/peralatan']),
             'placeholder' => 'Pilih Peralatan ...',
             'initialize' => true,
-            'params' => ["input-$key-id", "input-$key-ket"]
+            'params' => ["input1-$key-id", "input1-$key-ket"]
 
         ],
 

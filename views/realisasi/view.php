@@ -117,6 +117,44 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </table>
 
+<h4> Data Pekerja</h4>
+<table class="table table-condensed table-striped table-hover table-bordered">
+<thead>
+<tr>
+
+            <th>Level Jabatab</th>
+            <th>Karyawan</th>
+           <th align="right">Gaji</th>
+           <th align="right">Sub Total</th>
+        </tr>
+ </thead>
+ <tbody>
+      <?php
+        foreach ($model->det_realisasi_pekerja as $material) {
+            echo "<tr>";
+            echo "<td>$material->nama_level_jabatan </td>";
+            echo "<td>$material->nama_karyawan </td>";
+            echo "<td>$material->gaji </td>";
+            echo "<td>$material->sub_total </td>";
+
+            echo "</tr>";
+
+        }
+
+        ?>
+ </tbody>
+ <tfoot>
+ <tr>
+ <td></td>
+ <td></td>
+ <th>Total</th>
+ <th><?= $model->total_biaya_pekerja ?></th>
+
+ </tr>
+ </tfoot>
+
+</table>
+
 </div>
 
 
