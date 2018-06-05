@@ -80,8 +80,6 @@ if ($this->context->action->id == 'revisi') {
 
     <?= $form->field($model, 'tgl_rab')->widget(DateControl::className()) ?>
 
-    <?= $form->field($model, 'margin')->textInput() ?>
-    <?= $form->field($model, 'dana_cadangan')->textInput() ?>
 
 
 
@@ -95,10 +93,12 @@ if ($this->context->action->id == 'revisi') {
 
             <th>Pekerjaan</th>
 
-            <th>Qty</th>
-            <th>Status Pekerjaan</th>
+            <th>Volume</th>
+            <th>Satuan</th>
 
             <th>Hari Kerja</th>
+
+            <th>Status Pekerjaan</th>
 
             <th><a id="btn-add2" href="#"><span class="glyphicon glyphicon-plus"></span></a></th>
         </tr>

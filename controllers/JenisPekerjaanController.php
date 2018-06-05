@@ -66,7 +66,11 @@ class JenisPekerjaanController extends Controller
         $model = new JenisPekerjaan();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           return $this->redirect(['index']);// 'id' => $model->id_jenis_pekerjaan]);
+            $model = new JenisPekerjaan();
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         } else {
             return $this->render('create', [
                 'model' => $model,

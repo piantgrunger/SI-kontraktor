@@ -39,8 +39,8 @@ class d_RAB extends \yii\db\ActiveRecord
         return [
             [[ 'id_pekerjaan'], 'required'],
             [['id_rab', 'id_pekerjaan', 'hari_kerja'], 'integer'],
-            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan','qty'], 'number'],
-            [['status_pekerjaan'],'string'],
+            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan','qty','total_rab'], 'number'],
+            [['status_pekerjaan','satuan'],'string'],
             [['id_pekerjaan'], 'exist', 'skipOnError' => true, 'targetClass' => Pekerjaan::className(), 'targetAttribute' => ['id_pekerjaan' => 'id_pekerjaan']],
             [['id_rab'], 'exist', 'skipOnError' => true, 'targetClass' => RAB::className(), 'targetAttribute' => ['id_rab' => 'id_rab']],
         ];
@@ -58,6 +58,7 @@ class d_RAB extends \yii\db\ActiveRecord
             'total_biaya_material' => Yii::t('app', 'Total Biaya Material'),
             'total_biaya_pekerja' => Yii::t('app', 'Total Biaya Pekerja'),
             'total_biaya_peralatan' => Yii::t('app', 'Total Biaya Peralatan'),
+            'qty' =>'Volume'
         ];
     }
 
@@ -73,6 +74,10 @@ class d_RAB extends \yii\db\ActiveRecord
     {
         return is_null($this->pekerjaan) ? "" : $this->pekerjaan ->nama_pekerjaan;
    }
+    public function getNama_pekerjaan_detail()
+    {
+        return is_null($this->pekerjaan) ? "" : $this->pekerjaan->jenisPekerjaan->nama_jenis_pekerjaan .' : '. $this->pekerjaan->nama_pekerjaan;
+    }
 
     public function getSatuan()
     {
@@ -89,6 +94,10 @@ class d_RAB extends \yii\db\ActiveRecord
     public function getNo_rab()
     {
         return is_null($this->rab) ? "" : $this->rab->no_rab;
+    }
+    public function getHarga()
+    {
+        return ($this->qty==0)?0: $this->total_rab/$this->qty;
     }
 
     public function getSDetailRabMaterial()

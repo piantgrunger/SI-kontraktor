@@ -26,27 +26,35 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 
+<table class="table">
+    <thead>
+        <tr>
 
-<div class="panel panel-primary"   >
-<div class="panel-heading"> Data Pekerjaan
+            <th>Pekerjaan</th>
 
-</div>
-<div class="detail">
+            <th>Volume</th>
+            <th>Satuan</th>
 
-   <?= \mdm\widgets\TabularInput::widget([
+            <th>Harga</th>
+
+            <th>Sub Total</th>
+
+        </tr>
+    </thead>
+    <?= \mdm\widgets\TabularInput::widget([
         'id' => 'detail-grid2',
         'allModels' => $model->detailRab,
         'model' => \app\models\d_RAB::className(),
-        'tag' => 'div',
-        'form' => null,
-        'itemOptions' => ['tag' => 'div'],
-        'itemView' => '_item_pekerjaan_view',
+        'tag' => 'tbody',
+        'itemOptions' => ['tag' => 'tr'],
+        'itemView' => '_item_pekerjaan_rekap',
         'clientOptions' => [
             'btnAddSelector' => '#btn-add2',
         ]
     ]);
     ?>
- </div>
+    </table>
+
 </div>
 
  <?= DetailView::widget([

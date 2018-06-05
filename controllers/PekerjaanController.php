@@ -66,7 +66,11 @@ class PekerjaanController extends Controller
         $model = new Pekerjaan();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           return $this->redirect(['index']);// 'id' => $model->id_pekerjaan]);
+            $model = new Pekerjaan();
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         } else {
             return $this->render('create', [
                 'model' => $model,

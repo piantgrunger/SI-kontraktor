@@ -55,6 +55,12 @@ $data = ArrayHelper::map(
 ])->label(false) ?>
 
 </td>
+
+
+<td>
+<?= $form->field($model, "[$key]satuan")->textInput()->label(false) ?>
+
+</td>
 <td>
 <?= $form->field($model, "[$key]sub_total")->textInput(['readOnly' => true])->label(false)  ?>
 

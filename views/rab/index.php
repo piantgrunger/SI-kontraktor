@@ -25,7 +25,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
          ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
               'view']
              ,$this->context->route)
-            . ' {revisi} ',
+            . '  {rekap}  {revisi} ',
         'buttons' => ['revisi' =>
             function ($url, $model) {
             if (Mimin::checkRoute($this->context->id . "/revisi"))
@@ -42,6 +42,20 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
           {
               return " ";
           }
+        }, 'rekap' =>
+            function ($url, $model) {
+            if (Mimin::checkRoute($this->context->id . "/view-rekap")) {
+                return
+                    Html::a(
+                    '<span class="glyphicon glyphicon-list"></span>',
+                    ['view-rekap', 'id' => $model->id_rab],
+                    [
+                        'title' => Yii::t('app', 'Rekap'),
+                    ]
+                );
+            } else {
+                return " ";
+            }
         }, ]
 
 

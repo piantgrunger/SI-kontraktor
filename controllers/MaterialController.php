@@ -66,8 +66,12 @@ class MaterialController extends Controller
         $model = new Material();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           return $this->redirect(['index']);// 'id' => $model->id_material]);
-        } else {
+            $model = new Material();
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+                } else {
             return $this->render('create', [
                 'model' => $model,
             ]);

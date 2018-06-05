@@ -19,7 +19,7 @@ use mdm\widgets\TabularInput;
 <div style ="margin-top:10px;margin-bottom:10px;margin-left:10px">
 <div class="row">
 <div class="col-sm-4">
-    <?= $model->nama_pekerjaan ?>(  <?= $model->status_pekerjaan ?> )</div>
+    <?= $model->nama_pekerjaan_detail ?>(  <?= $model->status_pekerjaan ?> )</div>
 <div class="col-sm-2">
   Qty :  <?= $model->qty ?> <?= $model->satuan ?> </div>
 <div class="col-sm-2">
@@ -29,14 +29,16 @@ use mdm\widgets\TabularInput;
     <?=Html::a(Yii::t('app', 'Ubah'), ['pekerjaan', 'id' => $model->id_d_rab], ['class' => 'btn btn-primary'])?>
 </div>
 </div>
-<h4> Data Material</h4>
 <table class="table table-condensed table-striped table-hover table-bordered">
 <thead>
 <tr>
 
-            <th >Material</th>
+            <th >Item</th>
             <th align="Right">Qty</th>
-           <th align="Right">Harga</th>
+            <th >Satuan</th>
+
+           <th align="Right">Harga / Upah</th>
+
            <th align="Right">Sub Total</th>
         </tr>
  </thead>
@@ -47,6 +49,8 @@ use mdm\widgets\TabularInput;
               echo "<tr>";
               echo "<td>$material->nama_material </td>";
               echo "<td>$material->qty </td>";
+            echo "<td>$material->satuan </td>";
+
               echo "<td>$material->harga </td>";
               echo "<td>$material->sub_total </td>";
 
@@ -54,75 +58,23 @@ use mdm\widgets\TabularInput;
 
           }
 
-      ?>
- </tbody>
- <tfoot>
- <tr>
- <td></td>
- <td></td>
- <th>Total</th>
- <th><?=$model->total_biaya_material?></th>
-
- </tr>
- </tfoot>
-
-</table>
-
-<h4> Data Peralatan</h4>
-<table class="table table-condensed table-striped table-hover table-bordered">
-<thead>
-<tr>
-
-            <th>Peralatan</th>
-            <th align="Right">Qty</th>
-           <th align="Right">Harga</th>
-           <th align="Right">Sub Total</th>
-        </tr>
- </thead>
- <tbody>
-      <?php
         foreach ($model->sDetailRabPeralatan as $material) {
             echo "<tr>";
             echo "<td>$material->nama_material </td>";
+
             echo "<td>$material->qty </td>";
+            echo "<td>$material->satuan </td>";
             echo "<td>$material->harga </td>";
             echo "<td>$material->sub_total </td>";
 
             echo "</tr>";
 
         }
-
-        ?>
- </tbody>
- <tfoot>
- <tr>
- <td></td>
- <td></td>
- <th>Total</th>
- <th><?= $model->total_biaya_peralatan ?></th>
-
- </tr>
- </tfoot>
-
-</table>
-
-<h4> Data Pekerja</h4>
-<table class="table table-condensed table-striped table-hover table-bordered">
-<thead>
-<tr>
-
-            <th>Level Jabatan</th>
-            <th align="Right">Qty</th>
-           <th align="Right">Gaji</th>
-           <th align="Right">Sub Total</th>
-        </tr>
- </thead>
- <tbody>
-      <?php
         foreach ($model->sDetailRabPekerja as $material) {
             echo "<tr>";
             echo "<td>$material->nama_level_jabatan </td>";
             echo "<td>$material->qty </td>";
+            echo "<td>$material->satuan </td>";
             echo "<td>$material->gaji </td>";
             echo "<td>$material->sub_total </td>";
 
@@ -130,14 +82,17 @@ use mdm\widgets\TabularInput;
 
         }
 
-        ?>
+
+      ?>
  </tbody>
-  <tfoot>
+ <tfoot>
  <tr>
  <td></td>
  <td></td>
+ <td></td>
+
  <th>Total</th>
- <th><?= $model->total_biaya_pekerja ?></th>
+ <th><?=$model->total_rab?></th>
 
  </tr>
  </tfoot>

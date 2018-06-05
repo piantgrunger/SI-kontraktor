@@ -74,6 +74,7 @@ class RAB extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+
             [['id_proyek', 'no_rab', 'tgl_rab'], 'required'],
             [['id_proyek', 'created_by', 'updated_by'], 'integer'],
             [['no_rab', 'keterangan'], 'string'],
@@ -82,7 +83,7 @@ class RAB extends \yii\db\ActiveRecord
             [['file_acuan_revisi'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg,bmp,pdf,jpeg,doc,docx', 'maxSize' => 512000000],
 
             [['no_rab'], 'unique'],
-            [['tgl_revisi', 'file_acuan_revisi'],'required','on'=>'revisi'],
+            [['tgl_revisi'],'required','on'=>'revisi'],
             [['id_proyek'], 'exist', 'skipOnError' => true, 'targetClass' =>Proyek::className(), 'targetAttribute' => ['id_proyek' => 'id_proyek']],
         ];
     }

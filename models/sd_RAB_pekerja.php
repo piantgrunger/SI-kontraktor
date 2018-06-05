@@ -33,7 +33,7 @@ class sd_RAB_pekerja extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_level_jabatan'], 'required'],
+            [['id_level_jabatan', 'satuan'], 'required'],
             [['id_d_rab', 'id_level_jabatan'], 'integer'],
             [['gaji', 'qty', 'sub_total'], 'number'],
             [['id_d_rab'], 'exist', 'skipOnError' => true, 'targetClass' => d_RAB::className(), 'targetAttribute' => ['id_d_rab' => 'id_d_rab']],
@@ -79,6 +79,7 @@ class sd_RAB_pekerja extends \yii\db\ActiveRecord
     {
         $this->gaji = 0; //contoh set default value active true
         $this->qty = 0; //contoh set default value active true
+        $this->satuan='OH';
 
     }
     public function init()

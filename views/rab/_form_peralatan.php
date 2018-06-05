@@ -30,6 +30,8 @@ use mdm\widgets\TabularInput;
             <th>Peralatan</th>
             <th>Qty</th>
            <th>Harga</th>
+           <th>Satuan</th>
+
            <th>Sub Total</th>
 
             <th><a id="btn-add3" href="#"><span class="glyphicon glyphicon-plus"></span></a></th>

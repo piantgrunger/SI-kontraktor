@@ -9,8 +9,8 @@ return [
     'charset' => 'utf8',
 ];
 
-
 /*
+
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'sqlsrv:Server=ALFIAN-PC\SERVERKU;Database=db_kontraktor;encrypt=yes;',

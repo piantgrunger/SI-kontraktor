@@ -29,7 +29,9 @@ use mdm\widgets\TabularInput;
 
             <th>Level Jabatan</th>
             <th>Qty</th>
-           <th>Gaji</th>
+           <th>Upah</th>
+           <th>Satuan</th>
+
            <th>Sub Total</th>
 
             <th><a id="btn-add4" href="#"><span class="glyphicon glyphicon-plus"></span></a></th>

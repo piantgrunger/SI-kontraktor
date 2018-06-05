@@ -66,8 +66,12 @@ class LevelJabatanController extends Controller
         $model = new LevelJabatan();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           return $this->redirect(['index']);// 'id' => $model->id_level_jabatan]);
-        } else {
+            $model = new LevelJabatan();
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+                } else {
             return $this->render('create', [
                 'model' => $model,
             ]);

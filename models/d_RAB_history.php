@@ -39,9 +39,9 @@ class d_RAB_history extends \yii\db\ActiveRecord
         return [
             [[ 'id_pekerjaan'], 'required'],
             [['id_rab', 'id_pekerjaan', 'hari_kerja'], 'integer'],
-            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'qty'], 'number'],
-            [['status_pekerjaan'], 'string'],
-             [['id_pekerjaan'], 'exist', 'skipOnError' => true, 'targetClass' => Pekerjaan::className(), 'targetAttribute' => ['id_pekerjaan' => 'id_pekerjaan']],
+            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'qty', 'total_rab'], 'number'],
+            [['status_pekerjaan', 'satuan'], 'string'],
+               [['id_pekerjaan'], 'exist', 'skipOnError' => true, 'targetClass' => Pekerjaan::className(), 'targetAttribute' => ['id_pekerjaan' => 'id_pekerjaan']],
             [['id_rab'], 'exist', 'skipOnError' => true, 'targetClass' => RAB::className(), 'targetAttribute' => ['id_rab' => 'id_rab']],
         ];
     }

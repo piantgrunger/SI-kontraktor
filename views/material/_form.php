@@ -18,8 +18,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'nama_material')->textInput() ?>
     <?= $form->field($model, 'jenis')->dropDownList(["Material"=>"Material","Peralatan"=>"Peralatan"]) ?>
 
-    <?= $form->field($model, 'spesifikasi')->textInput() ?>
-
     <?= $form->field($model, 'satuan')->textInput() ?>
 
     <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>

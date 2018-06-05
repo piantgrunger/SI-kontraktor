@@ -32,7 +32,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'kode_material',
             'nama_material',
             'jenis',
-            'spesifikasi',
             'satuan',
             'keterangan:ntext',
             'created_at',

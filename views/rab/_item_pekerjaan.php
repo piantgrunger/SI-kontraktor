@@ -7,6 +7,8 @@ use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use kartik\datecontrol\DateControl;
 use mdm\widgets\TabularInput;
+use yii\helpers\Url;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pekerjaan */
@@ -14,8 +16,9 @@ use mdm\widgets\TabularInput;
 $data = ArrayHelper::map(
     Pekerjaan::find()
         ->select([
-            'id_Pekerjaan', "ket" => "[kode_Pekerjaan]+' - '+[nama_pekerjaan]"
+            'id_Pekerjaan', "ket" => "[nama_jenis_pekerjaan] +' : '+[kode_Pekerjaan]+' - '+[nama_pekerjaan]"
         ])
+        ->innerJoin("tb_m_jenis_pekerjaan", "tb_m_jenis_pekerjaan.id_jenis_pekerjaan = tb_m_pekerjaan.id_jenis_pekerjaan")
         ->asArray()
         ->all(),
     'id_Pekerjaan',
@@ -31,9 +34,17 @@ $data = ArrayHelper::map(
 <td>
     <?= $form->field($model,"[$key]id_pekerjaan")->widget(Select2::className(), [
         'data' => $data,
-        'options' => ['placeholder' => 'Pilih Pekerjaan...'],
+        'options' => ['placeholder' => 'Pilih Pekerjaan...',
+            'onChange' => "$.post( '" . Url::to(['rab/satuan-pekerjaan']) . "?id=' +$(this).val(), function(data) {
+
+                                                  data1 = JSON.parse(data)
+                                                  $( '#d_rab-$key-satuan' ).val(data1.satuan);
+            })
+"
+
+    ],
         'pluginOptions' => [
-            'allowClear' => true
+            'allowClear' => true,
         ],
     ])->label(false) ?>
 </td>
@@ -41,11 +52,15 @@ $data = ArrayHelper::map(
 <?= $form->field($model, "[$key]qty")->textInput()->label(false); ?>
 </td>
 <td>
-<?= $form->field($model, "[$key]status_pekerjaan")->dropDownList(["Internal" => "Internal", "Subkon" => "Subkon"]) ->label(false); ?>
+<?= $form->field($model, "[$key]satuan")->textInput()->label(false); ?>
+</td>
+
+<td>
+<?= $form->field($model, "[$key]hari_kerja")->textInput()->label(false); ?>
 
 </td>
 <td>
-<?= $form->field($model, "[$key]hari_kerja")->textInput()->label(false); ?>
+<?= $form->field($model, "[$key]status_pekerjaan")->dropDownList(["Internal" => "Internal", "Subkon" => "Subkon"])->label(false); ?>
 
 </td>
 

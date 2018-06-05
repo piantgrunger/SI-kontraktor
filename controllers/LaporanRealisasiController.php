@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Karyawan;
-use app\models\KaryawanSearch;
+use app\models\VwRealisasiDetail;
+use app\models\VwRealisasiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * KaryawanController implements the CRUD actions for Karyawan model.
+ * VwRealisasiDetailController implements the CRUD actions for VwRealisasiDetail model.
  */
-class KaryawanController extends Controller
+class LaporanRealisasiController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Lists all Karyawan models.
+     * Lists all VwRealisasiDetail models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new KaryawanSearch();
+        $searchModel = new VwRealisasiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Displays a single Karyawan model.
+     * Displays a single VwRealisasiDetail model.
      * @param integer $id
      * @return mixed
      */
@@ -57,21 +57,17 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Creates a new Karyawan model.
+     * Creates a new VwRealisasiDetail model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Karyawan();
+        $model = new VwRealisasiDetail();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model = new Karyawan();
-
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-                } else {
+           return $this->redirect(['index']);// 'id' => $model->id_d_rab]);
+        } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -79,7 +75,7 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Updates an existing Karyawan model.
+     * Updates an existing VwRealisasiDetail model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -89,7 +85,7 @@ class KaryawanController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           return $this->redirect(['index']);// 'id' => $model->id_karyawan]);
+           return $this->redirect(['index']);// 'id' => $model->id_d_rab]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -98,7 +94,7 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Deletes an existing Karyawan model.
+     * Deletes an existing VwRealisasiDetail model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -119,15 +115,15 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Finds the Karyawan model based on its primary key value.
+     * Finds the VwRealisasiDetail model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Karyawan the loaded model
+     * @return VwRealisasiDetail the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Karyawan::findOne($id)) !== null) {
+        if (($model = VwRealisasiDetail::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

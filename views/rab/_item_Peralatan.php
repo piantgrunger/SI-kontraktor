@@ -8,6 +8,8 @@ use kartik\select2\Select2;
 use kartik\datecontrol\DateControl;
 use mdm\widgets\TabularInput;
 
+use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Material */
 /* @var $form yii\widgets\ActiveForm */
@@ -33,7 +35,15 @@ $data = ArrayHelper::map(
 
     <?= $form->field($model, "[$key]id_material")->widget(Select2::className(), [
         'data' => $data,
-        'options' => ['placeholder' => 'Pilih Peralatan...'],
+        'options' => ['placeholder' => 'Pilih Peralatan...',
+            'onChange' => "$.post( '" . Url::to(['rab/satuan-material']) . "?id=' +$(this).val(), function(data) {
+
+                                                  data1 = JSON.parse(data)
+                                                  $( '#sd_rab_peralatan-$key-satuan' ).val(data1.satuan);
+            })
+"
+
+    ],
         'pluginOptions' => [
             'allowClear' => true
         ],
@@ -54,6 +64,11 @@ $data = ArrayHelper::map(
     'onChange' => ' var total =  parseFloat($(this).val())*parseFloat($("#sd_rab_peralatan-' . $key . '-qty").val()) ; $("#sd_rab_peralatan-' . $key . '-sub_total").val(total)   ',
 
 ])->label(false) ?>
+
+</td>
+
+<td>
+<?= $form->field($model, "[$key]satuan")->textInput()->label(false) ?>
 
 </td>
 <td>

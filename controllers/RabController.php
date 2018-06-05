@@ -18,8 +18,9 @@ use app\models\d_RAB_history;
 use app\models\sd_RAB_history_material;
 use app\models\sd_RAB_history_pekerja;
 use app\models\sd_RAB_history_peralatan;
-use Mpdf\Tag\Dd;
-
+use app\models\Pekerjaan;
+use app\models\Material;
+use yii\helpers\Json;
 /**
  * RABController implements the CRUD actions for RAB model.
  */
@@ -63,6 +64,12 @@ class RabController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+    public function actionViewRekap($id)
+    {
+        return $this->render('view_rekap', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -274,6 +281,7 @@ class RabController extends Controller
                     $modelRAB->total_biaya_peralatan = is_null($model_d_peralatan->sum('sub_total')) ? 0 : $model_d_peralatan->sum('sub_total');
                     $model_d_pekerja = sd_RAB_pekerja::find()->where(['id_d_rab' => $model->id_d_rab]);
                     $modelRAB->total_biaya_pekerja = is_null($model_d_pekerja->sum('sub_total'))?0: $model_d_pekerja->sum('sub_total');
+                    $modelRAB->total_rab = $modelRAB->total_biaya_material + $modelRAB->total_biaya_peralatan + $modelRAB->total_biaya_pekerja;
 
                     $modelRAB->save();
 
@@ -283,9 +291,7 @@ class RabController extends Controller
                     $modelRAB->total_biaya_material = is_null($model_d->sum('total_biaya_material')) ? 0 : $model_d->sum('total_biaya_material');
                     $modelRAB->total_biaya_peralatan = is_null($model_d->sum('total_biaya_peralatan')) ? 0 : $model_d->sum('total_biaya_peralatan');
                     $modelRAB->total_biaya_pekerja = is_null($model_d->sum('total_biaya_pekerja')) ? 0 : $model_d->sum('total_biaya_pekerja');
-                    $modelRAB->total_rab = $modelRAB->total_biaya_material+ $modelRAB->total_biaya_peralatan+ $modelRAB->total_biaya_pekerja+
-                        $modelRAB->margin+ $modelRAB->dana_cadangan;
-                    $modelRAB->save();
+                    $modelRAB->total_rab = $modelRAB->total_biaya_material+ $modelRAB->total_biaya_peralatan+ $modelRAB->total_biaya_pekerja;                    $modelRAB->save();
 
 
               return $this->render('edit_pekerjaan', [
@@ -334,6 +340,20 @@ class RabController extends Controller
 	Yii::$app->session->setFlash('error', "Data Tidak Dapat Dihapus Karena Dipakai Modul Lain");
        }
          return $this->redirect(['index']);
+    }
+    public function actionSatuanPekerjaan($id)
+    {
+        $model = Pekerjaan::findOne(['id_pekerjaan' => $id]);
+        return Json::encode([
+            'satuan' => $model->satuan,
+        ]);
+    }
+    public function actionSatuanMaterial($id)
+    {
+        $model = Material::findOne(['id_material' => $id]);
+        return Json::encode([
+            'satuan' => $model->satuan,
+        ]);
     }
 
     /**

@@ -32,7 +32,7 @@ class sd_RAB_material extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [[ 'id_material', 'qty', 'sub_total', 'harga'], 'required'],
+            [[ 'id_material', 'qty', 'sub_total', 'harga','satuan'], 'required'],
             [['id_d_rab', 'id_material'], 'integer'],
             [['qty', 'sub_total','harga'], 'number'],
             [['id_d_rab'], 'exist', 'skipOnError' => true, 'targetClass' => d_RAB::className(), 'targetAttribute' => ['id_d_rab' => 'id_d_rab']],

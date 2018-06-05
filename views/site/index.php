@@ -60,13 +60,13 @@ $this->registerJSFile(Yii::$app->homeUrl .'js/metro.min.js', ['depends' => [yii\
 
 
 </div>
-<div class="tiles-grid tiles-group size-3" data-group-title="" >
+<div class="tiles-grid tiles-group size-2" data-group-title="" >
 
  <?= Html::a("
 
         <span class='mif-user-check icon'></span>
         <span class='branding-bar'>Customer</span>
-         ", ["/customer"], ["data-role" => 'tile', "class " => "bg-red", ]) ?>
+         ", ["/customer"], ["data-role" => 'tile', "class " => "bg-red", "data-size" => "medium"]) ?>
 
    <?= Html::a("
 
@@ -95,13 +95,21 @@ $this->registerJSFile(Yii::$app->homeUrl .'js/metro.min.js', ['depends' => [yii\
          ", ["/realisasi"], ["data-role" => 'tile', "class " => 'bg-purple',"data-size"=>"wide" ]) ?>
 
 
+</div>
+<div class="tiles-grid tiles-group size-1" data-group-title="" >
+
+ <?= Html::a("
+
+        <span class='mif-chart-line icon'></span>
+        <span class='branding-bar'>Laporan Realisasi</span>
+         ", ["/laporan-realisasi"], ["data-role" => 'tile', "class " => "bg-blue"]) ?>
 
 
  <?= Html::a("
 
         <span class='mif-chart-line icon'></span>
         <span class='branding-bar'>Laporan Realisasi Detail</span>
-         ", ["/laporan-realisasi-detail"], ["data-role" => 'tile', "class " => "bg-red", "data-size" => "wide" ]) ?>
+         ", ["/laporan-realisasi-detail"], ["data-role" => 'tile', "class " => "bg-red"]) ?>
 
 </div>
 
