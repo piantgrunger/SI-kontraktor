@@ -32,7 +32,10 @@ use mdm\widgets\TabularInput;
 
             <th >Item</th>
             <th align="Right">Qty</th>
+            <th >Satuan</th>
+
            <th align="Right">Harga / Upah</th>
+
            <th align="Right">Sub Total</th>
         </tr>
  </thead>
@@ -42,6 +45,8 @@ use mdm\widgets\TabularInput;
             echo "<tr>";
             echo "<td>$material->nama_material </td>";
             echo "<td>$material->qty </td>";
+            echo "<td>$material->satuan </td>";
+
             echo "<td>$material->harga </td>";
             echo "<td>$material->sub_total </td>";
 
@@ -52,7 +57,9 @@ use mdm\widgets\TabularInput;
         foreach ($model->sDetailRabPeralatan as $material) {
             echo "<tr>";
             echo "<td>$material->nama_material </td>";
+
             echo "<td>$material->qty </td>";
+            echo "<td>$material->satuan </td>";
             echo "<td>$material->harga </td>";
             echo "<td>$material->sub_total </td>";
 
@@ -63,6 +70,7 @@ use mdm\widgets\TabularInput;
             echo "<tr>";
             echo "<td>$material->nama_level_jabatan </td>";
             echo "<td>$material->qty </td>";
+            echo "<td>$material->satuan </td>";
             echo "<td>$material->gaji </td>";
             echo "<td>$material->sub_total </td>";
 
@@ -77,6 +85,8 @@ use mdm\widgets\TabularInput;
  <tr>
  <td></td>
  <td></td>
+ <td></td>
+
  <th>Total</th>
  <th><?= $model->total_rab ?></th>
 
