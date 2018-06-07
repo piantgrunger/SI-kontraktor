@@ -26,7 +26,7 @@ class d_RAB extends \yii\db\ActiveRecord
      * {@inheritdoc}
      */
     use RelationTrait;
-    public $nama_jenis_pekerjaan;
+    public $jenis_pekerjaan;
     public static function tableName()
     {
         return 'tb_dt_rab';

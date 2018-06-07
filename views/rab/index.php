@@ -23,10 +23,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'created_by',
             // 'updated_by',
 
-         ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
-              'view']
-             ,$this->context->route)
-            . '  {rekap} {jenis}  {revisi} ',
+         ['class' => 'kartik\grid\ActionColumn',   'template' =>  '{view}  {rekap} {jenis}  {revisi} ',
         'buttons' => ['revisi' =>
             function ($url, $model) {
             if (Mimin::checkRoute($this->context->id . "/revisi"))
@@ -67,6 +64,20 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
                         ['jenis-pekerjaan', 'id' => $model->id_rab],
                         [
                             'title' => Yii::t('app', 'Rekap Jenis Pekerjaan'),
+                        ]
+                    );
+                } else {
+                    return " ";
+                }
+            }, 'view' =>
+                function ($url, $model) {
+                if (Mimin::checkRoute($this->context->id . "/view")) {
+                    return
+                        Html::a(
+                        '<span class="glyphicon glyphicon-list"></span>',
+                        ['view', 'id' => $model->id_rab],
+                        [
+                            'title' => Yii::t('app', 'Lihat BQ'),
                         ]
                     );
                 } else {

@@ -16,7 +16,7 @@ use yii\helpers\Url;
 ?>
 
 <td>
- <b><?= $model->nama_jenis_pekerjaan; ?></b>
+ <b><?= $model->jenis_pekerjaan; ?></b>
 </td>
 
 <td align="right">

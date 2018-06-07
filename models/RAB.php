@@ -122,7 +122,7 @@ class RAB extends \yii\db\ActiveRecord
     }
     public function getRekap_pekerjaan()
     {
-        $model = d_RAB::find()->select(['nama_jenis_pekerjaan','total_rab' => 'sum(total_rab)'])
+        $model = d_RAB::find()->select(['jenis_pekerjaan'=>'nama_jenis_pekerjaan','total_rab' => 'sum(total_rab)'])
                       ->innerJoin('tb_m_pekerjaan','tb_m_pekerjaan.id_pekerjaan=tb_dt_rab.id_pekerjaan ')
                       ->innerJoin('tb_m_jenis_pekerjaan', 'tb_m_pekerjaan.id_jenis_pekerjaan=tb_m_jenis_pekerjaan.id_jenis_pekerjaan ')
                        ->where(['id_rab'=>$this->id_rab])
