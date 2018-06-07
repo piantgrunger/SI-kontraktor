@@ -105,6 +105,12 @@ class RabController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionJenisPekerjaan($id)
+    {
+        return $this->render('view_rekap2', [
+            'model' => $this->findModel($id),
+        ]);
+    }
 
     /**
      * Creates a new RAB model.
