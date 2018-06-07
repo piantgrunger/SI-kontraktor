@@ -16,18 +16,23 @@ use yii\helpers\Url;
 ?>
 
 <td>
-<?=$model->nama_pekerjaan_detail;?>
+ <b><?= (Yii::$app->params['jenis_pekerjaan'] === $model->nama_jenis_pekerjaan)?"": $model->nama_jenis_pekerjaan; ?></b>
+</td>
+<td>
+<?=$model->nama_pekerjaan;?>
 </td>
 
-<td>
+<td align="right">
 <?= $model->qty; ?>
 </td>
 <td>
 <?= $model->satuan; ?>
 </td>
-<td>
+<td align="right">
 <?= $model->harga; ?>
 </td>
-<td>
+<td align="right">
 <?= $model->total_rab; ?>
 </td>
+
+<?php Yii::$app->params['jenis_pekerjaan'] = $model->nama_jenis_pekerjaan; ?>

@@ -8,6 +8,7 @@ use kartik\select2\Select2;
 use kartik\datecontrol\DateControl;
 use mdm\widgets\TabularInput;
 
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\models\LevelJabatan */
 /* @var $form yii\widgets\ActiveForm */
@@ -32,7 +33,15 @@ $data = ArrayHelper::map(
 
     <?= $form->field($model, "[$key]id_level_jabatan")->widget(Select2::className(), [
         'data' => $data,
-        'options' => ['placeholder' => 'Pilih Level Jabatan...'],
+        'options' => ['placeholder' => 'Pilih Level Jabatan...',
+            'onChange' => "$.post( '" . Url::to(['rab/upah-pekerja']) . "?id=' +$(this).val(), function(data) {
+
+                                                  data1 = JSON.parse(data)
+                                                  $( '#sd_rab_pekerja-$key-gaji' ).val(data1.upah);
+
+            })
+"
+        ],
         'pluginOptions' => [
             'allowClear' => true
         ],

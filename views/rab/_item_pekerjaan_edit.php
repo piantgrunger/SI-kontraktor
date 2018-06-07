@@ -44,28 +44,27 @@ use mdm\widgets\TabularInput;
  </thead>
  <tbody>
       <?php
-          foreach($model->sDetailRabMaterial as $material)
-          {
-              echo "<tr>";
-              echo "<td>$material->nama_material </td>";
-              echo "<td>$material->qty </td>";
+        foreach ($model->sDetailRabMaterial as $material) {
+            echo "<tr>";
+            echo "<td>$material->nama_material </td>";
+            echo "<td align='Right'>$material->qty </td>";
             echo "<td>$material->satuan </td>";
 
-              echo "<td>$material->harga </td>";
-              echo "<td>$material->sub_total </td>";
+            echo "<td align='Right'>$material->harga </td>";
+            echo "<td align='Right'>$material->sub_total </td>";
 
-               echo "</tr>";
+            echo "</tr>";
 
-          }
+        }
 
         foreach ($model->sDetailRabPeralatan as $material) {
             echo "<tr>";
             echo "<td>$material->nama_material </td>";
 
-            echo "<td>$material->qty </td>";
+            echo "<td align='Right'>$material->qty </td>";
             echo "<td>$material->satuan </td>";
-            echo "<td>$material->harga </td>";
-            echo "<td>$material->sub_total </td>";
+            echo "<td align='Right'>$material->harga </td>";
+            echo "<td align='Right'>$material->sub_total </td>";
 
             echo "</tr>";
 
@@ -73,17 +72,17 @@ use mdm\widgets\TabularInput;
         foreach ($model->sDetailRabPekerja as $material) {
             echo "<tr>";
             echo "<td>$material->nama_level_jabatan </td>";
-            echo "<td>$material->qty </td>";
+            echo "<td align='Right'>$material->qty </td>";
             echo "<td>$material->satuan </td>";
-            echo "<td>$material->gaji </td>";
-            echo "<td>$material->sub_total </td>";
+            echo "<td align='Right'>$material->gaji </td>";
+            echo "<td align='Right'>$material->sub_total </td>";
 
             echo "</tr>";
 
         }
 
 
-      ?>
+        ?>
  </tbody>
  <tfoot>
  <tr>
@@ -92,10 +91,12 @@ use mdm\widgets\TabularInput;
  <td></td>
 
  <th>Total</th>
- <th><?=$model->total_rab?></th>
+
+ <td align="Right"><?= $model->total_rab ?></td>
 
  </tr>
  </tfoot>
 
 </table>
+
 </div>

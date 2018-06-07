@@ -20,6 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'satuan')->textInput() ?>
 
+    <?= $form->field($model, 'harga')->textInput() ?>
     <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>
 
 

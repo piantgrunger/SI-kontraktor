@@ -108,6 +108,7 @@ $config = [
             'decimalSeparator' => ',',
             'thousandSeparator' => '.',
 
+
        ],
          'i18n' => [
 

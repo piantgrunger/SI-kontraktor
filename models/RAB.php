@@ -75,11 +75,11 @@ class RAB extends \yii\db\ActiveRecord
     {
         return [
 
-            [['id_proyek', 'no_rab', 'tgl_rab'], 'required'],
+            [['id_proyek', 'no_rab', 'tgl_rab','ppn'], 'required'],
             [['id_proyek', 'created_by', 'updated_by'], 'integer'],
             [['no_rab', 'keterangan'], 'string'],
             [['tgl_rab', 'created_at', 'updated_at','tgl_revisi'], 'safe'],
-            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'margin', 'dana_cadangan', 'total_rab'], 'number'],
+            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'margin', 'dana_cadangan', 'total_rab','ppn','ppn_rp'], 'number'],
             [['file_acuan_revisi'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg,bmp,pdf,jpeg,doc,docx', 'maxSize' => 512000000],
 
             [['no_rab'], 'unique'],
@@ -109,6 +109,7 @@ class RAB extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Updated At'),
             'created_by' => Yii::t('app', 'Created By'),
             'updated_by' => Yii::t('app', 'Updated By'),
+            'ppn' =>'PPN (%)'
         ];
     }
 
@@ -124,6 +125,10 @@ class RAB extends \yii\db\ActiveRecord
         return is_null($this->proyek)?"":$this->proyek->no_proyek;
     }
 
+    public function getTotal_dpp()
+    {
+        return $this->total_rab - $this->ppn_rp;
+    }
 
     public function getDetailRab()
     {

@@ -20,6 +20,8 @@ use app\models\sd_RAB_history_pekerja;
 use app\models\sd_RAB_history_peralatan;
 use app\models\Pekerjaan;
 use app\models\Material;
+use app\models\LevelJabatan;
+use kartik\mpdf\Pdf;
 use yii\helpers\Json;
 /**
  * RABController implements the CRUD actions for RAB model.
@@ -63,9 +65,39 @@ class RabController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+       return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+        }
+    public function actionPrint($id)
+    {
+       $content= $this->renderPartial('view', [
+            'model' => $this->findModel($id),
+        ]);
+
+
+      // setup kartik\mpdf\Pdf component
+        $pdf = new Pdf([
+   // set to use core fonts only
+            'mode' => Pdf::MODE_UTF8,
+   // A4 paper format
+            'format' => Pdf::FORMAT_A4,
+   // portrait orientation
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+   // stream to browser inline
+            'destination' => Pdf::DEST_BROWSER,
+   // your html content input
+            'content' => $content,
+   // format content from your own css file if needed or use the
+   // enhanced bootstrap css built by Krajee for mPDF formatting
+            'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+   // any css to be embedded if required
+            'cssInline' => '.kv-heading-1{font-size:18px}',
+    // set mPDF properties on the fly
+            'options' => ['title' => 'Cetak Kelompok '],
+    // call mPDF methods on the fly
+        ]);
+        return $pdf->render();
     }
     public function actionViewRekap($id)
     {
@@ -111,6 +143,7 @@ class RabController extends Controller
             ]);
             } else {
              $model->tgl_rab=date('Y-m-d');
+             $model->ppn = 10;
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -291,7 +324,12 @@ class RabController extends Controller
                     $modelRAB->total_biaya_material = is_null($model_d->sum('total_biaya_material')) ? 0 : $model_d->sum('total_biaya_material');
                     $modelRAB->total_biaya_peralatan = is_null($model_d->sum('total_biaya_peralatan')) ? 0 : $model_d->sum('total_biaya_peralatan');
                     $modelRAB->total_biaya_pekerja = is_null($model_d->sum('total_biaya_pekerja')) ? 0 : $model_d->sum('total_biaya_pekerja');
+
                     $modelRAB->total_rab = $modelRAB->total_biaya_material+ $modelRAB->total_biaya_peralatan+ $modelRAB->total_biaya_pekerja;                    $modelRAB->save();
+                    $modelRAB->ppn_rp = $modelRAB->total_rab * ($modelRAB->ppn / 100);
+                    $modelRAB->total_rab = $modelRAB->total_rab + $modelRAB->ppn_rp;
+
+                    $modelRAB->save();
 
 
               return $this->render('edit_pekerjaan', [
@@ -353,6 +391,14 @@ class RabController extends Controller
         $model = Material::findOne(['id_material' => $id]);
         return Json::encode([
             'satuan' => $model->satuan,
+            'harga' =>$model->harga,
+        ]);
+    }
+    public function actionUpahPekerja($id)
+    {
+        $model = LevelJabatan::findOne(['id_level_jabatan' => $id]);
+        return Json::encode([
+            'upah' => $model->upah,
         ]);
     }
 

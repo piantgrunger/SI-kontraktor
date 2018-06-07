@@ -77,7 +77,7 @@ class RAB_history extends \yii\db\ActiveRecord
             [['id_proyek', 'created_by', 'updated_by'], 'integer'],
             [['no_rab', 'keterangan'], 'string'],
             [['tgl_rab', 'created_at', 'updated_at'], 'safe'],
-            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'margin', 'dana_cadangan', 'total_rab'], 'number'],
+            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'margin', 'dana_cadangan', 'total_rab', 'ppn', 'ppn_rp'], 'number'],
             [['no_rab'], 'unique'],
             [['id_proyek'], 'exist', 'skipOnError' => true, 'targetClass' =>Proyek::className(), 'targetAttribute' => ['id_proyek' => 'id_proyek']],
         ];

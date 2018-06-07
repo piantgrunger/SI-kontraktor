@@ -61,11 +61,9 @@ $this->params['breadcrumbs'][] = $this->title;
     'model' => $model,
     'attributes' => [
 
-       'total_biaya_material',
-       'total_biaya_pekerja',
-       'total_biaya_peralatan',
-       'margin',
-       'dana_cadangan',
+        'total_dpp',
+            'ppn_rp',
+
        'total_rab'
 
     ],

@@ -17,6 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nama_level_jabatan')->textInput() ?>
 
+<?= $form->field($model, 'upah')->textInput() ?>
     <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">

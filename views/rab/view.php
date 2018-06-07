@@ -10,6 +10,8 @@ use hscstudio\mimin\components\Mimin;
 $this->title = $model->no_rab;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar R A B'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+Yii::$app->params['jenis_pekerjaan'] = '';
 ?>
 <div class="rab-view">
 
@@ -48,17 +50,18 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
  </div>
 </div>
-
  <?= DetailView::widget([
     'model' => $model,
     'attributes' => [
-       'total_biaya_material',
-       'total_biaya_pekerja',
-       'total_biaya_peralatan',
-       'total_rab'
+
+        'total_dpp',
+        'ppn_rp',
+
+        'total_rab'
 
     ],
 ]) ?>
+
 
 
 </div>

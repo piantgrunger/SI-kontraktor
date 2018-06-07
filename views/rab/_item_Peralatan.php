@@ -40,6 +40,8 @@ $data = ArrayHelper::map(
 
                                                   data1 = JSON.parse(data)
                                                   $( '#sd_rab_peralatan-$key-satuan' ).val(data1.satuan);
+                                                          $( '#sd_rab_peralatan-$key-harga' ).val(data1.harga);
+
             })
 "
 

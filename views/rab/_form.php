@@ -80,6 +80,7 @@ if ($this->context->action->id == 'revisi') {
 
     <?= $form->field($model, 'tgl_rab')->widget(DateControl::className()) ?>
 
+    <?= $form->field($model, 'ppn')->textInput() ?>
 
 
 

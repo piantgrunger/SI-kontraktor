@@ -62,7 +62,7 @@ class LevelJabatan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kode_level_jabatan', 'nama_level_jabatan'], 'required'],
+            [['kode_level_jabatan', 'nama_level_jabatan','upah'], 'required'],
             [['kode_level_jabatan', 'nama_level_jabatan', 'keterangan'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],

@@ -78,6 +78,10 @@ class d_RAB extends \yii\db\ActiveRecord
     {
         return is_null($this->pekerjaan) ? "" : $this->pekerjaan->jenisPekerjaan->nama_jenis_pekerjaan .' : '. $this->pekerjaan->nama_pekerjaan;
     }
+    public function getNama_jenis_pekerjaan()
+    {
+        return is_null($this->pekerjaan) ? "" : $this->pekerjaan->jenisPekerjaan->nama_jenis_pekerjaan ;
+    }
 
     public function getSatuan()
     {
@@ -97,7 +101,7 @@ class d_RAB extends \yii\db\ActiveRecord
     }
     public function getHarga()
     {
-        return ($this->qty==0)?0: $this->total_rab/$this->qty;
+        return ($this->qty==0)?0: round($this->total_rab/$this->qty,2);
     }
 
     public function getSDetailRabMaterial()
