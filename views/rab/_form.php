@@ -5,12 +5,12 @@ use app\models\Proyek;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use kartik\datecontrol\DateControl;
-use mdm\widgets\TabularInput;
 use kartik\widgets\FileInput;
 use yii\helpers\Url;
+
 $file_acuan_revisi = explode('.', $model->file_acuan_revisi);
 
- $form = ActiveForm::begin ();
+ $form = ActiveForm::begin();
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pekerjaan */
@@ -20,16 +20,13 @@ $file_acuan_revisi = explode('.', $model->file_acuan_revisi);
 /* @var $model app\models\RAB */
 /* @var $form yii\widgets\ActiveForm */
 
-
-
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Pekerjaan */
 /* @var $form yii\widgets\ActiveForm */
 $data = ArrayHelper::map(
     Proyek::find()
         ->select([
-            'id_Proyek', "ket" => "[no_Proyek]+'-'+cast(tb_mt_proyek.[keterangan] as varchar(255))+' - '+[nama_customer]"
+            'id_Proyek', 'ket' => "[no_Proyek]+'-'+cast(tb_mt_proyek.[keterangan] as varchar(255))+' - '+[nama_customer]",
         ])
         ->innerJoin('tb_m_customer', 'tb_m_customer.id_customer=tb_mt_proyek.id_customer')
         ->asArray()
@@ -44,23 +41,21 @@ $data = ArrayHelper::map(
 ?>
 
 <div class="rab-form">
-        <?= $form->errorSummary($model) ?> <!-- ADDED HERE -->
+        <?= $form->errorSummary($model); ?> <!-- ADDED HERE -->
 
 <?php
 if ($this->context->action->id == 'revisi') {
- echo   $form->field($model, 'tgl_revisi')->widget(DateControl::className());
+    echo   $form->field($model, 'tgl_revisi')->widget(DateControl::className());
 
-
-    echo $form->field ($model, 'file_acuan_revisi')->widget (FileInput::classname (), [
+    echo $form->field($model, 'file_acuan_revisi')->widget(FileInput::classname(), [
     'options' => ['multiple ' => false],
     'pluginOptions' => ['overwriteInitial' => true,
         'showUpload' => false,
-        'initialPreview' => [Url::to (['/media\/' . $model->file_acuan_revisi], true),],
-        'initialPreviewFileType' => end ($file_acuan_revisi) === 'pdf' ? 'pdf' : 'image', // image is the default and can be overridden in config below
+        'initialPreview' => [Url::to(['/media\/'.$model->file_acuan_revisi], true)],
+        'initialPreviewFileType' => end($file_acuan_revisi) === 'pdf' ? 'pdf' : 'image', // image is the default and can be overridden in config below
 
     'initialCaption' => $model->file_acuan_revisi,
-        'initialPreviewAsData' => true,],])->label ('Acuan Revisi');
-
+        'initialPreviewAsData' => true, ], ])->label('Acuan Revisi');
 }
 
 ?>
@@ -70,17 +65,17 @@ if ($this->context->action->id == 'revisi') {
         'data' => $data,
         'options' => ['placeholder' => 'Pilih Proyek...'],
         'pluginOptions' => [
-            'allowClear' => true
+            'allowClear' => true,
         ],
-    ]) ?>
+    ]); ?>
 
 
 
-    <?= $form->field($model, 'no_rab')->textInput() ?>
+    <?= $form->field($model, 'no_rab')->textInput(); ?>
 
-    <?= $form->field($model, 'tgl_rab')->widget(DateControl::className()) ?>
+    <?= $form->field($model, 'tgl_rab')->widget(DateControl::className()); ?>
 
-    <?= $form->field($model, 'ppn')->textInput() ?>
+    <?= $form->field($model, 'ppn')->textInput(); ?>
 
 
 
@@ -100,6 +95,7 @@ if ($this->context->action->id == 'revisi') {
             <th>Hari Kerja</th>
 
             <th>Status Pekerjaan</th>
+                      <th>Rekanan</th>
 
             <th><a id="btn-add2" href="#"><span class="glyphicon glyphicon-plus"></span></a></th>
         </tr>
@@ -114,7 +110,7 @@ if ($this->context->action->id == 'revisi') {
         'itemView' => '_item_pekerjaan',
         'clientOptions' => [
             'btnAddSelector' => '#btn-add2',
-        ]
+        ],
     ]);
     ?>
     </table>
@@ -124,7 +120,7 @@ if ($this->context->action->id == 'revisi') {
 
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']); ?>
     </div>
     <?php ActiveForm::end(); ?>
 

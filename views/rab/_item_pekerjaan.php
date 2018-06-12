@@ -1,14 +1,10 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use app\models\Pekerjaan;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
-use kartik\datecontrol\DateControl;
-use mdm\widgets\TabularInput;
 use yii\helpers\Url;
-
+use app\models\Rekanan;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pekerjaan */
@@ -16,15 +12,24 @@ use yii\helpers\Url;
 $data = ArrayHelper::map(
     Pekerjaan::find()
         ->select([
-            'id_Pekerjaan', "ket" => "[nama_jenis_pekerjaan] +' : '+[kode_Pekerjaan]+' - '+[nama_pekerjaan]"
+            'id_Pekerjaan', 'ket' => "[nama_jenis_pekerjaan] +' : '+[kode_Pekerjaan]+' - '+[nama_pekerjaan]",
         ])
-        ->innerJoin("tb_m_jenis_pekerjaan", "tb_m_jenis_pekerjaan.id_jenis_pekerjaan = tb_m_pekerjaan.id_jenis_pekerjaan")
+        ->innerJoin('tb_m_jenis_pekerjaan', 'tb_m_jenis_pekerjaan.id_jenis_pekerjaan = tb_m_pekerjaan.id_jenis_pekerjaan')
         ->asArray()
         ->all(),
     'id_Pekerjaan',
     'ket'
         );
-
+$data2 = ArrayHelper::map(
+    Rekanan::find()
+        ->select([
+            'id_rekanan', 'ket' => "[kode_rekanan]+' - '+[nama_rekanan]",
+        ])
+        ->asArray()
+        ->all(),
+    'id_rekanan',
+    'ket'
+        );
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
@@ -32,21 +37,20 @@ $data = ArrayHelper::map(
 ?>
 
 <td>
-    <?= $form->field($model,"[$key]id_pekerjaan")->widget(Select2::className(), [
+    <?= $form->field($model, "[$key]id_pekerjaan")->widget(Select2::className(), [
         'data' => $data,
         'options' => ['placeholder' => 'Pilih Pekerjaan...',
-            'onChange' => "$.post( '" . Url::to(['rab/satuan-pekerjaan']) . "?id=' +$(this).val(), function(data) {
+            'onChange' => "$.post( '".Url::to(['rab/satuan-pekerjaan'])."?id=' +$(this).val(), function(data) {
 
                                                   data1 = JSON.parse(data)
                                                   $( '#d_rab-$key-satuan' ).val(data1.satuan);
             })
-"
-
+",
     ],
         'pluginOptions' => [
             'allowClear' => true,
         ],
-    ])->label(false) ?>
+    ])->label(false); ?>
 </td>
 <td>
 <?= $form->field($model, "[$key]qty")->textInput()->label(false); ?>
@@ -60,9 +64,21 @@ $data = ArrayHelper::map(
 
 </td>
 <td>
-<?= $form->field($model, "[$key]status_pekerjaan")->dropDownList(["Internal" => "Internal", "Subkon" => "Subkon"])->label(false); ?>
+<?= $form->field($model, "[$key]status_pekerjaan")->dropDownList(['Internal' => 'Internal', 'Subkon' => 'Subkon'])->label(false); ?>
 
 </td>
+
+<td>
+    <?= $form->field($model, "[$key]id_rekanan")->widget(Select2::className(), [
+        'data' => $data2,
+        'options' => ['placeholder' => 'Pilih Rekanan...',
+    ],
+        'pluginOptions' => [
+            'allowClear' => true,
+        ],
+    ])->label(false); ?>
+</td>
+
 
   <td>
 
