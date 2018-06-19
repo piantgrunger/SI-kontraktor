@@ -32,7 +32,7 @@ use yii\helpers\Url;
 <?= $model->harga; ?>
 </td>
 <td align="right">
-<?= $model->total_rab; ?>
+<?= $model->total_rab_display; ?>
 </td>
 
 <?php Yii::$app->params['jenis_pekerjaan'] = $model->nama_jenis_pekerjaan; ?>

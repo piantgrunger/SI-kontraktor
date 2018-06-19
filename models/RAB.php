@@ -38,6 +38,8 @@ class RAB extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+
   public $old_file_acuan_revisi;
      use RelationTrait;
 
@@ -130,6 +132,37 @@ class RAB extends \yii\db\ActiveRecord
                       ->all();
        return $model;
 
+    }
+    public function getDaftar_harga()
+    {
+
+        $expression = new Expression("'Upah Buruh'");
+        $model1 = sd_RAB_material::find()->select(['kelompok_material'=>'kelompok_material',  'material' => 'nama_material', 'harga' => 'tb_sdt_rab_material.harga'])
+            ->distinct()
+        ->innerJoin('tb_m_material', 'tb_m_material.id_material=tb_sdt_rab_material.id_material ')
+            ->innerJoin('tb_dt_rab', 'tb_dt_rab.id_d_rab=tb_sdt_rab_material.id_d_rab ')
+            ->where(['id_rab' => $this->id_rab])
+
+            ;
+        $model2 = sd_RAB_pekerja::find()->select(['kelompok_material' =>$expression, 'nama_level_jabatan' => 'nama_level_jabatan', 'harga' => 'gaji'])
+            ->distinct()
+            ->innerJoin('tb_m_level_jabatan', 'tb_m_level_jabatan.id_level_jabatan=tb_sdt_rab_pekerja.id_level_jabatan ')
+            ->innerJoin('tb_dt_rab', 'tb_dt_rab.id_d_rab=tb_sdt_rab_pekerja.id_d_rab ')
+            ->where(['id_rab' => $this->id_rab])
+
+            ;
+        $model3 = sd_RAB_peralatan::find()->select(['kelompok_material' => 'kelompok_material', 'nama_material' => 'nama_material', 'harga' => 'tb_sdt_rab_peralatan.harga'])
+            ->distinct()
+            ->innerJoin('tb_m_material', 'tb_m_material.id_material=tb_sdt_rab_peralatan.id_material ')
+            ->innerJoin('tb_dt_rab', 'tb_dt_rab.id_d_rab=tb_sdt_rab_peralatan.id_d_rab ')
+            ->where(['id_rab' => $this->id_rab])
+
+            ;
+
+
+
+        $result= $model1->union($model2,true)->union($model3,true);
+        return $result->all();
     }
 
     public function getNo_Proyek()

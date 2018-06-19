@@ -105,6 +105,13 @@ class RabController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+
+    public function actionViewHarga($id)
+    {
+        return $this->render('view_harga', [
+            'model' => $this->findModel($id),
+        ]);
+    }
     public function actionJenisPekerjaan($id)
     {
         return $this->render('view_rekap2', [

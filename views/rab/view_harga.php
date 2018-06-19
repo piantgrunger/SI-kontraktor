@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar R A B'), 'url
 $this->params['breadcrumbs'][] = $this->title;
 
 
- Yii::$app->params ['jenis_pekerjaan'] = "";
+ Yii::$app->params ['kelompok_material'] = "";
 
 ?>
 <div class="rab-view">
@@ -34,24 +34,21 @@ $this->params['breadcrumbs'][] = $this->title;
     <thead>
         <tr>
 
-            <th colspan=2>Pekerjaan</th>
+            <th colspan=2>Material/Pekerja/Peralatan</th>
 
-            <th>Volume</th>
-            <th>Satuan</th>
 
             <th>Harga</th>
 
-            <th>Sub Total</th>
 
         </tr>
     </thead>
     <?= \mdm\widgets\TabularInput::widget([
-        'id' => 'detail-grid2',
-        'allModels' => $model->detailRab,
-        'model' => \app\models\d_RAB::className(),
+        'id' => 'detail-grid3',
+        'allModels' => $model->daftar_harga,
+        'model' => \app\models\sd_RAB_material::className(),
         'tag' => 'tbody',
         'itemOptions' => ['tag' => 'tr'],
-        'itemView' => '_item_pekerjaan_rekap',
+        'itemView' => '_item_pekerjaan_harga',
         'clientOptions' => [
             'btnAddSelector' => '#btn-add2',
         ]
@@ -60,17 +57,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </table>
 
 </div>
- <?= DetailView::widget([
-    'model' => $model,
-    'attributes' => [
-
-        'total_dpp:decimal',
-        'ppn_rp:decimal',
-
-        'total_rab:decimal'
-
-    ],
-]) ?>
 
 
 

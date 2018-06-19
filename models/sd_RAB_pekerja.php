@@ -22,6 +22,7 @@ class sd_RAB_pekerja extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
     public static function tableName()
     {
         return 'tb_sdt_rab_pekerja';

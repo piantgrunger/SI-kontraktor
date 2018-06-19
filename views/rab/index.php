@@ -10,20 +10,20 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             'no_proyek',
             'no_rab',
             'tgl_rab:date',
-            'total_biaya_material',
+            'total_biaya_material:decimal',
 
-            'total_biaya_pekerja',
-             'total_biaya_peralatan',
+    'total_biaya_pekerja:decimal',
+    'total_biaya_peralatan:decimal',
             // 'margin',
             // 'dana_cadangan',
-             'total_rab',
+    'total_rab:decimal',
             // 'keterangan:ntext',
             // 'created_at',
             // 'updated_at',
             // 'created_by',
             // 'updated_by',
 
-         ['class' => 'kartik\grid\ActionColumn',   'template' =>  '{view}  {rekap} {jenis}  {revisi} ',
+         ['class' => 'kartik\grid\ActionColumn',   'template' =>  '{view}  {rekap} {jenis} {harga}  {revisi} ',
         'buttons' => ['revisi' =>
             function ($url, $model) {
             if (Mimin::checkRoute($this->context->id . "/revisi"))
@@ -83,6 +83,20 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
                 } else {
                     return " ";
                 }
+                },'harga' =>
+                    function ($url, $model) {
+                    if (Mimin::checkRoute($this->context->id . "/view-harga")) {
+                        return
+                            Html::a(
+                            '<span class="glyphicon glyphicon-list"></span>',
+                            ['view-harga', 'id' => $model->id_rab],
+                            [
+                                'title' => Yii::t('app', 'Lihat Daftar Harga'),
+                            ]
+                        );
+                    } else {
+                        return " ";
+                    }
             } ]
 
 

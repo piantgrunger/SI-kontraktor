@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 
-<table class="table">
+<table class="table table-condensed table-striped table-hover table-bordered">
     <thead>
         <tr>
 
@@ -59,10 +59,10 @@ $this->params['breadcrumbs'][] = $this->title;
     'model' => $model,
     'attributes' => [
 
-        'total_dpp',
-        'ppn_rp',
+        'total_dpp:decimal',
+        'ppn_rp:decimal',
 
-        'total_rab'
+        'total_rab:decimal'
 
     ],
 ]) ?>

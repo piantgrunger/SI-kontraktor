@@ -108,8 +108,13 @@ class d_RAB extends \yii\db\ActiveRecord
 
     public function getHarga()
     {
-        return ($this->qty == 0) ? 0 : round($this->total_rab / $this->qty, 2);
+        return  Yii::$app->formatter->asDecimal(($this->qty == 0) ? 0 : round($this->total_rab / $this->qty, 2));
     }
+    public function getTotal_rab_display()
+    {
+        return Yii::$app->formatter->asDecimal($this->total_rab);
+    }
+
 
     public function getSDetailRabMaterial()
     {

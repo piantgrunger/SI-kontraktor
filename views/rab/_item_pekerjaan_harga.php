@@ -14,11 +14,15 @@ use yii\helpers\Url;
 /* @var $model app\models\RAB */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
 <td>
- <b><?= $model->jenis_pekerjaan; ?></b>
+ <b><?= (Yii::$app->params['kelompok_material'] === $model->kelompok_material) ? "" : $model->kelompok_material; ?></b>
+
+</td>
+<td>
+<?=$model->material;?>
 </td>
 
 <td align="right">
-<?= Yii::$app->formatter->asDecimal( $model->total_rab); ?>
+<?= Yii::$app->formatter->asDecimal($model->harga); ?>
 </td>
+<?php Yii::$app->params['kelompok_material'] = $model->kelompok_material;?>

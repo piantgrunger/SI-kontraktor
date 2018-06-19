@@ -56,8 +56,8 @@ use mdm\widgets\TabularInput;
             echo "<td align='Right'>$material->qty </td>";
             echo "<td>$material->satuan </td>";
 
-            echo "<td align='Right'>$material->harga </td>";
-            echo "<td align='Right'>$material->sub_total </td>";
+            echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->harga)." </td>";
+            echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->sub_total)." </td>";
 
             echo "</tr>";
 
@@ -69,8 +69,8 @@ use mdm\widgets\TabularInput;
 
             echo "<td align='Right'>$material->qty </td>";
             echo "<td>$material->satuan </td>";
-            echo "<td align='Right'>$material->harga </td>";
-            echo "<td align='Right'>$material->sub_total </td>";
+            echo "<td align='Right'>". Yii::$app->formatter->asDecimal($material->harga)." </td>";
+            echo "<td align='Right'>". Yii::$app->formatter->asDecimal($material->sub_total) ."</td>";
 
             echo "</tr>";
 
@@ -80,8 +80,8 @@ use mdm\widgets\TabularInput;
             echo "<td>$material->nama_level_jabatan </td>";
             echo "<td align='Right'>$material->qty </td>";
             echo "<td>$material->satuan </td>";
-            echo "<td align='Right'>$material->gaji </td>";
-            echo "<td align='Right'>$material->sub_total </td>";
+            echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->gaji)." </td>";
+            echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->sub_total)." </td>";
 
             echo "</tr>";
 
@@ -98,7 +98,7 @@ use mdm\widgets\TabularInput;
 
  <th>Total</th>
 
- <td align="Right"><?= $model->total_rab ?></td>
+ <td align="Right"><?= Yii::$app->formatter->asDecimal( $model->total_rab) ?></td>
 
  </tr>
  </tfoot>

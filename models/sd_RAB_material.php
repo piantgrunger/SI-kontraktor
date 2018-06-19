@@ -21,6 +21,10 @@ class sd_RAB_material extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+     public $material;
+     public $kelompok_material;
+
     public static function tableName()
     {
         return 'tb_sdt_rab_material';

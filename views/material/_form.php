@@ -16,7 +16,12 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'kode_material')->textInput() ?>
 
     <?= $form->field($model, 'nama_material')->textInput() ?>
-    <?= $form->field($model, 'jenis')->dropDownList(["Material"=>"Material","Peralatan"=>"Peralatan"]) ?>
+    <?= $form->field($model, 'jenis')->dropDownList(["Material"=>"Material","Peralatan"=>"Peralatan"], ['prompt' => 'Pilih Jenis...']) ?>
+    <?= $form->field($model, 'kelompok_material')->dropDownList(["Agregat Kasar,Bahan Perkerasan dan Bahan Jadi" => "Agregat Kasar,Bahan Perkerasan dan Bahan Jadi",
+     "Bahan Kayu Berikut Bahan Jadinya" => "Bahan Kayu Berikut Bahan Jadinya",
+     'Bahan Finishing' => 'Bahan Finishing',
+     "Barang Logam dll" => "Barang Logam dll"
+], ['prompt' => 'Pilih Kategori...']) ?>
 
     <?= $form->field($model, 'satuan')->textInput() ?>
 

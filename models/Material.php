@@ -64,7 +64,7 @@ class Material extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kode_material', 'nama_material', 'satuan','jenis','harga'], 'required'],
+            [['kode_material', 'nama_material', 'satuan','jenis','harga','kelompok_material'], 'required'],
             [['kode_material', 'nama_material', 'spesifikasi', 'satuan', 'keterangan'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],
