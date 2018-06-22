@@ -137,7 +137,7 @@ class RAB extends \yii\db\ActiveRecord
     {
 
         $expression = new Expression("'Upah Buruh'");
-        $model1 = sd_RAB_material::find()->select(['kelompok_material'=>'kelompok_material',  'material' => 'nama_material', 'harga' => 'tb_sdt_rab_material.harga'])
+        $model1 = sd_RAB_material::find()->select(['kelompok_material'=>'kelompok_material',  'material_detail' => 'nama_material', 'harga' => 'tb_sdt_rab_material.harga'])
             ->distinct()
         ->innerJoin('tb_m_material', 'tb_m_material.id_material=tb_sdt_rab_material.id_material ')
             ->innerJoin('tb_dt_rab', 'tb_dt_rab.id_d_rab=tb_sdt_rab_material.id_d_rab ')

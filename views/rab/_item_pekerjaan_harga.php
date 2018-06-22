@@ -19,7 +19,7 @@ use yii\helpers\Url;
 
 </td>
 <td>
-<?=$model->material;?>
+<?=$model->material_detail;?>
 </td>
 
 <td align="right">

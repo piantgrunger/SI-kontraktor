@@ -8,6 +8,7 @@ return [
     'password' => '',
     'charset' => 'utf8',
 ];
+
 */
 
 $server="db-desikon.ckroxmief1m9.us-east-2.rds.amazonaws.com";
@@ -20,6 +21,7 @@ return [
 ];
 
 /*
+
 
 return [
     'class' => 'yii\db\Connection',
