@@ -339,7 +339,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2017-10-12 10:12:03"
+            "time": "2017-10-12T10:12:03+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -347,12 +347,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cebe/markdown.git",
-                "reference": "7b158880b9c128de39d1102dc26e68082d1c4aa9"
+                "reference": "530bc7dcbdfea5ad2da030110ee3ac07cc797f90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cebe/markdown/zipball/7b158880b9c128de39d1102dc26e68082d1c4aa9",
-                "reference": "7b158880b9c128de39d1102dc26e68082d1c4aa9",
+                "url": "https://api.github.com/repos/cebe/markdown/zipball/530bc7dcbdfea5ad2da030110ee3ac07cc797f90",
+                "reference": "530bc7dcbdfea5ad2da030110ee3ac07cc797f90",
                 "shasum": ""
             },
             "require": {
@@ -399,7 +399,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2018-03-26 11:25:22"
+            "time": "2018-06-13T20:42:05+00:00"
         },
         {
             "name": "cebe/yii2-gravatar",
@@ -510,12 +510,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "b4f2b2fe5d5726e08a7d46fe3149b577e738463a"
+                "reference": "c0970c7889bfd33504c4fa54f35451c27897381d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/b4f2b2fe5d5726e08a7d46fe3149b577e738463a",
-                "reference": "b4f2b2fe5d5726e08a7d46fe3149b577e738463a",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/c0970c7889bfd33504c4fa54f35451c27897381d",
+                "reference": "c0970c7889bfd33504c4fa54f35451c27897381d",
                 "shasum": ""
             },
             "require": {
@@ -559,7 +559,7 @@
                 "lexer",
                 "parser"
             ],
-            "time": "2018-04-24 03:37:48"
+            "time": "2018-05-14T15:49:16+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -760,12 +760,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "61c952324df68ecf3539707252ada159f20cc479"
+                "reference": "28e951101a6db0b121529e1d60f87c60751198d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/61c952324df68ecf3539707252ada159f20cc479",
-                "reference": "61c952324df68ecf3539707252ada159f20cc479",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/28e951101a6db0b121529e1d60f87c60751198d1",
+                "reference": "28e951101a6db0b121529e1d60f87c60751198d1",
                 "shasum": ""
             },
             "type": "library",
@@ -805,7 +805,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2018-04-27 16:24:54"
+            "time": "2018-06-23T04:29:20+00:00"
         },
         {
             "name": "kartik-v/bootstrap-star-rating",
@@ -849,7 +849,7 @@
                 "star",
                 "svg"
             ],
-            "time": "2017-11-03 07:22:19"
+            "time": "2017-11-03T07:22:19+00:00"
         },
         {
             "name": "kartik-v/dependent-dropdown",
@@ -896,7 +896,7 @@
                 "option",
                 "select"
             ],
-            "time": "2017-08-01 11:43:55"
+            "time": "2017-08-01T11:43:55+00:00"
         },
         {
             "name": "kartik-v/php-date-formatter",
@@ -998,7 +998,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-10-19 04:23:23"
+            "time": "2017-10-19T04:23:23+00:00"
         },
         {
             "name": "kartik-v/yii2-datecontrol",
@@ -1050,7 +1050,7 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2018-01-06 13:08:48"
+            "time": "2018-01-06T13:08:48+00:00"
         },
         {
             "name": "kartik-v/yii2-dialog",
@@ -1102,7 +1102,7 @@
                 "modal",
                 "yii2"
             ],
-            "time": "2018-03-20 02:37:25"
+            "time": "2018-03-20T02:37:25+00:00"
         },
         {
             "name": "kartik-v/yii2-dropdown-x",
@@ -1149,7 +1149,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-07 11:48:00"
+            "time": "2018-02-07T11:48:00+00:00"
         },
         {
             "name": "kartik-v/yii2-dynagrid",
@@ -1157,12 +1157,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-dynagrid.git",
-                "reference": "39c8fe1b6df10981411c2da063397213ebb8fa6c"
+                "reference": "8a6c7a243ee99f75654f0eb96e06027732ea3a0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-dynagrid/zipball/39c8fe1b6df10981411c2da063397213ebb8fa6c",
-                "reference": "39c8fe1b6df10981411c2da063397213ebb8fa6c",
+                "url": "https://api.github.com/repos/kartik-v/yii2-dynagrid/zipball/8a6c7a243ee99f75654f0eb96e06027732ea3a0b",
+                "reference": "8a6c7a243ee99f75654f0eb96e06027732ea3a0b",
                 "shasum": ""
             },
             "require": {
@@ -1209,7 +1209,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-03-24 11:50:33"
+            "time": "2018-05-28T15:43:14+00:00"
         },
         {
             "name": "kartik-v/yii2-export",
@@ -1270,7 +1270,7 @@
                 "xlsx",
                 "yii2"
             ],
-            "time": "2018-02-24 05:10:17"
+            "time": "2018-02-24T05:10:17+00:00"
         },
         {
             "name": "kartik-v/yii2-grid",
@@ -1323,7 +1323,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-05-03 13:25:56"
+            "time": "2018-05-03T13:25:56+00:00"
         },
         {
             "name": "kartik-v/yii2-helpers",
@@ -1374,20 +1374,20 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2018-02-22 14:44:35"
+            "time": "2018-02-22T14:44:35+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
-            "version": "dev-master",
+            "version": "v1.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-krajee-base.git",
-                "reference": "1d729cdfe224f736941e69ec41f7052170526515"
+                "reference": "0cafe6376780cedcd00f52c9d82b172d5851f6b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/1d729cdfe224f736941e69ec41f7052170526515",
-                "reference": "1d729cdfe224f736941e69ec41f7052170526515",
+                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/0cafe6376780cedcd00f52c9d82b172d5851f6b0",
+                "reference": "0cafe6376780cedcd00f52c9d82b172d5851f6b0",
                 "shasum": ""
             },
             "require": {
@@ -1396,7 +1396,7 @@
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9.x-dev"
+                    "dev-master": "1.8.x-dev"
                 }
             },
             "autoload": {
@@ -1425,7 +1425,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-04-23 04:29:46"
+            "time": "2017-09-29T06:18:14+00:00"
         },
         {
             "name": "kartik-v/yii2-money",
@@ -1480,7 +1480,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-01-30 13:35:04"
+            "time": "2018-01-30T13:35:04+00:00"
         },
         {
             "name": "kartik-v/yii2-mpdf",
@@ -1532,7 +1532,7 @@
                 "utf8",
                 "yii2"
             ],
-            "time": "2017-07-19 09:51:02"
+            "time": "2017-07-19T09:51:02+00:00"
         },
         {
             "name": "kartik-v/yii2-nav-x",
@@ -1584,7 +1584,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-07 11:44:23"
+            "time": "2018-02-07T11:44:23+00:00"
         },
         {
             "name": "kartik-v/yii2-sortable",
@@ -1683,7 +1683,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-03-17 05:06:02"
+            "time": "2018-03-17T05:06:02+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-affix",
@@ -1732,7 +1732,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-07 11:46:39"
+            "time": "2018-02-07T11:46:39+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-alert",
@@ -1787,7 +1787,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-07 11:43:46"
+            "time": "2018-02-07T11:43:46+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-colorinput",
@@ -1841,7 +1841,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-07 11:44:04"
+            "time": "2018-02-07T11:44:04+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-datepicker",
@@ -1895,7 +1895,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-09-06 06:18:08"
+            "time": "2017-09-06T06:18:08+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-datetimepicker",
@@ -1944,7 +1944,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-07-18 08:42:00"
+            "time": "2017-07-18T08:42:00+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-depdrop",
@@ -1993,7 +1993,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-03-24 08:46:26"
+            "time": "2018-03-24T08:46:26+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-fileinput",
@@ -2048,7 +2048,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-12-06 12:34:31"
+            "time": "2017-12-06T12:34:31+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-growl",
@@ -2146,7 +2146,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-07 11:43:17"
+            "time": "2018-02-07T11:43:17+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-rating",
@@ -2202,7 +2202,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-11-18 12:24:51"
+            "time": "2017-11-18T12:24:51+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-select2",
@@ -2255,7 +2255,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-24 05:28:25"
+            "time": "2018-02-24T05:28:25+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-sidenav",
@@ -2352,7 +2352,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-07 11:45:36"
+            "time": "2018-02-07T11:45:36+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-switchinput",
@@ -2402,7 +2402,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-07 11:45:58"
+            "time": "2018-02-07T11:45:58+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-timepicker",
@@ -2456,7 +2456,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-07 11:49:20"
+            "time": "2018-02-07T11:49:20+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-touchspin",
@@ -2506,7 +2506,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-02-07 11:46:17"
+            "time": "2018-02-07T11:46:17+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-typeahead",
@@ -2559,7 +2559,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-08-01 04:05:16"
+            "time": "2017-08-01T04:05:16+00:00"
         },
         {
             "name": "kartik-v/yii2-widgets",
@@ -2669,7 +2669,7 @@
                 "query scope",
                 "yii2"
             ],
-            "time": "2016-10-05 15:34:08"
+            "time": "2016-10-05T15:34:08+00:00"
         },
         {
             "name": "mdmsoft/yii2-autonumber",
@@ -2763,7 +2763,7 @@
                 "math",
                 "yii2"
             ],
-            "time": "2016-09-08 02:11:50"
+            "time": "2016-09-08T02:11:50+00:00"
         },
         {
             "name": "mdmsoft/yii2-widgets",
@@ -2809,20 +2809,20 @@
                 "widgets",
                 "yii"
             ],
-            "time": "2017-03-12 08:22:08"
+            "time": "2017-03-12T08:22:08+00:00"
         },
         {
             "name": "mpdf/mpdf",
-            "version": "dev-development",
+            "version": "v7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpdf/mpdf.git",
-                "reference": "572e39c59509d662cbf3f21439c523110149ba4c"
+                "reference": "8e3d0d7bf74f71d04904215fb487d01e924c469a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/572e39c59509d662cbf3f21439c523110149ba4c",
-                "reference": "572e39c59509d662cbf3f21439c523110149ba4c",
+                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/8e3d0d7bf74f71d04904215fb487d01e924c469a",
+                "reference": "8e3d0d7bf74f71d04904215fb487d01e924c469a",
                 "shasum": ""
             },
             "require": {
@@ -2877,7 +2877,7 @@
                 "php",
                 "utf-8"
             ],
-            "time": "2018-04-29 07:38:48"
+            "time": "2018-05-18T05:41:37+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -2885,28 +2885,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "9f807201f6e6a8b7ab3582d815511d1807c9c202"
+                "reference": "3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/9f807201f6e6a8b7ab3582d815511d1807c9c202",
-                "reference": "9f807201f6e6a8b7ab3582d815511d1807c9c202",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8",
+                "reference": "3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
             },
+            "replace": {
+                "myclabs/deep-copy": "self.version"
+            },
             "require-dev": {
                 "doctrine/collections": "^1.0",
                 "doctrine/common": "^2.6",
-                "phpunit/phpunit": "^6.4"
+                "phpunit/phpunit": "^7.1"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "DeepCopy\\": "src/DeepCopy/"
@@ -2927,20 +2925,20 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-12-18 00:20:24"
+            "time": "2018-06-11T23:09:50+00:00"
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.12",
+            "version": "v2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "258c89a6b97de7dfaf5b8c7607d0478e236b04fb"
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/258c89a6b97de7dfaf5b8c7607d0478e236b04fb",
-                "reference": "258c89a6b97de7dfaf5b8c7607d0478e236b04fb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/10bcb46e8f3d365170f6de9d05245aa066b81f09",
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09",
                 "shasum": ""
             },
             "require": {
@@ -2972,10 +2970,11 @@
             "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
             "keywords": [
                 "csprng",
+                "polyfill",
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-04-04T21:24:14+00:00"
+            "time": "2018-06-08T15:26:40+00:00"
         },
         {
             "name": "philippfrenzel/yiimetroui",
@@ -3024,16 +3023,16 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "1.2.1",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "36acc372875c4d894dc093825ce4f62209db5a76"
+                "reference": "aa5b0d0236c907fd8dba0883f3ceb97cc52e46ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/36acc372875c4d894dc093825ce4f62209db5a76",
-                "reference": "36acc372875c4d894dc093825ce4f62209db5a76",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/aa5b0d0236c907fd8dba0883f3ceb97cc52e46ec",
+                "reference": "aa5b0d0236c907fd8dba0883f3ceb97cc52e46ec",
                 "shasum": ""
             },
             "require": {
@@ -3106,7 +3105,7 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2018-04-10T03:53:16+00:00"
+            "time": "2018-06-12T13:40:21+00:00"
         },
         {
             "name": "psr/log",
@@ -3153,7 +3152,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2018-04-03 15:59:15"
+            "time": "2018-04-03T15:59:15+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -3201,7 +3200,7 @@
                 "psr-16",
                 "simple-cache"
             ],
-            "time": "2017-10-23 01:57:42"
+            "time": "2017-10-23T01:57:42+00:00"
         },
         {
             "name": "rmrevin/yii2-fontawesome",
@@ -3253,7 +3252,7 @@
                 "font",
                 "yii"
             ],
-            "time": "2017-04-03 14:19:13"
+            "time": "2017-04-03T14:19:13+00:00"
         },
         {
             "name": "setasign/fpdi",
@@ -3310,12 +3309,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "3a8402439f8cff66a83ed42bc562d2385b83c471"
+                "reference": "5adaf8247f6fc219378fa2df1e6d9e4eee2d221d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/3a8402439f8cff66a83ed42bc562d2385b83c471",
-                "reference": "3a8402439f8cff66a83ed42bc562d2385b83c471",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/5adaf8247f6fc219378fa2df1e6d9e4eee2d221d",
+                "reference": "5adaf8247f6fc219378fa2df1e6d9e4eee2d221d",
                 "shasum": ""
             },
             "require": {
@@ -3361,7 +3360,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2018-04-20 06:13:15"
+            "time": "2018-05-25T07:45:58+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -3369,12 +3368,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "2d3d0c73db5c5f18d607418a2485bd11c2a10887"
+                "reference": "a741165ee91603518286fc28d4ee273ae3a0ef60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2d3d0c73db5c5f18d607418a2485bd11c2a10887",
-                "reference": "2d3d0c73db5c5f18d607418a2485bd11c2a10887",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/a741165ee91603518286fc28d4ee273ae3a0ef60",
+                "reference": "a741165ee91603518286fc28d4ee273ae3a0ef60",
                 "shasum": ""
             },
             "require": {
@@ -3461,7 +3460,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2018-05-08 13:39:55"
+            "time": "2018-06-14T17:23:10+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -3521,7 +3520,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2018-05-04 06:55:14"
+            "time": "2018-05-04T06:55:14+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -3575,7 +3574,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2018-05-04 21:18:11"
+            "time": "2018-05-04T21:18:11+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -3625,7 +3624,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2018-04-27 09:50:51"
+            "time": "2018-04-27T09:50:51+00:00"
         }
     ],
     "packages-dev": [
@@ -3662,12 +3661,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "65fbcca41437baff58a5c0e8f08fae617531dd0d"
+                "reference": "c0f369a281700a1e92f2fdf1ea8b0609cf8766bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/65fbcca41437baff58a5c0e8f08fae617531dd0d",
-                "reference": "65fbcca41437baff58a5c0e8f08fae617531dd0d",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/c0f369a281700a1e92f2fdf1ea8b0609cf8766bd",
+                "reference": "c0f369a281700a1e92f2fdf1ea8b0609cf8766bd",
                 "shasum": ""
             },
             "require": {
@@ -3704,7 +3703,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2018-03-15 16:58:08"
+            "time": "2018-06-18T15:52:10+00:00"
         },
         {
             "name": "phpspec/php-diff",
@@ -3788,7 +3787,7 @@
                 "yii2"
             ],
             "abandoned": "codeception/codeception",
-            "time": "2018-04-26 18:21:40"
+            "time": "2018-04-26T18:21:40+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
@@ -3796,12 +3795,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "7d7d1ecf4ecebb066afad5c14930da3643329fee"
+                "reference": "9634019f7f9590943427d0bafe6a40da3143ac43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/7d7d1ecf4ecebb066afad5c14930da3643329fee",
-                "reference": "7d7d1ecf4ecebb066afad5c14930da3643329fee",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/9634019f7f9590943427d0bafe6a40da3143ac43",
+                "reference": "9634019f7f9590943427d0bafe6a40da3143ac43",
                 "shasum": ""
             },
             "require": {
@@ -3835,7 +3834,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2018-05-04 15:44:20"
+            "time": "2018-05-12T18:29:46+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -3882,7 +3881,7 @@
                 "faker",
                 "yii2"
             ],
-            "time": "2018-05-04 06:55:41"
+            "time": "2018-05-04T06:55:41+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",
@@ -3890,12 +3889,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "b841bc56f6df9d112e82e9dca066b5a9693c2023"
+                "reference": "ee4d072af2788208edaed2b24b5acbc34b8631a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/b841bc56f6df9d112e82e9dca066b5a9693c2023",
-                "reference": "b841bc56f6df9d112e82e9dca066b5a9693c2023",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/ee4d072af2788208edaed2b24b5acbc34b8631a1",
+                "reference": "ee4d072af2788208edaed2b24b5acbc34b8631a1",
                 "shasum": ""
             },
             "require": {
@@ -3908,10 +3907,6 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.0.x-dev"
-                },
-                "asset-installer-paths": {
-                    "npm-asset-library": "vendor/npm",
-                    "bower-asset-library": "vendor/bower"
                 }
             },
             "autoload": {
@@ -3935,7 +3930,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2018-05-02 22:05:59"
+            "time": "2018-06-12T19:29:12+00:00"
         }
     ],
     "aliases": [],
