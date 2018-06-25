@@ -1,66 +1,57 @@
+
 <?php
-
-
-use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
-use kartik\grid\GridView;
- use kartik\export\ExportMenu;
-$gridColumns=[['class' => 'kartik\grid\SerialColumn'],
-            'no_rab',
-            'tgl_rab:date',
-            //'kode_pekerjaan',
-            //'nama_pekerjaan',
-             'qty',
-             'hari_kerja',
-            'Total_rp',
-             'qty_realisasi',
-             'hari_kerja_realisasi',
-             'total_rp_realisasi',
+use yii\widgets\ActiveForm;
+use app\models\RAB;
+use yii\helpers\ArrayHelper;
+use kartik\select2\Select2;
+use yii\web\View;
 
-    ];
+$this->registerCSSFile('js/dojotool/dojo/resources/dojo.css');
+$this->registerCSSFile('js/dojotool/dojox/gantt/resources/gantt.css');
 
+$this->registerJSFile(Yii::$app->homeUrl.'js/dojotool/dojo/dojo.js', ['position' => View::POS_HEAD]);
+$this->registerJSFile(Yii::$app->homeUrl.'js/dojotool/dojox/gantt/GanttChart.js', ['position' => View::POS_HEAD]);
+$this->registerJSFile(Yii::$app->homeUrl.'js/dojotool/dojox/gantt/GanttProjectItem.js', ['position' => View::POS_HEAD]);
+$this->registerJSFile(Yii::$app->homeUrl.'js/dojotool/dojox/gantt/GanttTaskItem.js', ['position' => View::POS_HEAD]);
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\VwRealisasiDetailSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+$data = ArrayHelper::map(
+  RAB::find()
+    ->select([
+      'id_RAB', 'ket' => "[no_RAB]+' - '+[nama_customer]",
+    ])
+    ->innerJoin('tb_mt_proyek', 'tb_mt_proyek.id_proyek=tb_mt_RAB.id_proyek')
+    ->innerJoin('tb_m_customer', 'tb_m_customer.id_customer=tb_mt_proyek.id_customer')
+    ->asArray()
+    ->all(),
+  'id_RAB',
+  'ket'
+);
 
-$this->title = 'Daftar Laporan Realisasi';
-$this->params['breadcrumbs'][] = $this->title;
+$form = ActiveForm::begin();
+
 ?>
-<div class="vw-realisasi-detail-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => $gridColumns,
-        'tableOptions' => ['class' => 'table  table-bordered table-hover'],
-        'striped'=>false,
-        'containerOptions'=>[true],
-        'pjax' => true,
-        'bordered' => true,
-        'striped' => false,
-        'condensed' => false,
-        'responsive' => true,
-        'hover' => true,
-
-        'showPageSummary' => true,
-        'panel' => [
-            'type' => GridView::TYPE_PRIMARY,
-           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.'Laporan Realisasi'. '</strong>',
-
-        ],
-        'toolbar' => [
 
 
-            '{export}',
-            '{toggleData}'
-        ],
 
-        'resizableColumns' => true,
+<div class="site-index">
 
-    ]) ?>
+    <?= $form->field($model, 'id_rab')->widget(Select2::className(), [
+      'data' => $data,
+      'options' => ['placeholder' => 'Pilih RAB...'],
+      'pluginOptions' => [
+        'allowClear' => true,
+      ],
+    ]); ?>
+
+
+       <div class="form-group">
+        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-success']); ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+<div id="gantt"></div>
 </div>

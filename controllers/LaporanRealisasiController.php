@@ -4,10 +4,11 @@ namespace app\controllers;
 
 use Yii;
 use app\models\VwRealisasiDetail;
-use app\models\VwRealisasiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Realisasi;
+use yii\base\DynamicModel;
 
 /**
  * VwRealisasiDetailController implements the CRUD actions for VwRealisasiDetail model.
@@ -15,7 +16,7 @@ use yii\filters\VerbFilter;
 class LaporanRealisasiController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -31,22 +32,33 @@ class LaporanRealisasiController extends Controller
 
     /**
      * Lists all VwRealisasiDetail models.
+     *
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new VwRealisasiSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $idRab = null;
+
+        if (Yii::$app->request->post()) {
+            $idRab = Yii::$app->request->post('id_rab', null);
+        }
+        $searchModel = Realisasi::find()->where(['id_rab' => $idRab])->all();
+        $model = new DynamicModel([
+          'id_rab',
+        ]);
+        $model->addRule(['id_rab'], 'required');
 
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 
     /**
      * Displays a single VwRealisasiDetail model.
-     * @param integer $id
+     *
+     * @param int $id
+     *
      * @return mixed
      */
     public function actionView($id)
@@ -59,6 +71,7 @@ class LaporanRealisasiController extends Controller
     /**
      * Creates a new VwRealisasiDetail model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -66,7 +79,7 @@ class LaporanRealisasiController extends Controller
         $model = new VwRealisasiDetail();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           return $this->redirect(['index']);// 'id' => $model->id_d_rab]);
+            return $this->redirect(['index']); // 'id' => $model->id_d_rab]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -77,7 +90,9 @@ class LaporanRealisasiController extends Controller
     /**
      * Updates an existing VwRealisasiDetail model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     *
+     * @param int $id
+     *
      * @return mixed
      */
     public function actionUpdate($id)
@@ -85,7 +100,7 @@ class LaporanRealisasiController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           return $this->redirect(['index']);// 'id' => $model->id_d_rab]);
+            return $this->redirect(['index']); // 'id' => $model->id_d_rab]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -96,29 +111,30 @@ class LaporanRealisasiController extends Controller
     /**
      * Deletes an existing VwRealisasiDetail model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     *
+     * @param int $id
+     *
      * @return mixed
      */
     public function actionDelete($id)
     {
+        try {
+            $this->findModel($id)->delete();
+        } catch (\yii\db\IntegrityException  $e) {
+            Yii::$app->session->setFlash('error', 'Data Tidak Dapat Dihapus Karena Dipakai Modul Lain');
+        }
 
-       try
-      {
-        $this->findModel($id)->delete();
-
-      }
-      catch(\yii\db\IntegrityException  $e)
-      {
-	Yii::$app->session->setFlash('error', "Data Tidak Dapat Dihapus Karena Dipakai Modul Lain");
-       }
-         return $this->redirect(['index']);
+        return $this->redirect(['index']);
     }
 
     /**
      * Finds the VwRealisasiDetail model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     *
+     * @param int $id
+     *
      * @return VwRealisasiDetail the loaded model
+     *
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
