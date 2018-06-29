@@ -19,53 +19,7 @@ $js = "
 $this->registerJS($js);
 
 ?>
-<script type="text/javascript">
-setTimeout(function(){
-require(["dojo","dojox/gantt/GanttChart", "dojox/gantt/GanttProjectItem", "dojox/gantt/GanttTaskItem"],function(dojo, GanttChart, GanttProjectItem, GanttTaskItem){
-  // Declare gantt chart.
-  var ganttChart = new GanttChart({
-    readOnly: false,        // optional: determine if gantt chart is editable
-    dataFilePath: "gantt_default.json",    // optional: json data file path for load and save, default is "gantt_default.json"
-    height: 400,            // optional: chart height in pixel, default is 400px
-    width: 1200,            // optional: chart width in pixel, default is 600px
-    withResource: true      // optional: display the resource chart or not
-  }, "gantt");              //"gantt" is the node container id of gantt chart widget
 
-  // Add project with tasks.
-
-  var project = new GanttProjectItem({
-    id: 1,
-    name: "Development Project",
-    startDate: new Date(2006, 5, 11)
-  });
-  var taskRequirement = new GanttTaskItem({
-    id: 1,
-    name: "Requirement",
-    startTime: new Date(2006, 5, 11),
-    duration: 50,
-    percentage: 50,
-    taskOwner: "Jack"
-  });
-  var taskAnalysis = new GanttTaskItem({
-    id: 2,
-    name: "Analysis",
-    startTime: new Date(2006, 5, 18),
-    duration: 40,
-    percentage: 0,
-    previousTaskId: "1",
-    taskOwner: "Michael"
-  });
-
-  project.addTask(taskRequirement);
-  project.addTask(taskAnalysis);
-
-  ganttChart.addProject(project);
-
-  // Initialize and Render
-  ganttChart.init();
-});
-},0);
-</script>
 
 <div class="site-index">
 

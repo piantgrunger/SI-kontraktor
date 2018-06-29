@@ -7,13 +7,9 @@ use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use yii\web\View;
 
-$this->registerCSSFile('js/dojotool/dojo/resources/dojo.css');
-$this->registerCSSFile('js/dojotool/dojox/gantt/resources/gantt.css');
+$this->registerCSSFile('js/gantt/codebase/dhtmlxgantt.css');
 
-$this->registerJSFile(Yii::$app->homeUrl.'js/dojotool/dojo/dojo.js', ['position' => View::POS_HEAD]);
-$this->registerJSFile(Yii::$app->homeUrl.'js/dojotool/dojox/gantt/GanttChart.js', ['position' => View::POS_HEAD]);
-$this->registerJSFile(Yii::$app->homeUrl.'js/dojotool/dojox/gantt/GanttProjectItem.js', ['position' => View::POS_HEAD]);
-$this->registerJSFile(Yii::$app->homeUrl.'js/dojotool/dojox/gantt/GanttTaskItem.js', ['position' => View::POS_HEAD]);
+$this->registerJSFile(Yii::$app->homeUrl.'js/gantt/codebase/dhtmlxgantt.js', ['position' => View::POS_HEAD]);
 
 $data = ArrayHelper::map(
   RAB::find()
@@ -44,7 +40,7 @@ $form = ActiveForm::begin();
       'pluginOptions' => [
         'allowClear' => true,
       ],
-    ]); ?>
+    ])->label('RAB'); ?>
 
 
        <div class="form-group">
@@ -52,6 +48,10 @@ $form = ActiveForm::begin();
     </div>
 
     <?php ActiveForm::end(); ?>
-
-<div id="gantt"></div>
+<div id="report" style='width:100%; height:800px;'>
+    <div id="gantt_here" style='width:100%; height:100%;'></div>
+<script type="text/javascript">
+    gantt.init("gantt_here");
+    gantt.load("laporan-realisasi/data?id_rab=4");
+</script>
 </div>
