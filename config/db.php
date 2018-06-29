@@ -1,5 +1,5 @@
 <?php
-
+/*
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'sqlsrv:Server=10.0.0.117\sql2008project;Database=test;encrypt=yes;',
@@ -9,7 +9,7 @@ return [
     'charset' => 'utf8',
 ];
 
-
+*/
 /*
 $server="db-desikon.ckroxmief1m9.us-east-2.rds.amazonaws.com";
 return [
@@ -20,7 +20,7 @@ return [
     'charset' => 'utf8',
 ];
 */
-/*
+
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'sqlsrv:Server=ALFIAN-PC\SERVERKU;Database=db_kontraktor;encrypt=yes;',
@@ -29,4 +29,3 @@ return [
     'password' => 'sa1234',
     'charset' => 'utf8',
 ];
-*/

@@ -57,23 +57,24 @@ class LaporanRealisasiController extends Controller
                                 ->select(['id_realisasi' => 'id_realisasi', 'no_realisasi' => 'no_realisasi', 'tgl_aw_realisasi' => 'tgl_aw_realisasi', 'duration' => $datediff])
                                 ->where(['id_rab' => $id_rab])->all();
 
-        $datax = '';
-        $link = '';
+        $datax = [];
+        $link = [];
         foreach ($searchModel as $model) {
-            $datax .= Json::encode([
+            $datax[]= [
                 'id' => $model->id_realisasi,
                 'start_date' => $model->tgl_aw_realisasi,
                 'text' => $model->no_realisasi,
                 'duration' => $model->duration,
-            ]);
-            $link .= Json::encode([
+                'parent' =>0,
+            ];
+            $link[]= [
                     'id' => $model->id_realisasi,
                     'source' => $model->id_realisasi,
                     'target' => $model->id_realisasi,
                     'type' => 0,
-            ]);
+            ];
         }
-        $data = ['data' => $datax, 'link' => $link];
+        $data = ['data' => $datax,'link'=>$link];
 
         return $data;
     }
