@@ -52,14 +52,90 @@ $form = ActiveForm::begin();
     <?php ActiveForm::end(); ?>
 <div id="report" style='width:100%; height:300px;'>
     <div id="gantt_here" style='width:100%; height:100%;'></div>
-    <input value="Cetak" type="button" onclick='gantt.exportToPDF()' class = 'btn btn-success'>
 
 <script type="text/javascript">
+
+function setScaleConfig(level) {
+    switch (level) {
+        case "day":
+            gantt.config.scale_unit = "day";
+            gantt.config.step = 1;
+            gantt.config.date_scale = "%d %M";
+            gantt.templates.date_scale = null;
+
+            gantt.config.scale_height = 27;
+
+            gantt.config.subscales = [];
+            break;
+        case "week":
+            var weekScaleTemplate = function (date) {
+              var dateToStr = gantt.date.date_to_str("%d %M");
+              var endDate = gantt.date.add(gantt.date.add(date, 1, "week"), -1, "day");
+              return dateToStr(date) + " - " + dateToStr(endDate);
+            };
+
+            gantt.config.scale_unit = "week";
+            gantt.config.step = 1;
+            gantt.templates.date_scale = weekScaleTemplate;
+
+            gantt.config.scale_height = 50;
+
+            gantt.config.subscales = [
+                {unit: "day", step: 1, date: "%D"}
+            ];
+            break;
+        case "month":
+            gantt.config.scale_unit = "month";
+            gantt.config.date_scale = "%F, %Y";
+            gantt.templates.date_scale = null;
+
+            gantt.config.scale_height = 50;
+
+            gantt.config.subscales = [
+                {unit: "day", step: 1, date: "%j, %D"}
+            ];
+
+            break;
+        case "year":
+            gantt.config.scale_unit = "year";
+            gantt.config.step = 1;
+            gantt.config.date_scale = "%Y";
+            gantt.templates.date_scale = null;
+
+            gantt.config.min_column_width = 50;
+            gantt.config.scale_height = 90;
+
+            gantt.config.subscales = [
+                {unit: "month", step: 1, date: "%M"}
+            ];
+            break;
+    }
+}
+
   gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
   gantt.config.readonly = true;
     gantt.init("gantt_here");
     <?php if($model->id_rab!=="") {?>
     gantt.load("laporan-realisasi/data?id_rab=<?=$model->id_rab;?>");
     <?php } ?>
+</script>
+<label><input type="radio" name="scale" value="day" checked/>Harian</label>
+<label><input type="radio" name="scale" value="week"/>Mingguan</label>
+<label><input type="radio" name="scale" value="month"/>Bulanan</label>
+<label><input type="radio" name="scale" value="year"/>Tahunan</label>
+
+   <input value="Cetak" type="button" onclick='gantt.exportToPDF()' class = 'btn btn-success'>
+<script type="text/javascript">
+var els = document.querySelectorAll("input[name='scale']");
+for (var i = 0; i < els.length; i++) {
+    els[i].onclick = function(e){
+        e = e || window.event;
+        var el = e.target || e.srcElement;
+        var value = el.value;
+        setScaleConfig(value);
+        gantt.render();
+    };
+}
+
 </script>
 </div>
