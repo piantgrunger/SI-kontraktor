@@ -15,7 +15,10 @@ $js = "
     $('#master').remove();
             if ($.trim($('#transaction').text()) == '')
     $('#transaction').remove();
-";
+            if ($.trim($('#report').text()) == '')
+    $('#report').remove();
+
+    ";
 $this->registerJS($js);
 
 ?>
@@ -115,4 +118,13 @@ $this->registerJS($js);
 
 </div>
 
+<div class="tiles-grid tiles-group size-2" data-group-title="" id = "report" >
+
+ <?= (Mimin::checkRoute('laporan-realisasi/index')) ? Html::a("
+
+        <span class='mif-user-check icon'></span>
+        <span class='branding-bar'>Laporan Realisasi</span>
+         ", ['/laporan-realisasi'], ['data-role' => 'tile', 'class ' => 'bg-red', 'data-size' => 'medium']) : ''; ?>
+
+</div>
 </div>
