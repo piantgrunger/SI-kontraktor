@@ -7,9 +7,11 @@ use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use yii\web\View;
 
-$this->registerCSSFile('js/gantt/codebase/dhtmlxgantt.css');
+$this->registerCSSFile(Yii::$app->homeUrl . 'js/gantt/codebase/dhtmlxgantt.css');
 
 $this->registerJSFile(Yii::$app->homeUrl.'js/gantt/codebase/dhtmlxgantt.js', ['position' => View::POS_HEAD]);
+
+$this->registerJSFile(Yii::$app->homeUrl . 'js/gantt/codebase/api.js', ['position' => View::POS_HEAD]);
 
 $data = ArrayHelper::map(
   RAB::find()
@@ -50,9 +52,14 @@ $form = ActiveForm::begin();
     <?php ActiveForm::end(); ?>
 <div id="report" style='width:100%; height:300px;'>
     <div id="gantt_here" style='width:100%; height:100%;'></div>
+    <input value="Cetak" type="button" onclick='gantt.exportToPDF()' class = 'btn btn-success'>
+
 <script type="text/javascript">
   gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
+  gantt.config.readonly = true;
     gantt.init("gantt_here");
-    gantt.load("laporan-realisasi/data?id_rab=14");
+    <?php if($model->id_rab!=="") {?>
+    gantt.load("laporan-realisasi/data?id_rab=<?=$model->id_rab;?>");
+    <?php } ?>
 </script>
 </div>
