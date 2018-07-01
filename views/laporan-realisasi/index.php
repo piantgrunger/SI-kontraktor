@@ -6,6 +6,8 @@ use app\models\RAB;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use yii\web\View;
+use miloschuman\highcharts\Highcharts;
+use yii\web\JsExpression;
 
 $this->registerCSSFile(Yii::$app->homeUrl . 'js/gantt/codebase/dhtmlxgantt.css');
 
@@ -138,4 +140,49 @@ for (var i = 0; i < els.length; i++) {
 }
 
 </script>
+</div>
+<div></div>
+<div>
+<?php
+
+
+
+echo Highcharts::widget([
+  'scripts' => [
+    'modules/exporting',
+    'themes/grid-light',
+  ],
+  'options' => [
+    'chart' =>['type' => 'spline',
+  ],
+    'title' => [
+      'text' => 'Grafik Realisasi',
+    ],
+    'xAxis' => [
+      'categories' => $dataTanggal,
+    ],
+    'yAxis' => [
+      'title' => ['text' => "Progress Realisasi (%)"],
+    ],
+
+
+
+    'series' => [
+      [
+        'name' => 'Progress',
+        'data' => $chartData,
+        'marker' => [
+          'lineWidth' => 10,
+          'lineColor' => new JsExpression('Highcharts.getOptions().colors[3]'),
+          'fillColor' => 'white',
+        ],
+      ],
+
+    ],
+  ]
+]);
+?>
+
+</div>
+
 </div>

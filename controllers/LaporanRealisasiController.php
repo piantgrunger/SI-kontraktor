@@ -5,7 +5,7 @@ namespace app\controllers;
 use Yii;
 
 
-use app\models\VwRealisasiDetail;
+use app\models\VwProgressRealisasi;
 use yii\web\Controller;
 use app\models\Realisasi;
 use yii\base\DynamicModel;
@@ -43,20 +43,43 @@ class LaporanRealisasiController extends Controller
      */
     public function actionIndex()
     {
+
         $model = new DynamicModel([
           'id_rab',
         ]);
         $model->addRule(['id_rab'], 'required');
         if ($model->load(Yii::$app->request->post()) ) {
+
+            $chartData = VwProgressRealisasi::find()
+                                ->select('progress')
+                                ->where(['id_rab'=>$model->id_rab])
+                                ->orderBy('tgl_ak_realisasi')
+                                ->column();
+             $dataTanggal = VwProgressRealisasi::find()
+                ->select('tgl_ak_realisasi')
+
+                ->where(['id_rab' => $model->id_rab])
+                ->orderBy('tgl_ak_realisasi')
+                ->column();
+
+
             return $this->render('index', [
                 'model' => $model,
+                'chartData' =>$chartData,
+                'dataTanggal' => $dataTanggal
             ]);
+
+
 
         }
 
         return $this->render('index', [
             'model' => $model,
-        ]);
+            'chartData' => '',
+                'dataTanggal' => ''
+
+
+            ]);
     }
 
     public function actionData($id_rab)
