@@ -7,13 +7,12 @@ use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use yii\web\View;
 use miloschuman\highcharts\Highcharts;
-use yii\web\JsExpression;
 
-$this->registerCSSFile(Yii::$app->homeUrl . 'js/gantt/codebase/dhtmlxgantt.css');
+$this->registerCSSFile(Yii::$app->homeUrl.'js/gantt/codebase/dhtmlxgantt.css');
 
 $this->registerJSFile(Yii::$app->homeUrl.'js/gantt/codebase/dhtmlxgantt.js', ['position' => View::POS_HEAD]);
 
-$this->registerJSFile(Yii::$app->homeUrl . 'js/gantt/codebase/api.js', ['position' => View::POS_HEAD]);
+$this->registerJSFile(Yii::$app->homeUrl.'js/gantt/codebase/api.js', ['position' => View::POS_HEAD]);
 
 $data = ArrayHelper::map(
   RAB::find()
@@ -117,9 +116,11 @@ function setScaleConfig(level) {
   gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
   gantt.config.readonly = true;
     gantt.init("gantt_here");
-    <?php if($model->id_rab!=="") {?>
-    gantt.load("laporan-realisasi/data?id_rab=<?=$model->id_rab;?>");
-    <?php } ?>
+    <?php if ($model->id_rab !== '') {
+        ?>
+    gantt.load("laporan-realisasi/data?id_rab=<?=$model->id_rab; ?>");
+    <?php
+    } ?>
 </script>
 <label><input type="radio" name="scale" value="day" checked/>Harian</label>
 <label><input type="radio" name="scale" value="week"/>Mingguan</label>
@@ -141,10 +142,9 @@ for (var i = 0; i < els.length; i++) {
 
 </script>
 </div>
-<div></div>
+
 <div>
 <?php
-
 
 
 echo Highcharts::widget([
@@ -153,7 +153,7 @@ echo Highcharts::widget([
     'themes/grid-light',
   ],
   'options' => [
-    'chart' =>['type' => 'spline',
+    'chart' => ['type' => 'spline',
   ],
     'title' => [
       'text' => 'Grafik Realisasi',
@@ -162,24 +162,16 @@ echo Highcharts::widget([
       'categories' => $dataTanggal,
     ],
     'yAxis' => [
-      'title' => ['text' => "Progress Realisasi (%)"],
+      'title' => ['text' => 'Progress Realisasi (%)'],
     ],
-
-
 
     'series' => [
       [
         'name' => 'Progress',
         'data' => $chartData,
-        'marker' => [
-          'lineWidth' => 10,
-          'lineColor' => new JsExpression('Highcharts.getOptions().colors[3]'),
-          'fillColor' => 'white',
-        ],
       ],
-
     ],
-  ]
+  ],
 ]);
 ?>
 
