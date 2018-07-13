@@ -78,6 +78,11 @@ $this->registerJS($js);
         <span class='mif-layers icon'></span>
         <span class=branding-bar'>Alat dan Material</span>
          ", ['/material'], ['data-role' => 'tile', 'class ' => 'bg-yellow']) : ''; ?>
+<?= (Mimin::checkRoute('jenisbangunan/index')) ? Html::a("
+
+        <span class='mif-shop icon'></span>
+        <span class=branding-bar'>Jenis Bangunan</span>
+         ", ['/jenisbangunan'], ['data-role' => 'tile', 'class ' => 'bg-red']) : ''; ?>
 
 
 </div>

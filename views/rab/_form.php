@@ -7,6 +7,7 @@ use kartik\select2\Select2;
 use kartik\datecontrol\DateControl;
 use kartik\widgets\FileInput;
 use yii\helpers\Url;
+use app\models\Jenisbangunan;
 
 $file_acuan_revisi = explode('.', $model->file_acuan_revisi);
 
@@ -34,7 +35,17 @@ $data = ArrayHelper::map(
     'id_Proyek',
     'ket'
         );
+$data2 = ArrayHelper::map(
+   Jenisbangunan ::find()
+        ->select([
+            'id_jenis_bangunan', 'ket' => "[kode_jenis_bangunan]+'-'+[nama_jenis_bangunan]",
+        ])
 
+        ->asArray()
+        ->all(),
+    'id_jenis_bangunan',
+    'ket'
+        );
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
 /* @var $form yii\widgets\ActiveForm */
@@ -71,12 +82,25 @@ if ($this->context->action->id == 'revisi') {
 
 
 
+    <?= $form->field($model, 'id_jenis_bangunan')->widget(Select2::className(), [
+        'data' => $data2,
+        'options' => ['placeholder' => 'Pilih Jenis Bangunan...'],
+        'pluginOptions' => [
+            'allowClear' => true,
+        ],
+    ])->label('Jenis Bangunan'); ?>
+
+
     <?= $form->field($model, 'no_rab')->textInput(); ?>
 
     <?= $form->field($model, 'tgl_rab')->widget(DateControl::className()); ?>
 
     <?= $form->field($model, 'ppn')->textInput(); ?>
 
+
+    <?= $form->field($model, 'nilai_kontrak')->textInput(); ?>
+
+    <?= $form->field($model, 'nilai_real')->textInput(); ?>
 
 
 <div class="panel panel-primary"   >

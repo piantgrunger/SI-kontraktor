@@ -6,35 +6,23 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 use yii\widgets\Pjax; use kartik\export\ExportMenu;
 $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
-            'no_proyek',
-            'no_rab',
-            'tgl_rab:date',
-    'nilai_kontrak:decimal',
-    'nilai_real:decimal',
-
-            // 'total_biaya_pekerja',
-            // 'total_biaya_peralatan',
-            // 'margin',
-            // 'dana_cadangan',
-            // 'total_rab',
-            // 'keterangan:ntext',
-            // 'created_at',
-            // 'updated_at',
+            'kode_jenis_bangunan',
+            'nama_jenis_bangunan',
             // 'created_by',
             // 'updated_by',
 
          ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
-             'view'],$this->context->route),    ],    ];
+              'update','delete','view'],$this->context->route),    ],    ];
 
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\RABSearch */
+/* @var $searchModel app\models\JenisbangunanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Daftar History R A B');
+$this->title = Yii::t('app', 'Daftar Jenis Bangunan');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="rab-index">
+<div class="jenisbangunan-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
@@ -58,12 +46,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'showPageSummary' => true,
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'R A B'). '</strong>',
-            'before' => $this->render('_search', ['model' => $searchModel])
+           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'Jenisbangunan'). '</strong>',
 
         ],
             'toolbar' => [
-
+        ['content' => ((Mimin::checkRoute($this->context->id . "/create"))) ?         Html::a(Yii::t('app', 'Jenis Bangunan Baru'), ['create'], ['class' => 'btn btn-success']) :""],
 
         '{export}',
         '{toggleData}'
