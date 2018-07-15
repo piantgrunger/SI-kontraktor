@@ -57,6 +57,16 @@ class RabController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionRap()
+    {
+        $searchModel = new RABSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index_rap', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
     /**
      * Displays a single RAB model.
@@ -136,9 +146,7 @@ class RabController extends Controller
                 if (($model->save()) && (count($model->detailRab) > 0)
                    ) {
                     $transaction->commit();
-                     return $this->render('edit_pekerjaan', [
-                        'model' => $this->findModel($model->id_rab),
-                    ]);
+                     return $this->redirect('index');
                 }
                 $transaction->rollBack();
             } catch (\Exception $ecx) {
@@ -234,9 +242,7 @@ class RabController extends Controller
                     if ($old_revisi !== $model->tgl_revisi)
                        $historyModel->save(false);
 
-                    return $this->render('edit_pekerjaan', [
-                        'model' => $this->findModel($id),
-                    ]);
+                    return $this->redirect('index');
                 }
                 $transaction->rollBack();
             } catch (\yii\db\IntegrityException $e) {

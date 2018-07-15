@@ -73,6 +73,7 @@ class PekerjaanSearch extends Pekerjaan
             ->andFilterWhere(['like', 'satuan', $this->satuan])
             ->andFilterWhere(['like', 'keterangan', $this->keterangan]);
 
+            $query->orderBy('kode_pekerjaan, isnull([id_parent_pekerjaan],[id_pekerjaan]), [level] ');
         return $dataProvider;
     }
 }

@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
 
-$this->title = Yii::t('app', ' Pembuatan {modelClass}: ', [
-    'modelClass' => 'R A P',
+$this->title = Yii::t('app', ' Update {modelClass}: ', [
+    'modelClass' => 'R A B',
 ]) . $model->no_rab;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar R A B'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->no_rab, 'url' => ['view', 'id' => $model->id_rab]];

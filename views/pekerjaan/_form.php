@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use app\models\JenisPekerjaan;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
+use app\models\Pekerjaan;
 /* @var $this yii\web\View */
 /* @var $model app\models\Pekerjaan */
 /* @var $form yii\widgets\ActiveForm */
@@ -18,7 +19,18 @@ $data= ArrayHelper::map(
     'id_jenis_pekerjaan',
     'ket'
         );
-?>
+$parent = ArrayHelper::map(
+    Pekerjaan::find()
+        ->select([
+            'id_pekerjaan', "ket" => "[kode_pekerjaan]+' - '+[nama_pekerjaan]"
+        ])
+        ->asArray()
+        ->all(),
+    'id_pekerjaan',
+    'ket'
+);
+
+        ?>
 
 <div class="pekerjaan-form">
 
@@ -26,17 +38,17 @@ $data= ArrayHelper::map(
         <?= $form->errorSummary($model) ?> <!-- ADDED HERE -->
 
 
+ <?= $form->field($model, 'id_parent_pekerjaan')->widget(Select2::className(), [
+    'data' => $parent,
+    'options' => ['placeholder' => 'Pilih Parent Pekerjaan ...'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+]) ->label('Parent Pekerjaan')?>
     <?= $form->field($model, 'kode_pekerjaan')->textInput() ?>
 
     <?= $form->field($model, 'nama_pekerjaan')->textInput() ?>
 
- <?= $form->field($model, 'id_jenis_pekerjaan')->widget(Select2::className(),[
-    'data' => $data,
-    'options' => ['placeholder' => 'Pilih Jenis Pekerjaan ...'],
-    'pluginOptions' => [
-        'allowClear' => true
-    ],
- ]) ?>
 
     <?= $form->field($model, 'satuan')->textInput() ?>
 

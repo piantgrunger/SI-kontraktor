@@ -89,10 +89,10 @@ if ($this->context->action->id == 'revisi') {
             'allowClear' => true,
         ],
     ])->label('Jenis Bangunan'); ?>
-<?
+<?php
 if ($this->context->action->id != 'revisi') {
 
-    echo $form->field($model, 'no_rab')->textInput(); ?>
+    echo $form->field($model, 'no_rab')->textInput();
 }
 ?>
     <?= $form->field($model, 'tgl_rab')->widget(DateControl::className()); ?>

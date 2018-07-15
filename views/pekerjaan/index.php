@@ -6,9 +6,9 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 use yii\widgets\Pjax; use kartik\export\ExportMenu;
 $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
-            'nama_jenis_pekerjaan',
             'kode_pekerjaan',
-            'nama_pekerjaan',
+            'nama_pekerjaan_view',
+            'parent_pekerjaan',
             'satuan',
             // 'keterangan:ntext',
             // 'created_at',
