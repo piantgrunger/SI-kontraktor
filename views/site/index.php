@@ -114,6 +114,15 @@ $this->registerJS($js);
         <span class='branding-bar'>History R A B</span>
          ", ['/history'], ['data-role' => 'tile', 'class ' => 'bg-blue']) : ''; ?>
 
+
+  <?= (Mimin::checkRoute('rab/rap')) ? Html::a("
+
+        <span class='mif-calculator icon'></span>
+        <span class='branding-bar'>R A P</span>
+         ", ['/rab/rap'], ['data-role' => 'tile', 'class ' => 'bg-blue', 'data-size' => 'wide']) : ''; ?>
+
+
+
 <?= (Mimin::checkRoute('realisasi/index')) ? Html::a("
 
         <span class='mif-library icon'></span>

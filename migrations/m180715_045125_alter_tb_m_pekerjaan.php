@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Class m180715_045125_alter_tb_m_pekerjaan
+ * Class m180715_045125_alter_tb_m_pekerjaan.
  */
 class m180715_045125_alter_tb_m_pekerjaan extends Migration
 {
@@ -12,10 +12,8 @@ class m180715_045125_alter_tb_m_pekerjaan extends Migration
      */
     public function safeUp()
     {
-         $this->alterColumn('tb_m_pekerjaan','id_jenis_pekerjaan','integer null');
-        $this->alterColumn('tb_m_pekerjaan', 'id_pekerjaan_parent', 'integer null');
-
-
+        $this->alterColumn('tb_m_pekerjaan', 'id_jenis_pekerjaan', 'integer null');
+        $this->addColumn('tb_m_pekerjaan', 'id_pekerjaan_parent', 'integer null');
     }
 
     /**

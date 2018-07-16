@@ -5,8 +5,9 @@
 use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\widgets\Pjax; use kartik\export\ExportMenu;
-$gridColumns=[['class' => 'kartik\grid\SerialColumn'],
+use yii\widgets\Pjax;
+
+$gridColumns = [['class' => 'kartik\grid\SerialColumn'],
             'no_proyek',
             'no_rab',
             'tgl_rab:date',
@@ -22,26 +23,22 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'created_by',
             // 'updated_by',
 
-         ['class' => 'kartik\grid\ActionColumn',   'template' =>  '{view}  {rekap} {jenis} {harga}  {revisi} ',
-        'buttons' => ['revisi' =>
-            function ($url, $model) {
-            if (Mimin::checkRoute($this->context->id . "/revisi"))
-            {
+         ['class' => 'kartik\grid\ActionColumn',   'template' => '{view}  {rekap} {jenis} {harga}  {revisi} ',
+        'buttons' => ['revisi' => function ($url, $model) {
+            if (Mimin::checkRoute($this->context->id.'/revisi')) {
                 return
                     Html::a(
                 '<span class="glyphicon glyphicon-ok"></span>',
-                ['revisi', 'id' => $model->id_rab],
+                ['detail-rap', 'id' => $model->id_rab],
                 [
-                    'title' => Yii::t('app', 'Revisi'),
+                    'title' => Yii::t('app', 'Input RAP'),
                 ]
             );
-          } else
-          {
-              return " ";
-          }
-        }, 'rekap' =>
-            function ($url, $model) {
-            if (Mimin::checkRoute($this->context->id . "/view-rekap")) {
+            } else {
+                return ' ';
+            }
+        }, 'rekap' => function ($url, $model) {
+            if (Mimin::checkRoute($this->context->id.'/view-rekap')) {
                 return
                     Html::a(
                     '<span class="glyphicon glyphicon-list"></span>',
@@ -51,12 +48,11 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
                     ]
                 );
             } else {
-                return " ";
+                return ' ';
             }
         },
-            'jenis' =>
-                function ($url, $model) {
-                if (Mimin::checkRoute($this->context->id . "/view-jenis-pekerjaan")) {
+            'jenis' => function ($url, $model) {
+                if (Mimin::checkRoute($this->context->id.'/view-jenis-pekerjaan')) {
                     return
                         Html::a(
                         '<span class="glyphicon glyphicon-list"></span>',
@@ -66,11 +62,10 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
                         ]
                     );
                 } else {
-                    return " ";
+                    return ' ';
                 }
-            }, 'view' =>
-                function ($url, $model) {
-                if (Mimin::checkRoute($this->context->id . "/view")) {
+            }, 'view' => function ($url, $model) {
+                if (Mimin::checkRoute($this->context->id.'/view')) {
                     return
                         Html::a(
                         '<span class="glyphicon glyphicon-list"></span>',
@@ -80,12 +75,11 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
                         ]
                     );
                 } else {
-                    return " ";
+                    return ' ';
                 }
-                },'harga' =>
-                    function ($url, $model) {
-                    if (Mimin::checkRoute($this->context->id . "/view-harga")) {
-                        return
+            }, 'harga' => function ($url, $model) {
+                if (Mimin::checkRoute($this->context->id.'/view-harga')) {
+                    return
                             Html::a(
                             '<span class="glyphicon glyphicon-list"></span>',
                             ['view-harga', 'id' => $model->id_rab],
@@ -93,14 +87,10 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
                                 'title' => Yii::t('app', 'Lihat Daftar Harga'),
                             ]
                         );
-                    } else {
-                        return " ";
-                    }
-            } ]
-
-
-             ,    ],    ];
-
+                } else {
+                    return ' ';
+                }
+            }, ],    ],    ];
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RABSearch */
@@ -111,9 +101,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rab-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);?>
 
 
     <?= GridView::widget([
@@ -121,8 +111,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => $gridColumns,
         'tableOptions' => ['class' => 'table  table-bordered table-hover'],
-        'striped'=>false,
-        'containerOptions'=>[true],
+        'striped' => false,
+        'containerOptions' => [true],
         'pjax' => true,
         'bordered' => true,
         'striped' => false,
@@ -133,18 +123,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'showPageSummary' => true,
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'R A P'). '</strong>',
-            'before' => $this->render('_search', ['model' => $searchModel])
-
+           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'R A P').'</strong>',
+            'before' => $this->render('_search', ['model' => $searchModel]),
         ],
             'toolbar' => [
-
         '{export}',
-        '{toggleData}'
+        '{toggleData}',
     ],
 
-         'resizableColumns'=>true,
-
+         'resizableColumns' => true,
     ]); ?>
     <?php Pjax::end(); ?>
 </div>

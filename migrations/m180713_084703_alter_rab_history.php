@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Class m180713_084703_alter_rab_history
+ * Class m180713_084703_alter_rab_history.
  */
 class m180713_084703_alter_rab_history extends Migration
 {
@@ -12,11 +12,8 @@ class m180713_084703_alter_rab_history extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('tb_mt_rab_history', 'id_jenis_bangunan', 'integer  null FOREIGN KEY  REFERENCES  tb_m_jenis_bangunan (id_jenis_bangunan)  ');
         $this->addColumn('tb_mt_rab_history', 'nilai_kontrak', 'decimal(19,2) not null default 0');
         $this->addColumn('tb_mt_rab_history', 'nilai_real', 'decimal(19,2) not null default 0');
-
-
     }
 
     /**

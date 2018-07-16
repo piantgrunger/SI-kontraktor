@@ -13,15 +13,15 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rab-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
 
     <p>
-             <?php if ((Mimin::checkRoute($this->context->id."/update"))){ ?>        <?= Html::a(Yii::t('app', 'Ubah'), ['update', 'id' => $model->id_rab], ['class' => 'btn btn-primary']) ?>
-        <?php } ?>
+        
 
-          <?php if ((Mimin::checkRoute($this->context->id . "/index"))) { ?>        <?= Html::a(Yii::t('app', 'Daftar RAB'), ['index'], ['class' => 'btn btn-success']) ?>
+          <?php if ((Mimin::checkRoute($this->context->id.'/rap'))) {
+    ?>        <?= Html::a(Yii::t('app', 'Daftar RAP'), ['/rab/rap'], ['class' => 'btn btn-success']); ?>
         <?php
-    } ?>
+} ?>
          </p>
 
     <?= DetailView::widget([
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'no_rab',
             'tgl_rab:date',
         ],
-    ]) ?>
+    ]); ?>
 
 
 
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'itemView' => '_item_pekerjaan_edit',
         'clientOptions' => [
             'btnAddSelector' => '#btn-add2',
-        ]
+        ],
     ]);
     ?>
  </div>
@@ -60,14 +60,12 @@ $this->params['breadcrumbs'][] = $this->title;
  <?= DetailView::widget([
     'model' => $model,
     'attributes' => [
+        'total_dpp:decimal',
+            'ppn_rp:decimal',
 
-        'total_dpp',
-            'ppn_rp',
-
-       'total_rab'
-
+       'total_rab:decimal',
     ],
-]) ?>
+]); ?>
 
 
 </div>
