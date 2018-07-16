@@ -36,9 +36,9 @@ class d_RAB extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_pekerjaan'], 'required'],
-            [['id_rab', 'id_pekerjaan', 'hari_kerja'], 'integer'],
-            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'qty', 'total_rab'], 'number'],
+            [['id_jenis_pekerjaan'], 'required'],
+            [['id_rab', 'id_jenis_pekerjaan','id_pekerjaan', 'hari_kerja'], 'integer'],
+            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'qty', 'total_rab','nilai_pagu'], 'number'],
             [['status_pekerjaan', 'satuan'], 'string'],
             [['id_rekanan'], 'required', 'when' => function ($model) {
                 return $model->status_pekerjaan == 'Subkon';
@@ -57,6 +57,7 @@ class d_RAB extends \yii\db\ActiveRecord
         return [
             'id_d_rab' => Yii::t('app', 'Id D RAB'),
             'id_rab' => Yii::t('app', 'Id RAB'),
+            'id_jenis_pekerjaan' =>'Level Pekerjaan',
             'id_pekerjaan' => Yii::t('app', 'Pekerjaan'),
             'total_biaya_material' => Yii::t('app', 'Total Biaya Material'),
             'total_biaya_pekerja' => Yii::t('app', 'Total Biaya Pekerja'),
@@ -78,14 +79,19 @@ class d_RAB extends \yii\db\ActiveRecord
         return is_null($this->pekerjaan) ? '' : $this->pekerjaan->nama_pekerjaan;
     }
 
+    public function getJenisPekerjaan()
+    {
+        return $this->hasOne(JenisPekerjaan::className(), ['id_jenis_pekerjaan' => 'id_jenis_pekerjaan']);
+    }
+
     public function getNama_pekerjaan_detail()
     {
-        return is_null($this->pekerjaan) ? '' : $this->pekerjaan->jenisPekerjaan->nama_jenis_pekerjaan.' : '.$this->pekerjaan->nama_pekerjaan;
+        return is_null($this->pekerjaan) ? '' : $this->jenisPekerjaan->kode_jenis_pekerjaan.' - '. $this->jenisPekerjaan->nama_jenis_pekerjaan .' : '.$this->pekerjaan->nama_pekerjaan;
     }
 
     public function getNama_jenis_pekerjaan()
     {
-        return is_null($this->pekerjaan) ? '' : $this->pekerjaan->jenisPekerjaan->nama_jenis_pekerjaan;
+        return is_null($this->pekerjaan) ? '' : $this->jenisPekerjaan->kode_jenis_pekerjaan .'-'. $this->jenisPekerjaan->nama_jenis_pekerjaan;
     }
 
     public function getSatuan()

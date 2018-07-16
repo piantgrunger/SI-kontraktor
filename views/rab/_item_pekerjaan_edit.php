@@ -19,6 +19,7 @@ use yii\helpers\Html;
 <div class="col-sm-2">
  Hari Kerja :   <?= $model->hari_kerja; ?> Hari</div>
 
+
 <div class="col-sm-2">
     <?=Html::a(Yii::t('app', 'Ubah'), ['pekerjaan', 'id' => $model->id_d_rab], ['class' => 'btn btn-primary']); ?>
 </div>

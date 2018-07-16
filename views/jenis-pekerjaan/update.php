@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model app\models\JenisPekerjaan */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
-    'modelClass' => 'Jenis Pekerjaan',
+    'modelClass' => 'Level Pekerjaan',
 ]) . $model->kode_jenis_pekerjaan;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar Jenis Pekerjaan'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar Level Pekerjaan'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->kode_jenis_pekerjaan, 'url' => ['view', 'id' => $model->id_jenis_pekerjaan]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>

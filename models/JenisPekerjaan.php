@@ -9,7 +9,6 @@ use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 
-
 /**
  * This is the model class for table "tb_m_jenis_pekerjaan".
  *
@@ -63,9 +62,9 @@ class JenisPekerjaan extends \yii\db\ActiveRecord
     {
         return [
             [['kode_jenis_pekerjaan', 'nama_jenis_pekerjaan'], 'required'],
-            [['kode_jenis_pekerjaan', 'nama_jenis_pekerjaan', 'keterangan'], 'string'],
+            [[ 'nama_jenis_pekerjaan', 'keterangan'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['created_by', 'updated_by'], 'integer'],
+            [['kode_jenis_pekerjaan','created_by', 'updated_by'], 'integer'],
             [['kode_jenis_pekerjaan'], 'unique'],
         ];
     }
@@ -78,8 +77,8 @@ class JenisPekerjaan extends \yii\db\ActiveRecord
     {
         return [
             'id_jenis_pekerjaan' => Yii::t('app', 'Id Jenis Pekerjaan'),
-            'kode_jenis_pekerjaan' => Yii::t('app', 'Kode Jenis Pekerjaan'),
-            'nama_jenis_pekerjaan' => Yii::t('app', 'Nama Jenis Pekerjaan'),
+            'kode_jenis_pekerjaan' => Yii::t('app', 'Level  Pekerjaan'),
+            'nama_jenis_pekerjaan' => Yii::t('app', 'Nama Level'),
             'keterangan' => Yii::t('app', 'Keterangan'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),

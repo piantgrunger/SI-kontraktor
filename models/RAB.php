@@ -10,8 +10,6 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use mdm\behaviors\ar\RelationTrait;
 
-
-
 /**
  * This is the model class for table "tb_mt_rab".
  *
@@ -40,8 +38,8 @@ class RAB extends \yii\db\ActiveRecord
      */
 
 
-  public $old_file_acuan_revisi;
-     use RelationTrait;
+    public $old_file_acuan_revisi;
+    use RelationTrait;
 
     public function behaviors()
     {
@@ -126,17 +124,15 @@ class RAB extends \yii\db\ActiveRecord
     public function getRekap_pekerjaan()
     {
         $model = d_RAB::find()->select(['jenis_pekerjaan'=>'nama_jenis_pekerjaan','total_rab' => 'sum(total_rab)'])
-                      ->innerJoin('tb_m_pekerjaan','tb_m_pekerjaan.id_pekerjaan=tb_dt_rab.id_pekerjaan ')
+                      ->innerJoin('tb_m_pekerjaan', 'tb_m_pekerjaan.id_pekerjaan=tb_dt_rab.id_pekerjaan ')
                       ->innerJoin('tb_m_jenis_pekerjaan', 'tb_m_pekerjaan.id_jenis_pekerjaan=tb_m_jenis_pekerjaan.id_jenis_pekerjaan ')
                        ->where(['id_rab'=>$this->id_rab])
                       ->groupBy('nama_jenis_pekerjaan')
                       ->all();
-       return $model;
-
+        return $model;
     }
     public function getDaftar_harga()
     {
-
         $expression = new Expression("'Upah Buruh'");
         $model1 = sd_RAB_material::find()->select(['kelompok_material'=>'kelompok_material',  'material_detail' => 'nama_material', 'harga' => 'tb_sdt_rab_material.harga'])
             ->distinct()
@@ -162,7 +158,7 @@ class RAB extends \yii\db\ActiveRecord
 
 
 
-        $result= $model1->union($model2,true)->union($model3,true);
+        $result= $model1->union($model2, true)->union($model3, true);
         return $result->all();
     }
 
@@ -186,7 +182,10 @@ class RAB extends \yii\db\ActiveRecord
 
     public function getDetailRab()
     {
-        return $this->hasMany(d_RAB::className(), ['id_rab' => 'id_rab']);
+        return $this->hasMany(d_RAB::className(), ['id_rab' => 'id_rab'])
+        ->leftJoin('tb_m_jenis_pekerjaan', 'tb_m_jenis_pekerjaan.id_jenis_pekerjaan = tb_dt_rab.id_jenis_pekerjaan')
+        ->orderBy(' cast(kode_jenis_pekerjaan as integer)');
+        ;
     }
     public function setDetailRab($value)
     {

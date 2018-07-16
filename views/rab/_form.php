@@ -91,9 +91,8 @@ if ($this->context->action->id == 'revisi') {
     ])->label('Jenis Bangunan'); ?>
 <?php
 if ($this->context->action->id != 'revisi') {
-
-    echo $form->field($model, 'no_rab')->textInput();
-}
+        echo $form->field($model, 'no_rab')->textInput();
+    }
 ?>
     <?= $form->field($model, 'tgl_rab')->widget(DateControl::className()); ?>
 
@@ -113,15 +112,16 @@ if ($this->context->action->id != 'revisi') {
     <thead>
         <tr>
 
+            <th>Level Pekerjaan</th>
+
             <th>Pekerjaan</th>
+            <th>Nilai Pagu</th>
 
             <th>Volume</th>
             <th>Satuan</th>
 
             <th>Hari Kerja</th>
 
-            <th>Status Pekerjaan</th>
-                      <th>Rekanan</th>
 
             <th><a id="btn-add2" href="#"><span class="glyphicon glyphicon-plus"></span></a></th>
         </tr>

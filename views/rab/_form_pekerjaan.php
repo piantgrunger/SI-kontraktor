@@ -6,6 +6,20 @@ use app\models\Proyek;
 use kartik\select2\Select2;
 use kartik\datecontrol\DateControl;
 use yii\bootstrap\Tabs;
+use yii\helpers\ArrayHelper;
+use app\models\Rekanan;
+
+$data2 = ArrayHelper::map(
+    Rekanan::find()
+        ->select([
+            'id_rekanan', 'ket' => "[kode_rekanan]+' - '+[nama_rekanan]",
+        ])
+        ->asArray()
+        ->all(),
+    'id_rekanan',
+    'ket'
+);
+
 
 $form = ActiveForm::begin();
 
@@ -44,7 +58,19 @@ $item =
         <?= $form->errorSummary($model) ?> <!-- ADDED HERE -->
     <h4>No RAB  :  <?=$model->no_rab?></h4>
    <h4> Pekerjaan  :  <?= $model->nama_pekerjaan ?></h4>
+<?php
+echo $form->field($model, "status_pekerjaan")->dropDownList(['Internal' => 'Internal', 'Subkon' => 'Subkon']);
 
+echo $form->field($model, "id_rekanan")->widget(Select2::className(), [
+    'data' => $data2,
+    'options' => ['placeholder' => 'Pilih Rekanan...',
+    ],
+    'pluginOptions' => [
+        'allowClear' => true,
+    ],
+]);
+
+?>
 <?= Tabs::widget([
     'items' => $item
 ]);

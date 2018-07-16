@@ -4,7 +4,9 @@
 use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\widgets\Pjax; use kartik\export\ExportMenu;
+use yii\widgets\Pjax;
+use kartik\export\ExportMenu;
+
 $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             'kode_jenis_pekerjaan',
             'nama_jenis_pekerjaan',
@@ -14,21 +16,21 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'updated_by',
 
          ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
-              'update','delete','view'],$this->context->route),    ],    ];
+              'update','delete','view'], $this->context->route),    ],    ];
 
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\JenisPekerjaanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Daftar Jenis Pekerjaan');
+$this->title = Yii::t('app', 'Daftar Level Pekerjaan');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jenis-pekerjaan-index">
     <h1><?= Html::encode($this->title) ?></h1>
 
      <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);?>
 
 
 
