@@ -105,13 +105,13 @@ $this->registerJS($js);
 
         <span class='mif-calculator icon'></span>
         <span class='branding-bar'>R A B</span>
-         ", ['/rab'], ['data-role' => 'tile', 'class ' => 'bg-green']) : ''; ?>
+         ", ['/rab'], ['data-role' => 'tile', 'class ' => 'bg-green', 'data-size' => 'wide']) : ''; ?>
 
 
   <?= (Mimin::checkRoute('history/index')) ? Html::a("
 
         <span class='mif-copy icon'></span>
-        <span class='branding-bar'>History R A B</span>
+        <span class='branding-bar'>History R A P</span>
          ", ['/history'], ['data-role' => 'tile', 'class ' => 'bg-blue']) : ''; ?>
 
 
@@ -119,7 +119,7 @@ $this->registerJS($js);
 
         <span class='mif-calculator icon'></span>
         <span class='branding-bar'>R A P</span>
-         ", ['/rab/rap'], ['data-role' => 'tile', 'class ' => 'bg-blue', 'data-size' => 'wide']) : ''; ?>
+         ", ['/rab/rap'], ['data-role' => 'tile', 'class ' => 'bg-blue']) : ''; ?>
 
 
 

@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Class m180717_002154_alter_tb_dt_rab
+ * Class m180717_002154_alter_tb_dt_rab.
  */
 class m180717_002154_alter_tb_dt_rab extends Migration
 {
@@ -21,9 +21,6 @@ class m180717_002154_alter_tb_dt_rab extends Migration
      */
     public function safeDown()
     {
-        echo "m180717_002154_alter_tb_dt_rab cannot be reverted.\n";
-
-        return false;
     }
 
     /*

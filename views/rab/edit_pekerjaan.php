@@ -7,7 +7,7 @@ use hscstudio\mimin\components\Mimin;
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
 
-$this->title = $model->no_rab;
+$this->title = 'Rancangan Anggaran Proyek';
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar R A B'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

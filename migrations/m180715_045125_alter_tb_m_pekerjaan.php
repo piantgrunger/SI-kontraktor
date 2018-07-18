@@ -13,7 +13,7 @@ class m180715_045125_alter_tb_m_pekerjaan extends Migration
     public function safeUp()
     {
         $this->alterColumn('tb_m_pekerjaan', 'id_jenis_pekerjaan', 'integer null');
-        $this->addColumn('tb_m_pekerjaan', 'id_pekerjaan_parent', 'integer null');
+        $this->addColumn('tb_m_pekerjaan', 'id_parent_pekerjaan', 'integer null');
     }
 
     /**
@@ -21,9 +21,7 @@ class m180715_045125_alter_tb_m_pekerjaan extends Migration
      */
     public function safeDown()
     {
-        echo "m180715_045125_alter_tb_m_pekerjaan cannot be reverted.\n";
-
-        return false;
+        $this->dropColumn('tb_m_pekerjaan', 'id_pekerjaan_parent');
     }
 
     /*

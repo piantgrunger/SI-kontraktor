@@ -4,7 +4,6 @@ use app\models\Pekerjaan;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use yii\helpers\Url;
-use app\models\Rekanan;
 use app\models\JenisPekerjaan;
 
 /* @var $this yii\web\View */
@@ -15,7 +14,6 @@ $data = ArrayHelper::map(
         ->select([
             'id_Pekerjaan', 'ket' => "[kode_Pekerjaan]+' - '+[nama_pekerjaan]",
         ])
-        ->innerJoin('tb_m_jenis_pekerjaan', 'tb_m_jenis_pekerjaan.id_jenis_pekerjaan = tb_m_pekerjaan.id_jenis_pekerjaan')
         ->asArray()
         ->all(),
     'id_Pekerjaan',
@@ -41,7 +39,6 @@ $data3 = ArrayHelper::map(
         'data' => $data3,
         'options' => [
             'placeholder' => 'Pilih Jenis Pekerjaan...',
-
         ],
         'pluginOptions' => [
             'allowClear' => true,

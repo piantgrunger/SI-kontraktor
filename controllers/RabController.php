@@ -319,13 +319,12 @@ class RabController extends Controller
     {
         $model = d_RAB::findOne($id);
 
-        if ($model->load(Yii::$app->request->post(), '')) {
+        if ($model->load(Yii::$app->request->post('d_RAB'), '')) {
             $transaction = Yii::$app->db->beginTransaction();
             try {
                 $model->sDetailRabMaterial = Yii::$app->request->post('sd_RAB_material', []);
                 $model->sDetailRabPeralatan = Yii::$app->request->post('sd_RAB_peralatan', []);
                 $model->sDetailRabPekerja = Yii::$app->request->post('sd_RAB_pekerja', []);
-
                 if (($model->save())) {
                     $transaction->commit();
                     $modelRAB = d_RAB::findOne($model->id_d_rab);
@@ -345,12 +344,13 @@ class RabController extends Controller
                     $modelRAB->total_biaya_peralatan = is_null($model_d->sum('total_biaya_peralatan')) ? 0 : $model_d->sum('total_biaya_peralatan');
                     $modelRAB->total_biaya_pekerja = is_null($model_d->sum('total_biaya_pekerja')) ? 0 : $model_d->sum('total_biaya_pekerja');
 
-                    $modelRAB->total_rab =is_null($model_d->sum('total_rab')) ? 0 : $model_d->sum('total_rab');
+                    $modelRAB->total_rab = is_null($model_d->sum('total_rab')) ? 0 : $model_d->sum('total_rab');
                     $modelRAB->save();
                     $modelRAB->ppn_rp = $modelRAB->total_rab * ($modelRAB->ppn / 100);
                     $modelRAB->total_rab = $modelRAB->total_rab + $modelRAB->ppn_rp;
 
                     $modelRAB->save();
+
                     return $this->redirect(['detail-rap',
             'id' => $model->id_rab,
         ]);

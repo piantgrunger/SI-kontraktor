@@ -13,7 +13,7 @@ use yii\helpers\Html;
 <div style ="margin-top:10px;margin-bottom:10px;margin-left:10px">
 <div class="row">
 <div class="col-sm-4">
-    <?= $model->nama_pekerjaan_detail; ?>(  <?= $model->status_pekerjaan; ?> )</div>
+    <?= $model->nama_pekerjaan_detail; ?></div>
 <div class="col-sm-2">
   Qty :  <?= $model->qty; ?> <?= $model->satuan; ?> </div>
 <div class="col-sm-2">
