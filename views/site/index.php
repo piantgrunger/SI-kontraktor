@@ -59,7 +59,7 @@ $this->registerJS($js);
     <?= (Mimin::checkRoute('jenis-pekerjaan/index')) ? Html::a("
 
         <span class='mif-folder icon'></span>
-        <span class='branding-bar'>Jenis-Pekerjaan</span>
+        <span class='branding-bar'>Level-Pekerjaan</span>
          ", ['/jenis-pekerjaan'], ['data-role' => 'tile', 'class ' => 'bg-blue']) : ''; ?>
  <?= (Mimin::checkRoute('pekerjaan/index')) ? Html::a("
 

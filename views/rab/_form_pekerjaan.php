@@ -57,6 +57,7 @@ $item =
 
         <?= $form->errorSummary($model) ?> <!-- ADDED HERE -->
     <h4>No RAB  :  <?=$model->no_rab?></h4>
+   <h4>Level  Pekerjaan  :  <?= $model->nama_jenis_pekerjaan ?></h4>
    <h4> Pekerjaan  :  <?= $model->nama_pekerjaan ?></h4>
 <?php
 echo $form->field($model, "status_pekerjaan")->dropDownList(['Internal' => 'Internal', 'Subkon' => 'Subkon']);
@@ -68,7 +69,8 @@ echo $form->field($model, "id_rekanan")->widget(Select2::className(), [
     'pluginOptions' => [
         'allowClear' => true,
     ],
-]);
+])->label('Rekanan');
+echo $form->field($model, "total_rab")->textInput()->label('Nilai Pekerjaan');
 
 ?>
 <?= Tabs::widget([

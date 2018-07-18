@@ -328,7 +328,6 @@ class RabController extends Controller
 
                 if (($model->save())) {
                     $transaction->commit();
-
                     $modelRAB = d_RAB::findOne($model->id_d_rab);
                     $model_d_material = sd_RAB_material::find()->where(['id_d_rab' => $model->id_d_rab]);
                     $modelRAB->total_biaya_material = is_null($model_d_material->sum('sub_total')) ? 0 : $model_d_material->sum('sub_total');
@@ -336,25 +335,24 @@ class RabController extends Controller
                     $modelRAB->total_biaya_peralatan = is_null($model_d_peralatan->sum('sub_total')) ? 0 : $model_d_peralatan->sum('sub_total');
                     $model_d_pekerja = sd_RAB_pekerja::find()->where(['id_d_rab' => $model->id_d_rab]);
                     $modelRAB->total_biaya_pekerja = is_null($model_d_pekerja->sum('sub_total')) ? 0 : $model_d_pekerja->sum('sub_total');
-                    $modelRAB->total_rab = $modelRAB->total_biaya_material + $modelRAB->total_biaya_peralatan + $modelRAB->total_biaya_pekerja;
-
+                    if ($modelRAB->total_biaya_material + $modelRAB->total_biaya_peralatan + $modelRAB->total_biaya_pekerja != 0) {
+                        $modelRAB->total_rab = $modelRAB->total_biaya_material + $modelRAB->total_biaya_peralatan + $modelRAB->total_biaya_pekerja;
+                    }
                     $modelRAB->save();
-
                     $modelRAB = RAB::findOne($model->id_rab);
                     $model_d = d_RAB::find()->where(['id_rab' => $model->id_rab]);
                     $modelRAB->total_biaya_material = is_null($model_d->sum('total_biaya_material')) ? 0 : $model_d->sum('total_biaya_material');
                     $modelRAB->total_biaya_peralatan = is_null($model_d->sum('total_biaya_peralatan')) ? 0 : $model_d->sum('total_biaya_peralatan');
                     $modelRAB->total_biaya_pekerja = is_null($model_d->sum('total_biaya_pekerja')) ? 0 : $model_d->sum('total_biaya_pekerja');
 
-                    $modelRAB->total_rab = $modelRAB->total_biaya_material + $modelRAB->total_biaya_peralatan + $modelRAB->total_biaya_pekerja;
+                    $modelRAB->total_rab =is_null($model_d->sum('total_rab')) ? 0 : $model_d->sum('total_rab');
                     $modelRAB->save();
                     $modelRAB->ppn_rp = $modelRAB->total_rab * ($modelRAB->ppn / 100);
                     $modelRAB->total_rab = $modelRAB->total_rab + $modelRAB->ppn_rp;
 
                     $modelRAB->save();
-
-                    return $this->render('edit_pekerjaan', [
-            'model' => $this->findModel($model->id_rab),
+                    return $this->redirect(['detail-rap',
+            'id' => $model->id_rab,
         ]);
                 }
                 $transaction->rollBack();
