@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title); ?></h1>
 
     <p>
-        
+
 
           <?php if ((Mimin::checkRoute($this->context->id.'/rap'))) {
     ?>        <?= Html::a(Yii::t('app', 'Daftar RAP'), ['/rab/rap'], ['class' => 'btn btn-success']); ?>
@@ -64,6 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'ppn_rp:decimal',
 
        'total_rab:decimal',
+        'retensi_rp:decimal',
     ],
 ]); ?>
 

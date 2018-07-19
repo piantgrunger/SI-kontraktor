@@ -29,7 +29,6 @@ $data = ArrayHelper::map(
 /* @var $model app\models\rab */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-<?= $form->field($model, "[$key]id_sd_rab")->hiddenInput()->label(false); ?>
 <td>
 
     <?= $form->field($model, "[$key]id_level_jabatan")->widget(Select2::className(), [

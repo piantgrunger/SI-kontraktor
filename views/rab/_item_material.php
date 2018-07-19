@@ -30,7 +30,6 @@ $data = ArrayHelper::map(
 /* @var $model app\models\RAB */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-<?= $form->field($model, "[$key]id_sd_rab")->hiddenInput()->label(false); ?>
 
 <td>
 

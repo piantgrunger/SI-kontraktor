@@ -51,6 +51,12 @@ $form = ActiveForm::begin();
     </div>
 
     <?php ActiveForm::end(); ?>
+    <label><input type="radio" name="scale" value="day" checked/>Harian</label>
+<label><input type="radio" name="scale" value="week"/>Mingguan</label>
+<label><input type="radio" name="scale" value="month"/>Bulanan</label>
+<label><input type="radio" name="scale" value="year"/>Tahunan</label>
+
+
 <div id="report" style='width:100%; height:300px;'>
     <div id="gantt_here" style='width:100%; height:100%;'></div>
 
@@ -122,11 +128,6 @@ function setScaleConfig(level) {
     <?php
     } ?>
 </script>
-<label><input type="radio" name="scale" value="day" checked/>Harian</label>
-<label><input type="radio" name="scale" value="week"/>Mingguan</label>
-<label><input type="radio" name="scale" value="month"/>Bulanan</label>
-<label><input type="radio" name="scale" value="year"/>Tahunan</label>
-
    <input value="Cetak" type="button" onclick='gantt.exportToPDF()' class = 'btn btn-success'>
 <script type="text/javascript">
 var els = document.querySelectorAll("input[name='scale']");
@@ -169,6 +170,40 @@ echo Highcharts::widget([
       [
         'name' => 'Progress',
         'data' => $chartData,
+      ],
+    ],
+  ],
+]);
+?>
+
+</div>
+<div>
+<?php
+
+
+echo Highcharts::widget([
+  'scripts' => [
+    'modules/exporting',
+    'themes/grid-light',
+  ],
+  'options' => [
+    'chart' => ['type' => 'spline',
+    ],
+    'title' => [
+      'text' => 'Grafik Realisasi Nilai Pekerjaan',
+    ],
+    'xAxis' => [
+      'categories' => $dataTanggalRp,
+    ],
+    'yAxis' => [
+      'title' => ['text' => 'Nilai Pekerjaan'],
+
+    ],
+
+    'series' => [
+      [
+        'name' => 'Progress',
+        'data' => $chartData2,
       ],
     ],
   ],

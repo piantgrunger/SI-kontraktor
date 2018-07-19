@@ -71,6 +71,8 @@ echo $form->field($model, "id_rekanan")->widget(Select2::className(), [
     ],
 ])->label('Rekanan');
 echo $form->field($model, "total_rab")->textInput()->label('Nilai Pekerjaan');
+echo $form->field($model, "retensi_persen")->textInput()->label('Retensi %');
+echo $form->field($model, "status_bayar")->dropDownList(['Belum' => 'Belum', 'Sudah' => 'Sudah']);
 
 ?>
 <?= Tabs::widget([

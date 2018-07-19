@@ -337,6 +337,8 @@ class RabController extends Controller
                     if ($modelRAB->total_biaya_material + $modelRAB->total_biaya_peralatan + $modelRAB->total_biaya_pekerja != 0) {
                         $modelRAB->total_rab = $modelRAB->total_biaya_material + $modelRAB->total_biaya_peralatan + $modelRAB->total_biaya_pekerja;
                     }
+                    $modelRAB->retensi_rp = $modelRAB->retensi_persen / 100 * $modelRAB->total_rab;
+
                     $modelRAB->save();
                     $modelRAB = RAB::findOne($model->id_rab);
                     $model_d = d_RAB::find()->where(['id_rab' => $model->id_rab]);
@@ -345,6 +347,8 @@ class RabController extends Controller
                     $modelRAB->total_biaya_pekerja = is_null($model_d->sum('total_biaya_pekerja')) ? 0 : $model_d->sum('total_biaya_pekerja');
 
                     $modelRAB->total_rab = is_null($model_d->sum('total_rab')) ? 0 : $model_d->sum('total_rab');
+                    $modelRAB->retensi_rp = is_null($model_d->sum('retensi_rp')) ? 0 : $model_d->sum('retensi_rp');
+
                     $modelRAB->save();
                     $modelRAB->ppn_rp = $modelRAB->total_rab * ($modelRAB->ppn / 100);
                     $modelRAB->total_rab = $modelRAB->total_rab + $modelRAB->ppn_rp;

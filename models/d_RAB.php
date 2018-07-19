@@ -38,12 +38,12 @@ class d_RAB extends \yii\db\ActiveRecord
         return [
             [['id_jenis_pekerjaan','level'], 'required'],
             [['id_rab', 'id_jenis_pekerjaan', 'id_pekerjaan', 'hari_kerja','level'], 'integer'],
-            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'qty', 'total_rab', 'nilai_pagu'], 'number'],
-            [['status_pekerjaan', 'satuan'], 'string'],
+            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'qty', 'total_rab', 'nilai_pagu','retensi_persen','retensi_rp'], 'number'],
+            [['status_pekerjaan', 'satuan','status_bayar'], 'string'],
             [['id_rekanan'], 'required', 'when' => function ($model) {
                 return $model->status_pekerjaan == 'Subkon';
             }, 'enableClientValidation' => false],
-
+            [['status_bayar'],'default','value'=>'Belum'],
             [['id_pekerjaan'], 'exist', 'skipOnError' => true, 'targetClass' => Pekerjaan::className(), 'targetAttribute' => ['id_pekerjaan' => 'id_pekerjaan']],
             [['id_rab'], 'exist', 'skipOnError' => true, 'targetClass' => RAB::className(), 'targetAttribute' => ['id_rab' => 'id_rab']],
         ];

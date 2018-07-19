@@ -79,7 +79,7 @@ class RAB extends \yii\db\ActiveRecord
             [['id_proyek', 'created_by', 'updated_by'], 'integer'],
             [['no_rab', 'keterangan'], 'string'],
             [['tgl_rab', 'created_at', 'updated_at','tgl_revisi'], 'safe'],
-            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'margin', 'dana_cadangan', 'total_rab','ppn','ppn_rp','nilai_kontrak','nilai_real'], 'number'],
+            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'margin', 'dana_cadangan', 'total_rab','ppn','ppn_rp','nilai_kontrak','nilai_real','retensi_rp'], 'number'],
             [['file_acuan_revisi'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png,jpg,bmp,pdf,jpeg,doc,docx', 'maxSize' => 512000000],
 
             [['no_rab'], 'unique'],
@@ -184,7 +184,7 @@ class RAB extends \yii\db\ActiveRecord
     {
         return $this->hasMany(d_RAB::className(), ['id_rab' => 'id_rab'])
         ->leftJoin('tb_m_jenis_pekerjaan', 'tb_m_jenis_pekerjaan.id_jenis_pekerjaan = tb_dt_rab.id_jenis_pekerjaan')
-        ->orderBy(' level   ');
+        ->orderBy(' level ');
         ;
     }
     public function setDetailRab($value)

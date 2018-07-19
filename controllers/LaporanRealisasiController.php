@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use app\models\VwProgressRealisasi;
+use app\models\VwProgressRealisasiRp;
+
 use yii\web\Controller;
 use yii\base\DynamicModel;
 use yii\db\Expression;
@@ -53,8 +55,24 @@ class LaporanRealisasiController extends Controller
             foreach ($data as $isi) {
                 $chartData[] = (float) $isi->progress;
             }
+            $data2 = VwProgressRealisasiRp::find()
+                ->select('progress')
+                ->where(['id_rab' => $model->id_rab])
+                ->orderBy('tgl_ak_realisasi')
+                ->all();
+            $chartData2 = [];
+            foreach ($data2 as $isi) {
+                $chartData2[] = (float)$isi->progress;
+            }
 
             $dataTanggal = VwProgressRealisasi::find()
+                ->select('tgl_ak_realisasi')
+
+                ->where(['id_rab' => $model->id_rab])
+                ->orderBy('tgl_ak_realisasi')
+                ->column();
+
+            $dataTanggalRp = VwProgressRealisasiRp::find()
                 ->select('tgl_ak_realisasi')
 
                 ->where(['id_rab' => $model->id_rab])
@@ -64,14 +82,20 @@ class LaporanRealisasiController extends Controller
             return $this->render('index', [
                 'model' => $model,
                 'chartData' => $chartData,
+                'chartData2' => $chartData2,
+
                 'dataTanggal' => $dataTanggal,
+                'dataTanggalRp' => $dataTanggalRp,
             ]);
         }
 
         return $this->render('index', [
             'model' => $model,
             'chartData' => '',
-                'dataTanggal' => '',
+            'chartData2' => '',
+            'dataTanggal' => '',
+            'dataTanggalRp' => '',
+
             ]);
     }
 
