@@ -111,7 +111,7 @@ if ($this->context->action->id != 'revisi') {
 <table class="table">
     <thead>
         <tr>
-
+             <th> Level </th>
             <th>Level Pekerjaan</th>
 
             <th>Pekerjaan</th>

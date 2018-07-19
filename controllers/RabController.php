@@ -319,7 +319,7 @@ class RabController extends Controller
     {
         $model = d_RAB::findOne($id);
 
-        if ($model->load(Yii::$app->request->post('d_RAB'), '')) {
+        if ($model->load(Yii::$app->request->post())) {
             $transaction = Yii::$app->db->beginTransaction();
             try {
                 $model->sDetailRabMaterial = Yii::$app->request->post('sd_RAB_material', []);

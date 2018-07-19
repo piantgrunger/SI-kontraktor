@@ -36,8 +36,8 @@ class d_RAB extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_jenis_pekerjaan'], 'required'],
-            [['id_rab', 'id_jenis_pekerjaan', 'id_pekerjaan', 'hari_kerja'], 'integer'],
+            [['id_jenis_pekerjaan','level'], 'required'],
+            [['id_rab', 'id_jenis_pekerjaan', 'id_pekerjaan', 'hari_kerja','level'], 'integer'],
             [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'qty', 'total_rab', 'nilai_pagu'], 'number'],
             [['status_pekerjaan', 'satuan'], 'string'],
             [['id_rekanan'], 'required', 'when' => function ($model) {

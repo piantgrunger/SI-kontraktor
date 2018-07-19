@@ -184,7 +184,7 @@ class RAB extends \yii\db\ActiveRecord
     {
         return $this->hasMany(d_RAB::className(), ['id_rab' => 'id_rab'])
         ->leftJoin('tb_m_jenis_pekerjaan', 'tb_m_jenis_pekerjaan.id_jenis_pekerjaan = tb_dt_rab.id_jenis_pekerjaan')
-        ->orderBy(' cast(kode_jenis_pekerjaan as integer)');
+        ->orderBy(' level   ');
         ;
     }
     public function setDetailRab($value)

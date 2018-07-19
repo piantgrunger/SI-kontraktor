@@ -22,7 +22,7 @@ $data = ArrayHelper::map(
 $data3 = ArrayHelper::map(
     JenisPekerjaan::find()
         ->select([
-            'id_jenis_pekerjaan', 'ket' => "[kode_jenis_pekerjaan]+' - '+[nama_jenis_pekerjaan]",
+            'id_jenis_pekerjaan', 'ket' => "[nama_jenis_pekerjaan]",
         ])
         ->asArray()
         ->all(),
@@ -33,6 +33,10 @@ $data3 = ArrayHelper::map(
 /* @var $model app\models\RAB */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+
+<td>
+<?= $form->field($model, "[$key]level")->textInput()->label(false); ?>
+</td>
 
 <td>
     <?= $form->field($model, "[$key]id_jenis_pekerjaan")->widget(Select2::className(), [

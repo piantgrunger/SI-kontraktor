@@ -9,6 +9,7 @@ use kartik\datecontrol\DateControl;
 use mdm\widgets\TabularInput;
 
 use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\LevelJabatan */
 /* @var $form yii\widgets\ActiveForm */
@@ -76,5 +77,7 @@ $data = ArrayHelper::map(
 </td>
 
     <td>
-    <a data-action="delete" id='delete1'><span class="glyphicon glyphicon-trash">
+<?= $form->field($model, "[$key]id_sd_rab")->hiddenInput()->label(false); ?>
+
+    <a data-action="delete" id='delete2'><span class="glyphicon glyphicon-trash">
 </td>

@@ -81,5 +81,9 @@ $data = ArrayHelper::map(
 </td>
 
     <td>
+
+
     <a data-action="delete" id='delete1'><span class="glyphicon glyphicon-trash">
+     <?= $form->field($model, "[$key]id_sd_rab")->hiddenInput()->label(false); ?>
+
 </td>

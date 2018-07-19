@@ -62,9 +62,9 @@ class JenisPekerjaan extends \yii\db\ActiveRecord
     {
         return [
             [['kode_jenis_pekerjaan', 'nama_jenis_pekerjaan'], 'required'],
-            [[ 'nama_jenis_pekerjaan', 'keterangan'], 'string'],
+            [[ 'nama_jenis_pekerjaan', 'keterangan', 'kode_jenis_pekerjaan'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['kode_jenis_pekerjaan','created_by', 'updated_by'], 'integer'],
+            [['created_by', 'updated_by'], 'integer'],
             [['kode_jenis_pekerjaan'], 'unique'],
         ];
     }
