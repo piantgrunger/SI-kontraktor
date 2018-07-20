@@ -197,9 +197,6 @@ echo Highcharts::widget([
     ],
     'yAxis' => [
       'title' => ['text' => 'Nilai Pekerjaan'],
-       'labels' => [
-             'formatter' => '###,#0.00',
-       ],
     ],
 
     'series' => [
