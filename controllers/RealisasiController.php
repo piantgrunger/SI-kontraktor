@@ -1,4 +1,4 @@
-0<?php
+<?php
 
 namespace app\controllers;
 
@@ -19,7 +19,7 @@ use app\models\d_realisasi_material;
 use app\models\d_realisasi_pekerja;
 
 /**
- * RealisasiController implements the CRUD actions for Realisasi model.
+ * ProgressController implements the CRUD actions for Progress model.
  */
 class RealisasiController extends Controller
 {
@@ -39,7 +39,7 @@ class RealisasiController extends Controller
     }
 
     /**
-     * Lists all Realisasi models.
+     * Lists all Progress models.
      *
      * @return mixed
      */
@@ -55,7 +55,7 @@ class RealisasiController extends Controller
     }
 
     /**
-     * Displays a single Realisasi model.
+     * Displays a single Progress model.
      *
      * @param int $id
      *
@@ -69,7 +69,7 @@ class RealisasiController extends Controller
     }
 
     /**
-     * Creates a new Realisasi model.
+     * Creates a new Progress model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      *
      * @return mixed
@@ -102,7 +102,7 @@ class RealisasiController extends Controller
                 throw $ecx;
             }
             if (count($model->det_realisasi_material) == 0) {
-                $model->addError('Detail Realisasi Material', 'Realisasi Harus memiliki detail material');
+                $model->addError('Detail Progress Material', 'Realisasi Harus memiliki detail material');
             }
 
             return $this->render('create', [
@@ -116,7 +116,7 @@ class RealisasiController extends Controller
     }
 
     /**
-     * Updates an existing Realisasi model.
+     * Updates an existing Progress model.
      * If update is successful, the browser will be redirected to the 'view' page.
      *
      * @param int $id
@@ -154,7 +154,7 @@ class RealisasiController extends Controller
                 throw $ecx;
             }
             if (count($model->det_realisasi_material) == 0) {
-                $model->addError('Detail Realisasi Material', 'Realisasi Harus memiliki detail material');
+                $model->addError('Detail Progress Material', 'Realisasi Harus memiliki detail material');
             }
 
             return $this->render('update', [
@@ -168,7 +168,7 @@ class RealisasiController extends Controller
     }
 
     /**
-     * Deletes an existing Realisasi model.
+     * Deletes an existing Progress model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
      * @param int $id
@@ -195,9 +195,10 @@ class RealisasiController extends Controller
             $out = [];
             $data = d_RAB::find()
                 ->select([
-                    'id' => 'id_d_rab', 'name' => "[kode_pekerjaan]+'-'+[nama_pekerjaan]",
+                    'id' => 'id_d_rab', 'name' => "cast(tb_dt_rab.[level] as varchar(5))+  '  ' +[nama_jenis_pekerjaan]+' '+ ISNULL( [kode_pekerjaan]+' '+[nama_pekerjaan], '' )",
                 ])
-                ->innerJoin('tb_m_pekerjaan', 'tb_m_pekerjaan.id_pekerjaan = tb_dt_rab.id_pekerjaan ')
+                ->leftJoin('tb_m_pekerjaan', 'tb_m_pekerjaan.id_pekerjaan = tb_dt_rab.id_pekerjaan ')
+                ->leftJoin('tb_m_jenis_pekerjaan', 'tb_m_jenis_pekerjaan.id_jenis_pekerjaan = tb_dt_rab.id_jenis_pekerjaan ')
 
                 ->where(['id_rab' => $id_rab])
                 ->asArray()
@@ -401,12 +402,12 @@ class RealisasiController extends Controller
     }
 
     /**
-     * Finds the Realisasi model based on its primary key value.
+     * Finds the Progress model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
      * @param int $id
      *
-     * @return Realisasi the loaded model
+     * @return Progress the loaded model
      *
      * @throws NotFoundHttpException if the model cannot be found
      */

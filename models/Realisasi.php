@@ -85,13 +85,13 @@ class Realisasi extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_realisasi' => Yii::t('app', 'Id Realisasi'),
+            'id_realisasi' => Yii::t('app', 'Id Progress'),
             'id_d_rab' => Yii::t('app', 'Pekerjaan'),
             'id_rab' => Yii::t('app', 'RAB'),
 
-            'no_realisasi' => Yii::t('app', 'No Realisasi'),
-            'tgl_aw_realisasi' => Yii::t('app', 'Awal Realisasi'),
-            'tgl_ak_realisasi' => Yii::t('app', 'Akhir Realisasi'),
+            'no_realisasi' => Yii::t('app', 'No Progress'),
+            'tgl_aw_realisasi' => Yii::t('app', 'Awal Progress'),
+            'tgl_ak_realisasi' => Yii::t('app', 'Akhir Progress'),
             'total_biaya_material' => Yii::t('app', 'Total Biaya Material'),
             'total_biaya_pekerja' => Yii::t('app', 'Total Biaya Pekerja'),
             'total_biaya_peralatan' => Yii::t('app', 'Total Biaya Peralatan'),

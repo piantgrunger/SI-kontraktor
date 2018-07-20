@@ -2,18 +2,16 @@
 
 namespace app\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Realisasi;
 
 /**
- * RealisasiSearch represents the model behind the search form of `app\models\Realisasi`.
+ * ProgressSearch represents the model behind the search form of `app\models\Realisasi`.
  */
 class RealisasiSearch extends Realisasi
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -25,7 +23,7 @@ class RealisasiSearch extends Realisasi
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function scenarios()
     {
@@ -34,7 +32,7 @@ class RealisasiSearch extends Realisasi
     }
 
     /**
-     * Creates data provider instance with search query applied
+     * Creates data provider instance with search query applied.
      *
      * @param array $params
      *

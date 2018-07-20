@@ -4,9 +4,9 @@
 use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\widgets\Pjax; use kartik\export\ExportMenu;
-$gridColumns=[['class' => 'kartik\grid\SerialColumn'],
+use yii\widgets\Pjax;
 
+$gridColumns = [['class' => 'kartik\grid\SerialColumn'],
             'no_realisasi',
             'tgl_aw_realisasi',
             'tgl_ak_realisasi',
@@ -24,8 +24,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'updated_by',
 
          ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
-              'update','delete','view'],$this->context->route),    ],    ];
-
+              'update', 'delete', 'view', ], $this->context->route)],    ];
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RealisasiSearch */
@@ -34,11 +33,11 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
 $this->title = Yii::t('app', 'Daftar Realisasi');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="realisasi-index">
+<div class="Realisasi-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);?>
 
 
     <?= GridView::widget([
@@ -46,8 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => $gridColumns,
         'tableOptions' => ['class' => 'table  table-bordered table-hover'],
-        'striped'=>false,
-        'containerOptions'=>[true],
+        'striped' => false,
+        'containerOptions' => [true],
         'pjax' => true,
         'bordered' => true,
         'striped' => false,
@@ -58,18 +57,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'showPageSummary' => true,
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'Realisasi'). '</strong>',
-
+           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'Progress').'</strong>',
         ],
             'toolbar' => [
-        ['content' => ((Mimin::checkRoute($this->context->id . "/create"))) ?         Html::a(Yii::t('app', 'Realisasi Baru'), ['create'], ['class' => 'btn btn-success']) :""],
+        ['content' => ((Mimin::checkRoute($this->context->id.'/create'))) ? Html::a(Yii::t('app', 'Progress Baru'), ['create'], ['class' => 'btn btn-success']) : ''],
 
         '{export}',
-        '{toggleData}'
+        '{toggleData}',
     ],
 
-         'resizableColumns'=>true,
-
+         'resizableColumns' => true,
     ]); ?>
     <?php Pjax::end(); ?>
 </div>

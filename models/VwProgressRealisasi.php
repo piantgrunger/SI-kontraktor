@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "vw_progress_realisasi".
  *
- * @property int $id_rab
+ * @property int    $id_rab
  * @property string $tgl_ak_realisasi
  * @property string $progress
  */
@@ -41,7 +41,7 @@ class VwProgressRealisasi extends \yii\db\ActiveRecord
     {
         return [
             'id_rab' => Yii::t('app', 'Id Rab'),
-            'tgl_ak_realisasi' => Yii::t('app', 'Tgl Ak Realisasi'),
+            'tgl_ak_realisasi' => Yii::t('app', 'Tgl Ak Progress'),
             'progress' => Yii::t('app', 'Progress'),
         ];
     }

@@ -126,7 +126,7 @@ $this->registerJS($js);
 <?= (Mimin::checkRoute('realisasi/index')) ? Html::a("
 
         <span class='mif-library icon'></span>
-        <span class='branding-bar'>Realisasi</span>
+        <span class='branding-bar'>Progress</span>
          ", ['/realisasi'], ['data-role' => 'tile', 'class ' => 'bg-purple', 'data-size' => 'wide']) : ''; ?>
 
 
@@ -137,7 +137,7 @@ $this->registerJS($js);
  <?= (Mimin::checkRoute('laporan-realisasi/index')) ? Html::a("
 
         <span class='mif-user-check icon'></span>
-        <span class='branding-bar'>Laporan Realisasi</span>
+        <span class='branding-bar'>Laporan Progress</span>
          ", ['/laporan-realisasi'], ['data-role' => 'tile', 'class ' => 'bg-red', 'data-size' => 'medium']) : ''; ?>
 
 </div>

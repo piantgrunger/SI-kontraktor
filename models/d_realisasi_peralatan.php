@@ -7,14 +7,13 @@ use Yii;
 /**
  * This is the model class for table "tb_dt_realisasi_peralatan".
  *
- * @property int $id_d_realisasi
- * @property int $id_realisasi
- * @property int $id_sd_rab
- * @property string $qty
- * @property string $harga
- * @property string $sub_total
- *
- * @property TbMtRealisasi $realisasi
+ * @property int               $id_d_realisasi
+ * @property int               $id_realisasi
+ * @property int               $id_sd_rab
+ * @property string            $qty
+ * @property string            $harga
+ * @property string            $sub_total
+ * @property TbMtRealisasi     $realisasi
  * @property TbSdtRabperalatan $sdRab
  */
 class d_realisasi_peralatan extends \yii\db\ActiveRecord
@@ -36,7 +35,7 @@ class d_realisasi_peralatan extends \yii\db\ActiveRecord
             [['id_sd_rab', 'qty', 'harga', 'sub_total'], 'required'],
             [['id_realisasi', 'id_sd_rab'], 'integer'],
             [['qty', 'harga', 'sub_total'], 'number'],
-            [['qty'],'cekQty'],
+            [['qty'], 'cekQty'],
             [['id_realisasi'], 'exist', 'skipOnError' => true, 'targetClass' => Realisasi::className(), 'targetAttribute' => ['id_realisasi' => 'id_realisasi']],
             [['id_sd_rab'], 'exist', 'skipOnError' => true, 'targetClass' => sd_RAB_peralatan::className(), 'targetAttribute' => ['id_sd_rab' => 'id_sd_rab']],
         ];
@@ -48,8 +47,8 @@ class d_realisasi_peralatan extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_d_realisasi' => Yii::t('app', 'Id D Realisasi'),
-            'id_realisasi' => Yii::t('app', 'Id Realisasi'),
+            'id_d_realisasi' => Yii::t('app', 'Id D Progress'),
+            'id_realisasi' => Yii::t('app', 'Id Progress'),
             'id_sd_rab' => Yii::t('app', 'Id Sd Rab'),
             'qty' => Yii::t('app', 'Qty'),
             'harga' => Yii::t('app', 'Harga'),
@@ -62,15 +61,12 @@ class d_realisasi_peralatan extends \yii\db\ActiveRecord
      */
     public function cekQty($attribute, $params)
     {
-         $qty=is_null($this->sdRab)?0: $this->sdRab->qty;
-        if (($this->qty > $qty) && ($qty>0)) {
-            Yii::$app->session->setFlash('warning',  'Qty peralatan '.$this->sdRab->material->nama_material.' Melebihi RAB ' .$qty);
-
-
+        $qty = is_null($this->sdRab) ? 0 : $this->sdRab->qty;
+        if (($this->qty > $qty) && ($qty > 0)) {
+            Yii::$app->session->setFlash('warning', 'Qty peralatan '.$this->sdRab->material->nama_material.' Melebihi RAB '.$qty);
         }
-
-
     }
+
     public function getRealisasi()
     {
         return $this->hasOne(Realisasi::className(), ['id_realisasi' => 'id_realisasi']);
@@ -83,6 +79,7 @@ class d_realisasi_peralatan extends \yii\db\ActiveRecord
     {
         return $this->hasOne(sd_RAB_peralatan::className(), ['id_sd_rab' => 'id_sd_rab']);
     }
+
     public function getQty_rab()
     {
         return is_null($this->sdRab) ? 0 : $this->sdRab->qty_sisa($this->id_realisasi);
@@ -90,21 +87,19 @@ class d_realisasi_peralatan extends \yii\db\ActiveRecord
 
     public function getNama_material()
     {
-        return is_null($this->sdRab) ? "" : $this->sdRab->nama_material;
+        return is_null($this->sdRab) ? '' : $this->sdRab->nama_material;
     }
 
     public function loadDefaultValues($skipIfSet = true)
     {
         $this->harga = 0; //contoh set default value active true
         $this->qty = 0; //contoh set default value active true
-
     }
+
     public function init()
     {
         if ($this->isNewRecord) {
             $this->loadDefaultValues($skipIfSet = true);
         }
     }
-
-
 }

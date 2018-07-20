@@ -157,13 +157,13 @@ echo Highcharts::widget([
     'chart' => ['type' => 'spline',
   ],
     'title' => [
-      'text' => 'Grafik Realisasi',
+      'text' => 'Grafik Progress',
     ],
     'xAxis' => [
       'categories' => $dataTanggal,
     ],
     'yAxis' => [
-      'title' => ['text' => 'Progress Realisasi (%)'],
+      'title' => ['text' => 'Progress Progress (%)'],
     ],
 
     'series' => [
@@ -190,15 +190,15 @@ echo Highcharts::widget([
     'chart' => ['type' => 'spline',
     ],
     'title' => [
-      'text' => 'Grafik Realisasi Nilai Pekerjaan',
+      'text' => 'Grafik Progress Nilai Pekerjaan',
     ],
     'xAxis' => [
       'categories' => $dataTanggalRp,
     ],
     'yAxis' => [
       'title' => ['text' => 'Nilai Pekerjaan'],
-       'labels' =>[
-             'formatter'=>"###,#0.00"
+       'labels' => [
+             'formatter' => '###,#0.00',
        ],
     ],
 

@@ -9,14 +9,14 @@ use Yii;
  *
  * @property string $no_rab
  * @property string $tgl_rab
- * @property int $id_d_rab
+ * @property int    $id_d_rab
  * @property string $kode_pekerjaan
  * @property string $nama_pekerjaan
  * @property string $qty
- * @property int $hari_kerja
+ * @property int    $hari_kerja
  * @property string $Total_rp
  * @property string $qty_realisasi
- * @property int $hari_kerja_realisasi
+ * @property int    $hari_kerja_realisasi
  * @property string $total_rp_realisasi
  */
 class VwRealisasiDetail extends \yii\db\ActiveRecord
@@ -26,8 +26,9 @@ class VwRealisasiDetail extends \yii\db\ActiveRecord
      */
     public static function primaryKey()
     {
-        return ["id_d_rab"];
+        return ['id_d_rab'];
     }
+
     public static function tableName()
     {
         return 'vw_realisasi_detail';
@@ -61,9 +62,9 @@ class VwRealisasiDetail extends \yii\db\ActiveRecord
             'qty' => Yii::t('app', 'Qty'),
             'hari_kerja' => Yii::t('app', 'Hari Kerja'),
             'Total_rp' => Yii::t('app', 'Total Rp'),
-            'qty_realisasi' => Yii::t('app', 'Qty Realisasi'),
-            'hari_kerja_realisasi' => Yii::t('app', 'Hari Kerja Realisasi'),
-            'total_rp_realisasi' => Yii::t('app', 'Total Rp Realisasi'),
+            'qty_realisasi' => Yii::t('app', 'Qty Progress'),
+            'hari_kerja_realisasi' => Yii::t('app', 'Hari Kerja Progress'),
+            'total_rp_realisasi' => Yii::t('app', 'Total Rp Progress'),
         ];
     }
 }

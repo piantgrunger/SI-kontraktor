@@ -1,11 +1,10 @@
 <?php
 
 
-use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
 use kartik\grid\GridView;
- use kartik\export\ExportMenu;
-$gridColumns=[['class' => 'kartik\grid\SerialColumn'],
+
+$gridColumns = [['class' => 'kartik\grid\SerialColumn'],
             'no_rab',
             'tgl_rab:date',
             'kode_pekerjaan',
@@ -16,21 +15,19 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
              'qty_realisasi',
              'hari_kerja_realisasi',
              'total_rp_realisasi',
-
     ];
-
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\VwRealisasiDetailSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Daftar Laporan Realisasi Detail';
+$this->title = 'Daftar Laporan Progress Detail';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="vw-realisasi-detail-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <h1><?= Html::encode($this->title); ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);?>
 
 
     <?= GridView::widget([
@@ -38,8 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => $gridColumns,
         'tableOptions' => ['class' => 'table  table-bordered table-hover'],
-        'striped'=>false,
-        'containerOptions'=>[true],
+        'striped' => false,
+        'containerOptions' => [true],
         'pjax' => true,
         'bordered' => true,
         'striped' => false,
@@ -50,17 +47,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'showPageSummary' => true,
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.'Laporan Realisasi Detail'. '</strong>',
-
+           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.'Laporan Progress Detail'.'</strong>',
         ],
         'toolbar' => [
-
-
             '{export}',
-            '{toggleData}'
+            '{toggleData}',
         ],
 
         'resizableColumns' => true,
-
-    ]) ?>
+    ]); ?>
 </div>
