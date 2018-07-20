@@ -96,8 +96,8 @@ class RAB extends \yii\db\ActiveRecord
         return [
             'id_rab' => Yii::t('app', 'Id RAB'),
             'id_proyek' => Yii::t('app', 'Proyek'),
-            'no_rab' => Yii::t('app', 'No RAB'),
-            'tgl_rab' => Yii::t('app', 'Tgl RAB'),
+            'no_rab' => ($this->scenario=='RAP')?'No RAP ': Yii::t('app', 'No RAB'),
+            'tgl_rab' =>($this->scenario=='RAP')?'No RAP ': Yii::t('app', 'Tgl RAB'),
             'total_biaya_material' => Yii::t('app', 'Total Biaya Material'),
             'total_biaya_pekerja' => Yii::t('app', 'Total Biaya Pekerja'),
             'total_biaya_peralatan' => Yii::t('app', 'Total Biaya Peralatan'),

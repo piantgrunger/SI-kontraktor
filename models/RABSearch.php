@@ -35,6 +35,28 @@ class RABSearch extends RAB
         return Model::scenarios();
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'id_rab' => Yii::t('app', 'Id RAB'),
+            'id_proyek' => Yii::t('app', 'Proyek'),
+            'no_rab' => ($this->scenario == 'RAP') ? 'No RAP ' : Yii::t('app', 'No RAB'),
+            'tgl_rab' => ($this->scenario == 'RAP') ? 'No RAP ' : Yii::t('app', 'Tgl RAB'),
+            'total_biaya_material' => Yii::t('app', 'Total Biaya Material'),
+            'total_biaya_pekerja' => Yii::t('app', 'Total Biaya Pekerja'),
+            'total_biaya_peralatan' => Yii::t('app', 'Total Biaya Peralatan'),
+            'margin' => Yii::t('app', 'Margin'),
+            'dana_cadangan' => Yii::t('app', 'Dana Cadangan'),
+            'total_rab' => Yii::t('app', 'Total RAB'),
+            'keterangan' => Yii::t('app', 'Keterangan'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'created_by' => Yii::t('app', 'Created By'),
+            'updated_by' => Yii::t('app', 'Updated By'),
+            'ppn' => 'PPN (%)',
+            'nilai_real' => 'Nilai Pagu'
+        ];
+    }
     /**
      * Creates data provider instance with search query applied
      *

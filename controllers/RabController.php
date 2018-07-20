@@ -63,7 +63,7 @@ class RabController extends Controller
     {
         $searchModel = new RABSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $searchModel->scenario ='RAP';
         return $this->render('index_rap', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
