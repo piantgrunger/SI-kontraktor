@@ -7,8 +7,8 @@ use hscstudio\mimin\components\Mimin;
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
 
-$this->title = $model->no_rab;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar R A B'), 'url' => ['index']];
+$this->title = 'Komparasi Pagu '.$model->no_rab;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar R A P'), 'url' => ['rap']];
 $this->params['breadcrumbs'][] = $this->title;
 
 
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <thead>
         <tr>
 
-            <th colspan=2>Pekerjaan</th>
+            <th >Pekerjaan</th>
 
             <th>Volume</th>
             <th>Satuan</th>
@@ -42,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Harga</th>
 
             <th>Sub Total</th>
+     <th>Pagu</th>
 
         </tr>
     </thead>
@@ -67,8 +68,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'total_dpp:decimal',
         'ppn_rp:decimal',
 
-        'total_rab:decimal'
-
+        'total_rab:decimal',
+           'nilai_real:decimal'
     ],
 ]) ?>
 

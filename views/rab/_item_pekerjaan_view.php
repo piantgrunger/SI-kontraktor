@@ -7,8 +7,6 @@ use kartik\select2\Select2;
 use kartik\datecontrol\DateControl;
 use mdm\widgets\TabularInput;
 
-
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Pekerjaan */
 /* @var $form yii\widgets\ActiveForm */
@@ -20,15 +18,12 @@ use mdm\widgets\TabularInput;
 <div style ="margin-top:10px;margin-bottom:10px;margin-left:10px">
 <div class="row">
 <div class="col-sm-4">
-  <b>  <?= (Yii::$app->params['jenis_pekerjaan'] === $model->nama_jenis_pekerjaan)?"": $model->nama_jenis_pekerjaan; ?></div></b>
-</div>
-<div class="row">
-<div class="col-sm-4">
 </div>
 </div>
 <div class="row">
 <div class="col-sm-4">
-    &nbsp;&nbsp;&nbsp;<b><?= $model->nama_pekerjaan ?></div></b>
+    &nbsp;&nbsp;&nbsp;<b>    <?= $model->nama_pekerjaan_detail; ?></div>
+</div></b>
 <div class="col-sm-2">
   Qty :  <?= $model->qty ?> <?= $model->satuan ?> </div>
 <div class="col-sm-2">
@@ -46,6 +41,8 @@ use mdm\widgets\TabularInput;
            <th align="Right">Harga / Upah</th>
 
            <th align="Right">Sub Total</th>
+           <th align="Right">Plafon RAB</th>
+
         </tr>
  </thead>
  <tbody>
@@ -60,7 +57,6 @@ use mdm\widgets\TabularInput;
             echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->sub_total)." </td>";
 
             echo "</tr>";
-
         }
 
         foreach ($model->sDetailRabPeralatan as $material) {
@@ -73,7 +69,6 @@ use mdm\widgets\TabularInput;
             echo "<td align='Right'>". Yii::$app->formatter->asDecimal($material->sub_total) ."</td>";
 
             echo "</tr>";
-
         }
         foreach ($model->sDetailRabPekerja as $material) {
             echo "<tr>";
@@ -84,7 +79,6 @@ use mdm\widgets\TabularInput;
             echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->sub_total)." </td>";
 
             echo "</tr>";
-
         }
 
 
@@ -98,7 +92,7 @@ use mdm\widgets\TabularInput;
 
  <th>Total</th>
 
- <td align="Right"><?= Yii::$app->formatter->asDecimal( $model->total_rab) ?></td>
+ <td align="Right"><?= Yii::$app->formatter->asDecimal($model->total_rab) ?></td>
 
  </tr>
  </tfoot>

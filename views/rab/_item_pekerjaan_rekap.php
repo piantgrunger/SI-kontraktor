@@ -9,17 +9,13 @@ use kartik\datecontrol\DateControl;
 use mdm\widgets\TabularInput;
 use yii\helpers\Url;
 
-
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <td>
- <b><?= (Yii::$app->params['jenis_pekerjaan'] === $model->nama_jenis_pekerjaan)?"": $model->nama_jenis_pekerjaan; ?></b>
-</td>
-<td>
-<?=$model->nama_pekerjaan;?>
+<?=$model->nama_pekerjaan_detail;?>
 </td>
 
 <td align="right">
@@ -33,6 +29,9 @@ use yii\helpers\Url;
 </td>
 <td align="right">
 <?= $model->total_rab_display; ?>
+</td>
+<td align="right">
+<?= Yii::$app->formatter->asDecimal($model->nilai_pagu); ?>
 </td>
 
 <?php Yii::$app->params['jenis_pekerjaan'] = $model->nama_jenis_pekerjaan; ?>

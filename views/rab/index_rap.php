@@ -23,7 +23,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
             // 'created_by',
             // 'updated_by',
 
-         ['class' => 'kartik\grid\ActionColumn',   'template' => '{view}  {rekap} {jenis} {harga}  {revisi} ',
+         ['class' => 'kartik\grid\ActionColumn',   'template' => '{rekap} {revisi} ',
         'buttons' => ['revisi' => function ($url, $model) {
             if (Mimin::checkRoute($this->context->id.'/revisi')) {
                 return
@@ -44,53 +44,13 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                     '<span class="glyphicon glyphicon-list"></span>',
                     ['view-rekap', 'id' => $model->id_rab],
                     [
-                        'title' => Yii::t('app', 'Rekap'),
+                        'title' => Yii::t('app', 'Komparasi Pagu'),
                     ]
                 );
             } else {
                 return ' ';
             }
-        },
-            'jenis' => function ($url, $model) {
-                if (Mimin::checkRoute($this->context->id.'/view-jenis-pekerjaan')) {
-                    return
-                        Html::a(
-                        '<span class="glyphicon glyphicon-list"></span>',
-                        ['jenis-pekerjaan', 'id' => $model->id_rab],
-                        [
-                            'title' => Yii::t('app', 'Rekap Jenis Pekerjaan'),
-                        ]
-                    );
-                } else {
-                    return ' ';
-                }
-            }, 'view' => function ($url, $model) {
-                if (Mimin::checkRoute($this->context->id.'/view')) {
-                    return
-                        Html::a(
-                        '<span class="glyphicon glyphicon-list"></span>',
-                        ['view', 'id' => $model->id_rab],
-                        [
-                            'title' => Yii::t('app', 'Lihat BQ'),
-                        ]
-                    );
-                } else {
-                    return ' ';
-                }
-            }, 'harga' => function ($url, $model) {
-                if (Mimin::checkRoute($this->context->id.'/view-harga')) {
-                    return
-                            Html::a(
-                            '<span class="glyphicon glyphicon-list"></span>',
-                            ['view-harga', 'id' => $model->id_rab],
-                            [
-                                'title' => Yii::t('app', 'Lihat Daftar Harga'),
-                            ]
-                        );
-                } else {
-                    return ' ';
-                }
-            }, ],    ],    ];
+        }, ],    ],    ];
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RABSearch */
