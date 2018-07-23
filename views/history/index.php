@@ -4,8 +4,9 @@
 use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\widgets\Pjax; use kartik\export\ExportMenu;
-$gridColumns=[['class' => 'kartik\grid\SerialColumn'],
+use yii\widgets\Pjax;
+
+$gridColumns = [['class' => 'kartik\grid\SerialColumn'],
             'no_proyek',
             'no_rab',
             'tgl_rab:date',
@@ -24,21 +25,20 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'updated_by',
 
          ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
-             'view'],$this->context->route),    ],    ];
-
+             'view', ], $this->context->route)],    ];
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RABSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Daftar History R A B');
+$this->title = Yii::t('app', 'Daftar History R A P');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rab-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);?>
 
 
     <?= GridView::widget([
@@ -46,8 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => $gridColumns,
         'tableOptions' => ['class' => 'table  table-bordered table-hover'],
-        'striped'=>false,
-        'containerOptions'=>[true],
+        'striped' => false,
+        'containerOptions' => [true],
         'pjax' => true,
         'bordered' => true,
         'striped' => false,
@@ -58,19 +58,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'showPageSummary' => true,
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'R A B'). '</strong>',
-            'before' => $this->render('_search', ['model' => $searchModel])
-
+           'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.Yii::t('app', 'R A P').'</strong>',
+            'before' => $this->render('_search', ['model' => $searchModel]),
         ],
             'toolbar' => [
-
-
         '{export}',
-        '{toggleData}'
+        '{toggleData}',
     ],
 
-         'resizableColumns'=>true,
-
+         'resizableColumns' => true,
     ]); ?>
     <?php Pjax::end(); ?>
 </div>
