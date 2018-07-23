@@ -112,13 +112,15 @@ if ($this->context->action->id != 'revisi') {
              <th> Level </th>
             <th>Level Pekerjaan</th>
 
-            <th>Pekerjaan</th>
+            <th >Pekerjaan</th>
             <th>Nilai Pagu</th>
 
             <th>Volume</th>
             <th>Satuan</th>
 
             <th>Hari Kerja</th>
+            <th>Status</th>
+            <th>Rekanan</th>
 
 
             <th><a id="btn-add2" href="#"><span class="glyphicon glyphicon-plus"></span></a></th>

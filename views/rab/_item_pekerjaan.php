@@ -5,6 +5,19 @@ use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use yii\helpers\Url;
 use app\models\JenisPekerjaan;
+use app\models\Rekanan;
+
+$data2 = ArrayHelper::map(
+    Rekanan::find()
+        ->select([
+            'id_rekanan', 'ket' => "[kode_rekanan]+' - '+[nama_rekanan]",
+        ])
+        ->asArray()
+        ->all(),
+    'id_rekanan',
+    'ket'
+);
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Pekerjaan */
@@ -12,7 +25,7 @@ use app\models\JenisPekerjaan;
 $data = ArrayHelper::map(
     Pekerjaan::find()
         ->select([
-            'id_Pekerjaan', 'ket' => "[kode_Pekerjaan]+' - '+[nama_pekerjaan]",
+            'id_Pekerjaan', 'ket' => "[kode_Pekerjaan]+' - '+LEFT([nama_pekerjaan],20)",
         ])
         ->asArray()
         ->all(),
@@ -22,7 +35,7 @@ $data = ArrayHelper::map(
 $data3 = ArrayHelper::map(
     JenisPekerjaan::find()
         ->select([
-            'id_jenis_pekerjaan', 'ket' => "[nama_jenis_pekerjaan]",
+            'id_jenis_pekerjaan', 'ket' => "LEFT([nama_jenis_pekerjaan],20)",
         ])
         ->asArray()
         ->all(),
@@ -49,7 +62,7 @@ $data3 = ArrayHelper::map(
         ],
     ])->label(false); ?>
 </td>
-<td>
+<td width="4%">
     <?= $form->field($model, "[$key]id_pekerjaan")->widget(Select2::className(), [
         'data' => $data,
         'options' => ['placeholder' => 'Pilih Pekerjaan...',
@@ -80,6 +93,15 @@ $data3 = ArrayHelper::map(
 <?= $form->field($model, "[$key]hari_kerja")->textInput()->label(false); ?>
 
 </td>
+<td><?= $form->field($model, "[$key]status_pekerjaan")->dropDownList(['Internal' => 'Internal', 'Subkon' => 'Subkon'])->label(false); ?> </td>
+<td><?= $form->field($model, "[$key]id_rekanan")->widget(Select2::className(), [
+    'data' => $data2,
+    'options' => ['placeholder' => 'Pilih Rekanan...',
+    ],
+    'pluginOptions' => [
+        'allowClear' => true,
+    ],
+])->label(false); ?></td>
 
 
   <td>
