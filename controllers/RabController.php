@@ -161,6 +161,9 @@ class RabController extends Controller
                 if (($model->save()) && (count($model->detailRab) > 0)
                    ) {
                     $transaction->commit();
+                    $model_d = d_RAB::find()->where(['id_rab' => $model->id_rab]);
+                    $model->nilai_real = is_null($model_d->sum('nilai_pagu')) ? 0 : $model_d->sum('nilai_pagu');
+                    $model->save();
 
                     return $this->redirect('index');
                 }
@@ -250,6 +253,10 @@ class RabController extends Controller
                     if ($old_revisi !== $model->tgl_revisi) {
                         $historyModel->save(false);
                     }
+                    $model_d = d_RAB::find()->where(['id_rab' => $model->id_rab]);
+                    $model->nilai_real = is_null($model_d->sum('nilai_pagu')) ? 0 : $model_d->sum('nilai_pagu');
+                    $model->save();
+
 
                     return $this->redirect('index');
                 }

@@ -91,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
         '{toggleData}',
     ],
 
-         'resizableColumns' => true,
+    'exportConfig' => [         GridView::CSV => ['filename' => $this->title],         GridView::HTML => ['filename' => $this->title],         GridView::PDF => ['filename' => $this->title],         GridView::EXCEL => ['filename' => $this->title, 'options' => ['title' => $this->title], ],         GridView::TEXT => ['filename' => $this->title],     ],     'resizableColumns' => true,
     ]); ?>
     <?php Pjax::end(); ?>
 </div>

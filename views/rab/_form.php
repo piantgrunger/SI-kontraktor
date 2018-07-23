@@ -101,8 +101,6 @@ if ($this->context->action->id != 'revisi') {
 
     <?= $form->field($model, 'nilai_kontrak')->textInput(); ?>
 
-    <?= $form->field($model, 'nilai_real')->textInput(); ?>
-
 
 <div class="panel panel-primary"   >
 <div class="panel-heading"> Data Pekerjaan

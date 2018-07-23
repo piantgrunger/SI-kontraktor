@@ -4,7 +4,9 @@
 use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\widgets\Pjax; use kartik\export\ExportMenu;
+use yii\widgets\Pjax;
+use kartik\export\ExportMenu;
+
 $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             'kode_pekerjaan',
             'nama_pekerjaan_view',
@@ -17,7 +19,7 @@ $gridColumns=[['class' => 'kartik\grid\SerialColumn'],
             // 'updated_by',
 
          ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
-              'update','delete','view'],$this->context->route),    ],    ];
+              'update','delete','view'], $this->context->route),    ],    ];
 
 
 /* @var $this yii\web\View */
@@ -31,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);?>
 
 
 
@@ -61,7 +63,14 @@ $this->params['breadcrumbs'][] = $this->title;
             '{export}',
             '{toggleData}'
         ],
-        'resizableColumns' => true,
+        'exportConfig' => [
+            GridView::CSV => [ 'filename' => $this->title],
+            GridView::HTML => ['filename' =>$this->title],
+            GridView::PDF => ['filename' => $this->title],
+            GridView::EXCEL =>['filename' => $this->title, 'options' => ['title' => $this->title],],
+            GridView::TEXT => [ 'filename' => $this->title],
+        ],
+   'exportConfig' => [         GridView::CSV => ['filename' => $this->title],         GridView::HTML => ['filename' => $this->title],         GridView::PDF => ['filename' => $this->title],         GridView::EXCEL => ['filename' => $this->title, 'options' => ['title' => $this->title], ],         GridView::TEXT => ['filename' => $this->title],     ],     'resizableColumns' => true,
     ]); ?>
     <?php Pjax::end(); ?>
 </div>
