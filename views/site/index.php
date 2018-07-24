@@ -26,7 +26,7 @@ $this->registerJS($js);
 
 <div class="site-index">
 
-<div class="tiles-grid tiles-group size-2" id="authetication" >
+<div class="tiles-grid tiles-group size-1" id="authetication" >
     <?= (Mimin::checkRoute('mimin/route')) ? Html::a("
 
         <span class='mif-user icon'></span>
@@ -41,7 +41,7 @@ $this->registerJS($js);
 
         <span class='mif-user icon'></span>
         <span class='branding-bar'>User</span>
-         ", ['/mimin/user'], ['data-role' => 'tile', 'class ' => 'bg-red', 'data-size' => 'wide']) : ''; ?>
+         ", ['/mimin/user'], ['data-role' => 'tile', 'class ' => 'bg-red']) : ''; ?>
 
 </div>
 
@@ -86,7 +86,7 @@ $this->registerJS($js);
 
 
 </div>
-<div class="tiles-grid tiles-group size-2" data-group-title="" id = "transaction" >
+<div class="tiles-grid tiles-group size-3" data-group-title="" id = "transaction" >
 
  <?= (Mimin::checkRoute('customer/index')) ? Html::a("
 
@@ -127,18 +127,18 @@ $this->registerJS($js);
 
         <span class='mif-library icon'></span>
         <span class='branding-bar'>Progress</span>
-         ", ['/realisasi'], ['data-role' => 'tile', 'class ' => 'bg-purple', 'data-size' => 'wide']) : ''; ?>
+         ", ['/realisasi'], ['data-role' => 'tile', 'class ' => 'bg-purple', 'data-size' => 'medium']) : ''; ?>
 
 
-</div>
 
-<div class="tiles-grid tiles-group size-2" data-group-title="" id = "report" >
 
  <?= (Mimin::checkRoute('laporan-realisasi/index')) ? Html::a("
 
-        <span class='mif-user-check icon'></span>
+        <span class='mif-chart-line icon'></span>
         <span class='branding-bar'>Laporan Progress</span>
          ", ['/laporan-realisasi'], ['data-role' => 'tile', 'class ' => 'bg-red', 'data-size' => 'medium']) : ''; ?>
 
 </div>
+
+
 </div>
