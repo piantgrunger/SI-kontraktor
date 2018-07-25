@@ -2,21 +2,19 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use hscstudio\mimin\components\Mimin;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
 
-$this->title = $model->no_rab;
+$this->title = 'Rancangan Anggaran Proyek';
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar R A B'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
-Yii::$app->params['jenis_pekerjaan'] = '';
 ?>
 <div class="rab-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title); ?></h1>
 
+  
 
     <?= DetailView::widget([
         'model' => $model,
@@ -25,7 +23,7 @@ Yii::$app->params['jenis_pekerjaan'] = '';
             'no_rab',
             'tgl_rab:date',
         ],
-    ]) ?>
+    ]); ?>
 
 
 
@@ -45,23 +43,22 @@ Yii::$app->params['jenis_pekerjaan'] = '';
         'itemView' => '_item_pekerjaan_view',
         'clientOptions' => [
             'btnAddSelector' => '#btn-add2',
-        ]
+        ],
     ]);
     ?>
  </div>
 </div>
+
  <?= DetailView::widget([
     'model' => $model,
     'attributes' => [
-
         'total_dpp:decimal',
         'ppn_rp:decimal',
 
-        'total_rab:decimal'
-
+        'total_rab:decimal',
+        'retensi_rp:decimal',
     ],
-]) ?>
-
+]); ?>
 
 
 </div>
