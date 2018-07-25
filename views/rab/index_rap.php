@@ -32,6 +32,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                 ['detail-rap', 'id' => $model->id_rab],
                 [
                     'title' => Yii::t('app', 'Input RAP'),
+                        'data-pjax' => 0
                 ]
             );
             } else {

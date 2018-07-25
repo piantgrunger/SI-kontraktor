@@ -47,6 +47,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                         ['view-rekap', 'id' => $model->id_rab],
                         [
                             'title' => Yii::t('app', 'Rekap'),
+                            'data-pjax' => 0
                         ]
                     );
                 } else {
@@ -61,6 +62,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                         ['jenis-pekerjaan', 'id' => $model->id_rab],
                         [
                             'title' => Yii::t('app', 'Rekap Jenis Pekerjaan'),
+                            'data-pjax' => 0
                         ]
                     );
                 } else {
@@ -74,6 +76,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                         ['view', 'id' => $model->id_rab],
                         [
                             'title' => Yii::t('app', 'Lihat BQ'),
+                            'data-pjax' => 0
                         ]
                     );
                 } else {
@@ -87,6 +90,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                         ['view-harga', 'id' => $model->id_rab],
                         [
                             'title' => Yii::t('app', 'Lihat Daftar Harga'),
+                            'data-pjax' => 0
                         ]
                     );
                 } else {
