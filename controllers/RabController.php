@@ -108,6 +108,13 @@ class RabController extends Controller
         return $pdf->render();
     }
 
+
+    public function actionKomparasi($id)
+    {
+        return $this->render('view_rekap', [
+            'model' => $this->findModel($id),
+        ]);
+    }
     public function actionDetailRap($id)
     {
         return $this->render('edit_pekerjaan', [

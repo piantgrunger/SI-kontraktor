@@ -39,14 +39,16 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                 return ' ';
             }
         }, 'rekap' => function ($url, $model) {
-            if (Mimin::checkRoute($this->context->id.'/view-rekap')) {
+            if (Mimin::checkRoute($this->context->id.'/komparasi')) {
                 return
                     Html::a(
                     '<span class="glyphicon glyphicon-list"></span>',
-                    ['view-rekap', 'id' => $model->id_rab],
+                    ['komparasi', 'id' => $model->id_rab],
                     [
                         'title' => Yii::t('app', 'Komparasi Pagu'),
-                    ]
+                         'data-pjax' => 0
+
+                        ]
                 );
             } else {
                 return ' ';

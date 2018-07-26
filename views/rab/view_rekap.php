@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use hscstudio\mimin\components\Mimin;
+use miloschuman\highcharts\Highcharts;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
@@ -74,5 +75,49 @@ $this->params['breadcrumbs'][] = $this->title;
 ]) ?>
 
 
+<?php
+
+$xAxis = [];
+$dataseries1 = [];
+$dataseries2 = [];
+foreach ($model->detailRab as $detail) {
+    $xAxis[] = $detail->nama_pekerjaan_detail;
+    $dataseries1[] = (float)$detail->total_rab;
+    $dataseries2[] = (float)$detail->nilai_pagu;
+}
+
+echo Highcharts::widget([
+    'scripts' => [
+        'modules/exporting',
+        'themes/grid-light',
+    ],
+
+
+
+    'options' => [
+        'title' => ['text' => 'Data RAP'],
+        'xAxis' => [
+            'categories' => $xAxis,
+        ],
+        'yAxis' => [
+            'title' => ['text' => 'Total Rp '],
+        ],
+        'series' => [
+            [
+                'type' => 'column',
+                'name' => 'Total',
+                'color' => 'green',
+                'data' => $dataseries1,
+            ],
+            [
+                'type' => 'column',
+                'name' => 'Pagu',
+                'color' => 'red',
+                'data' => $dataseries2,
+            ],
+        ],
+    ],
+]);
+?>
 
 </div>
