@@ -71,7 +71,7 @@ class RAB extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_proyek', 'no_rab', 'tgl_rab', 'ppn', 'nilai_kontrak', 'nilai_real', 'id_jenis_bangunan'], 'required'],
+            [['id_proyek', 'no_rab', 'tgl_rab', 'ppn', 'nilai_kontrak',  'id_jenis_bangunan'], 'required'],
             [['id_proyek', 'created_by', 'updated_by'], 'integer'],
             [['no_rab', 'keterangan'], 'string'],
             [['tgl_rab', 'created_at', 'updated_at', 'tgl_revisi'], 'safe'],
