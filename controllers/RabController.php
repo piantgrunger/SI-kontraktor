@@ -63,7 +63,8 @@ class RabController extends Controller
     {
         $searchModel = new RABSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $searchModel->scenario ='RAP';
+        $searchModel->scenario = 'RAP';
+
         return $this->render('index_rap', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -108,13 +109,13 @@ class RabController extends Controller
         return $pdf->render();
     }
 
-
     public function actionKomparasi($id)
     {
         return $this->render('view_rekap', [
             'model' => $this->findModel($id),
         ]);
     }
+
     public function actionDetailRap($id)
     {
         return $this->render('edit_pekerjaan', [
@@ -265,6 +266,7 @@ class RabController extends Controller
                     $transaction->commit();
                     $model_d = d_RAB::find()->where(['id_rab' => $model->id_rab]);
                     $model->nilai_real = is_null($model_d->sum('nilai_pagu')) ? 0 : $model_d->sum('nilai_pagu');
+                    $model->nilai_kontrak = 0;
                     $model->save();
 
                     return $this->redirect('index');
@@ -358,7 +360,6 @@ class RabController extends Controller
                     $model_d = d_RAB::find()->where(['id_rab' => $model->id_rab]);
                     $model->nilai_real = is_null($model_d->sum('nilai_pagu')) ? 0 : $model_d->sum('nilai_pagu');
                     $model->save();
-
 
                     return $this->redirect('index');
                 }
