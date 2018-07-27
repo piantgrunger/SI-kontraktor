@@ -266,7 +266,7 @@ class RabController extends Controller
                     $transaction->commit();
                     $model_d = d_RAB::find()->where(['id_rab' => $model->id_rab]);
                     $model->nilai_real = is_null($model_d->sum('nilai_pagu')) ? 0 : $model_d->sum('nilai_pagu');
-                    $model->nilai_kontrak = 0;
+                    $model->total_rab = 0;
                     $model->save();
 
                     return $this->redirect('index');
