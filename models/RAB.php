@@ -106,6 +106,8 @@ class RAB extends \yii\db\ActiveRecord
             'updated_by' => Yii::t('app', 'Updated By'),
             'ppn' => 'PPN (%)',
             'nilai_real' => 'Nilai RAP',
+            'nilai_kontrak' => 'Nilai RAB',
+            'total_rab' => 'Total RAP',
         ];
     }
 
