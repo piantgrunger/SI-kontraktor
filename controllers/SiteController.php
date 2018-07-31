@@ -13,15 +13,11 @@ use app\models\ResetPasswordForm;
 use app\models\SignupForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
-use app\models\Setting;
-use app\models\kendaraan;
-use app\models\sopir;
-use app\models\customer;
 
 class SiteController extends Controller
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function behaviors()
     {
@@ -52,7 +48,7 @@ class SiteController extends Controller
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {
@@ -63,7 +59,6 @@ class SiteController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-                
             ],
         ];
     }
@@ -75,9 +70,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-    
-          $model = new LoginForm();
-        return $this->render('index',['model'=>$model]);
+        $model = new LoginForm();
+
+        return $this->render('index', ['model' => $model]);
     }
 
     /**
@@ -93,7 +88,8 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            //  return $this->goBack();
+            return $this->redirect(['/']);
         } else {
             return $this->render('login', [
                 'model' => $model,
@@ -194,7 +190,9 @@ class SiteController extends Controller
      * Resets password.
      *
      * @param string $token
+     *
      * @return mixed
+     *
      * @throws BadRequestHttpException
      */
     public function actionResetPassword($token)
