@@ -1,5 +1,5 @@
 <?php
-/*
+
 
 return [
     'class' => 'yii\db\Connection',
@@ -9,7 +9,7 @@ return [
     'password' => '',
     'charset' => 'utf8',
 ];
-*/
+
 /*
 $server="25.34.90.85\SQLEXPRESS2008R2";
 return [
@@ -20,7 +20,7 @@ return [
     'charset' => 'utf8',
 ];*/
 
-
+/*
 return [    'class' => 'yii\db\Connection',
     'dsn' => 'sqlsrv:Server=ALFIAN-PC\SERVERKU;Database=db_kontraktor;encrypt=yes;',
 
@@ -28,3 +28,4 @@ return [    'class' => 'yii\db\Connection',
     'password' => 'sa1234',
     'charset' => 'utf8',
 ];
+*/

@@ -4,16 +4,14 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\BlameableBehavior;
-
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 
-
 /**
  * This is the model class for table "tb_m_material".
  *
- * @property int $id_material
+ * @property int    $id_material
  * @property string $kode_material
  * @property string $nama_material
  * @property string $spesifikasi
@@ -21,16 +19,14 @@ use yii\db\Expression;
  * @property string $keterangan
  * @property string $created_at
  * @property string $updated_at
- * @property int $created_by
- * @property int $updated_by
+ * @property int    $created_by
+ * @property int    $updated_by
  */
 class Material extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-
-
     public function behaviors()
     {
         return [
@@ -49,31 +45,32 @@ class Material extends \yii\db\ActiveRecord
                     ActiveRecord::EVENT_BEFORE_INSERT => ['created_by', 'updated_by'],
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_by'],
                 ],
-
             ],
         ];
     }
+
     public static function tableName()
     {
         return 'tb_m_material';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['kode_material', 'nama_material', 'satuan','jenis','harga','kelompok_material'], 'required'],
+            [['kode_material', 'nama_material', 'satuan', 'jenis',  'kelompok_material'], 'required'],
             [['kode_material', 'nama_material', 'spesifikasi', 'satuan', 'keterangan'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
+            [['harga'], 'number'],
             [['created_by', 'updated_by'], 'integer'],
             [['kode_material'], 'unique'],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
