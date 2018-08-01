@@ -86,10 +86,22 @@ use yii\helpers\Html;
  <td align="Right"><?= Yii::$app->formatter->asDecimal($model->total_rab); ?></td>
 
  </tr>
+<tr>
+ <td></td>
+ <td></td>
+ <td></td>
+
+ <th>Pagu</th>
+
+ <td align="Right"><?= Yii::$app->formatter->asDecimal($model->nilai_pagu); ?></td>
+
+ </tr>
+
  <tr>
  <td></td>
  <td></td>
  <td></td>
+
 
  <th>Retensi <?= Yii::$app->formatter->asDecimal($model->retensi_persen); ?> %  </th>
 

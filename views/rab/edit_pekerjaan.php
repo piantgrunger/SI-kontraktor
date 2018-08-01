@@ -8,7 +8,7 @@ use hscstudio\mimin\components\Mimin;
 /* @var $model app\models\RAB */
 
 $this->title = 'Rancangan Anggaran Proyek';
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar R A B'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar R A P'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rab-view">

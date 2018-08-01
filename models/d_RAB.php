@@ -36,14 +36,15 @@ class d_RAB extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_jenis_pekerjaan','level'], 'required'],
-            [['id_rab', 'id_jenis_pekerjaan', 'id_pekerjaan', 'hari_kerja','level'], 'integer'],
-            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'qty', 'total_rab', 'nilai_pagu','retensi_persen','retensi_rp'], 'number'],
-            [['status_pekerjaan', 'satuan','status_bayar'], 'string'],
+            [['id_jenis_pekerjaan', 'level'], 'required'],
+            [['id_rab', 'id_jenis_pekerjaan', 'id_pekerjaan', 'hari_kerja', 'level'], 'integer'],
+            [['total_biaya_material', 'total_biaya_pekerja', 'total_biaya_peralatan', 'qty', 'total_rab', 'nilai_pagu', 'retensi_persen', 'retensi_rp'], 'number'],
+            [['status_pekerjaan', 'satuan', 'status_bayar'], 'string'],
             [['id_rekanan'], 'required', 'when' => function ($model) {
                 return $model->status_pekerjaan == 'Subkon';
             }, 'enableClientValidation' => false],
-            [['status_bayar'],'default','value'=>'Belum'],
+            [['status_bayar'], 'default', 'value' => 'Belum'],
+            [['total_rab'], 'checkPagu'],
             [['id_pekerjaan'], 'exist', 'skipOnError' => true, 'targetClass' => Pekerjaan::className(), 'targetAttribute' => ['id_pekerjaan' => 'id_pekerjaan']],
             [['id_rab'], 'exist', 'skipOnError' => true, 'targetClass' => RAB::className(), 'targetAttribute' => ['id_rab' => 'id_rab']],
         ];
@@ -69,6 +70,40 @@ class d_RAB extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function checkPagu($attribute, $params)
+    {
+        $total = 0;
+        if (!is_null($this->sDetailRabMaterial)) {
+            foreach ($this->sDetailRabMaterial as $material) {
+                $total += $material->sub_total;
+            }
+        }
+        if (!is_null($this->sDetailRabPeralatan)) {
+            foreach ($this->sDetailRabPeralatan as $material) {
+                $total += $material->sub_total;
+            }
+        }
+        if (!is_null($this->sDetailRabPekerja)) {
+            foreach ($this->sDetailRabPekerja as $material) {
+                $total += $material->sub_total;
+            }
+        }
+        if ($total == 0) {
+            $total = $this->total_rab;
+        } else {
+            $this->total_rab = $total;
+        }
+
+        if ($total > $this->nilai_pagu) {
+            $this->addError($attribute, 'Total Nilai RAP tidak bisa Melebihi Pagu RAB : '.Yii::$app->formatter->asDecimal($this->nilai_pagu));
+        }
+        if (($total < $this->nilai_pagu) && ($total >= 0.9 * $this->nilai_pagu)) {
+            Yii::$app->session->setFlash('warning', 'Total Nilai RAP '.$this->nama_jenis_pekerjaan.' Melebihi  90 %  Pagu RAB ');
+        }
+
+        return $total <= $this->nilai_pagu;
+    }
+
     public function getPekerjaan()
     {
         return $this->hasOne(Pekerjaan::className(), ['id_pekerjaan' => 'id_pekerjaan']);

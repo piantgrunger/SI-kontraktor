@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\RAB */
 
-$this->title = 'Rancangan Anggaran Proyek';
+$this->title = 'R A B';
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar R A B'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title); ?></h1>
 
-
+  
 
     <?= DetailView::widget([
         'model' => $model,
