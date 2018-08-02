@@ -32,6 +32,9 @@
            <th align="Right">Harga / Upah</th>
 
            <th align="Right">Sub Total</th>
+           
+           <th align="Right">Qty Progress</th>
+                <th align="Right">Sub tot  Progress</th>
         </tr>
  </thead>
  <tbody>
@@ -44,6 +47,8 @@
 
             echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->harga).' </td>';
             echo "<td align='Right'> ".Yii::$app->formatter->asDecimal($material->sub_total).' </td>';
+            echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->qty_realisasi).' </td>';
+            echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->sub_tot_realisasi).' </td>';
 
             echo '</tr>';
         }
@@ -56,6 +61,8 @@
             echo "<td>$material->satuan </td>";
             echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->harga).'</td>';
             echo "<td align='Right'> ".Yii::$app->formatter->asDecimal($material->sub_total).' </td>';
+            echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->qty_realisasi).' </td>';
+            echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->sub_tot_realisasi).' </td>';
 
             echo '</tr>';
         }
@@ -66,6 +73,8 @@
             echo "<td>$material->satuan </td>";
             echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->gaji).'</td>';
             echo "<td align='Right'> ".Yii::$app->formatter->asDecimal($material->sub_total).' </td>';
+            echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->qty_realisasi).' </td>';
+            echo "<td align='Right'>".Yii::$app->formatter->asDecimal($material->sub_tot_realisasi).' </td>';
 
             echo '</tr>';
         }

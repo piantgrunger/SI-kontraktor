@@ -35,6 +35,7 @@ use yii\helpers\Html;
            <th align="Right">Harga / Upah</th>
 
            <th align="Right">Sub Total</th>
+     
         </tr>
  </thead>
  <tbody>

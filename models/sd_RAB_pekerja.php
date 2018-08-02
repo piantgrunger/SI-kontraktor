@@ -7,14 +7,13 @@ use Yii;
 /**
  * This is the model class for table "tb_sdt_rab_pekerja".
  *
- * @property int $id_sd_rab
- * @property int $id_d_RAB
- * @property int $id_level_jabatan
- * @property string $gaji
- * @property string $qty
- * @property string $sub_total
- *
- * @property TbDtRab $dRab
+ * @property int             $id_sd_rab
+ * @property int             $id_d_RAB
+ * @property int             $id_level_jabatan
+ * @property string          $gaji
+ * @property string          $qty
+ * @property string          $sub_total
+ * @property TbDtRab         $dRab
  * @property TbMLevelJabatan $levelJabatan
  */
 class sd_RAB_pekerja extends \yii\db\ActiveRecord
@@ -22,7 +21,6 @@ class sd_RAB_pekerja extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-
     public static function tableName()
     {
         return 'tb_sdt_rab_pekerja';
@@ -72,21 +70,41 @@ class sd_RAB_pekerja extends \yii\db\ActiveRecord
     {
         return $this->hasOne(LevelJabatan::className(), ['id_level_jabatan' => 'id_level_jabatan']);
     }
+
     public function getNama_level_jabatan()
     {
-        return is_null($this->levelJabatan) ? "" : $this->levelJabatan->nama_level_jabatan;
+        return is_null($this->levelJabatan) ? '' : $this->levelJabatan->nama_level_jabatan;
     }
+
     public function loadDefaultValues($skipIfSet = true)
     {
         $this->gaji = 0; //contoh set default value active true
         $this->qty = 0; //contoh set default value active true
-        $this->satuan='OH';
-
+        $this->satuan = 'OH';
     }
+
     public function init()
     {
         if ($this->isNewRecord) {
             $this->loadDefaultValues($skipIfSet = true);
         }
+    }
+
+    public function getQty_realisasi()
+    {
+        $qty_realisasi = d_realisasi_pekerja::find()
+            ->where(['id_sd_rab' => $this->id_sd_rab])
+            ->sum('gaji');
+        //die(var_dump(is_null($qty_realisasi)));
+        return is_null($qty_realisasi) ? 0 : $qty_realisasi;
+    }
+
+    public function getSub_tot_realisasi()
+    {
+        $qty_realisasi = d_realisasi_pekerja::find()
+            ->where(['id_sd_rab' => $this->id_sd_rab])
+            ->sum('sub_total');
+        //die(var_dump(is_null($qty_realisasi)));
+        return is_null($qty_realisasi) ? 0 : $qty_realisasi;
     }
 }
