@@ -64,6 +64,7 @@ class d_RAB extends \yii\db\ActiveRecord
             'total_biaya_pekerja' => Yii::t('app', 'Total Biaya Pekerja'),
             'total_biaya_peralatan' => Yii::t('app', 'Total Biaya Peralatan'),
             'qty' => 'Volume',
+            'retensi_persen' => 'Premise %',
         ];
     }
 

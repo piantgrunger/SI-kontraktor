@@ -88,7 +88,7 @@
  <td></td>
  <td></td>
 
- <th>Retensi <?= Yii::$app->formatter->asDecimal($model->retensi_persen); ?> %  </th>
+ <th>Premise <?= Yii::$app->formatter->asDecimal($model->retensi_persen); ?> %  </th>
 
  <td align="Right"><?= Yii::$app->formatter->asDecimal($model->retensi_rp); ?></td>
 
