@@ -11,14 +11,15 @@ return [
 ];
 
 /*
-$server="25.34.90.85\SQLEXPRESS2008R2";
+$server = "25.34.90.85\SQLEXPRESS2008R2";
+
 return [
     'class' => 'yii\db\Connection',
     'dsn' => "sqlsrv:Server=$server,1433;Database=db_kontraktor;encrypt=yes;",
     'username' => 'sa',
     'password' => 'sa1234',
     'charset' => 'utf8',
-];*/
+];
 
 /*
 return [    'class' => 'yii\db\Connection',

@@ -24,7 +24,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
             // 'updated_by',
 
     [
-        'class' => 'kartik\grid\ActionColumn', 'template' => '{view}  {rekap} {jenis} {harga}  {revisi} ',
+        'class' => 'kartik\grid\ActionColumn', 'template' => '{view}  {rekap} {jenis} {harga}  {revisi} {delete} ',
         'buttons' => [
             'revisi' => function ($url, $model) {
                 if (Mimin::checkRoute($this->context->id.'/revisi')) {
@@ -39,6 +39,23 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                 } else {
                     return ' ';
                 }
+            }, 'delete' => function ($url, $model) {
+                if (Mimin::checkRoute($this->context->id.'/delete')) {
+                    return
+                        Html::a(
+                        '<span class="glyphicon glyphicon-trash"></span>',
+                        ['delete', 'id' => $model->id_rab],
+                        [
+                            'title' => Yii::t('app', 'Hapus'),
+                            'data' => [
+                                'confirm' => Yii::t('app', 'Apakah Anda yakin ingin menghapus item ini??'),
+                                'method' => 'post',
+                            ],
+                        ]
+                    );
+                } else {
+                    return ' ';
+                }
             }, 'rekap' => function ($url, $model) {
                 if (Mimin::checkRoute($this->context->id.'/view-rekap')) {
                     return
@@ -47,7 +64,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                         ['view-rekap', 'id' => $model->id_rab],
                         [
                             'title' => Yii::t('app', 'Rekap'),
-                            'data-pjax' => 0
+                            'data-pjax' => 0,
                         ]
                     );
                 } else {
@@ -62,7 +79,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                         ['jenis-pekerjaan', 'id' => $model->id_rab],
                         [
                             'title' => Yii::t('app', 'Rekap Jenis Pekerjaan'),
-                            'data-pjax' => 0
+                            'data-pjax' => 0,
                         ]
                     );
                 } else {
@@ -76,7 +93,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                         ['view', 'id' => $model->id_rab],
                         [
                             'title' => Yii::t('app', 'Lihat BQ'),
-                            'data-pjax' => 0
+                            'data-pjax' => 0,
                         ]
                     );
                 } else {
@@ -90,7 +107,7 @@ $gridColumns = [['class' => 'kartik\grid\SerialColumn'],
                         ['view-harga', 'id' => $model->id_rab],
                         [
                             'title' => Yii::t('app', 'Lihat Daftar Harga'),
-                            'data-pjax' => 0
+                            'data-pjax' => 0,
                         ]
                     );
                 } else {
@@ -141,7 +158,7 @@ $this->params['breadcrumbs'][] = $this->title;
         '{toggleData}',
     ],
 
-    'exportConfig' => [         GridView::CSV => ['filename' => $this->title],         GridView::HTML => ['filename' => $this->title],         GridView::PDF => ['filename' => $this->title],         GridView::EXCEL => ['filename' => $this->title, 'options' => ['title' => $this->title], ],         GridView::TEXT => ['filename' => $this->title],     ],     'resizableColumns' => true,
+    'exportConfig' => [GridView::CSV => ['filename' => $this->title],         GridView::HTML => ['filename' => $this->title],         GridView::PDF => ['filename' => $this->title],         GridView::EXCEL => ['filename' => $this->title, 'options' => ['title' => $this->title]],         GridView::TEXT => ['filename' => $this->title]],     'resizableColumns' => true,
     ]); ?>
     <?php Pjax::end(); ?>
 </div>
