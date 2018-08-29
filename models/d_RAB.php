@@ -74,6 +74,9 @@ class d_RAB extends \yii\db\ActiveRecord
     public function checkPagu($attribute, $params)
     {
         $total = 0;
+        if (is_null($this->total_rab)) {
+            $this->total_rab = 0;
+        }
         if (!is_null($this->sDetailRabMaterial)) {
             foreach ($this->sDetailRabMaterial as $material) {
                 $total += $material->sub_total;
