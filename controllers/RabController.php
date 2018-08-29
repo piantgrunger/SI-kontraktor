@@ -478,11 +478,18 @@ class RabController extends Controller
                 $transaction->rollBack();
                 throw $ecx;
             }
+            if (is_null($model->total_rab)) {
+                $model->total_rab = 0;
+            }
 
             return $this->render('pekerjaan', [
                 'model' => $model,
             ]);
         } else {
+            if (is_null($model->total_rab)) {
+                $model->total_rab = 0;
+            }
+
             return $this->render('pekerjaan', [
                 'model' => $model,
             ]);
