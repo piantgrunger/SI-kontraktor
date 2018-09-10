@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title); ?></h1>
 
-  
+
 
     <?= DetailView::widget([
         'model' => $model,
@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'ppn_rp:decimal',
 
         'total_rab:decimal',
-        'retensi_rp:decimal',
+        'retensi:decimal',
     ],
 ]); ?>
 

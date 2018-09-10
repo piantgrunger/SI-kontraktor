@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'ppn_rp:decimal',
 
        'total_rab:decimal',
-        'retensi_rp:decimal',
+        'retensi:decimal',
     ],
 ]); ?>
 

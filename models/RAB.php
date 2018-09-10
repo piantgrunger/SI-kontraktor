@@ -114,6 +114,18 @@ class RAB extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getRetensi()
+    {
+        $model = Realisasi::find()
+        ->where(['id_rab' => $this->id_rab]);
+        if (!is_null($model)) {
+            return (is_null($model->sum('total_biaya_material'))?0: $model->sum('total_biaya_material'))+
+                (is_null($model->sum('total_biaya_peralatan')) ? 0 : $model->sum('total_biaya_peralatan'))+
+                (is_null($model->sum('total_biaya_pekerja')) ? 0 : $model->sum('total_biaya_pekerja'));
+        } else {
+            return 0;
+        }
+    }
     public function getProyek()
     {
         return $this->hasOne(Proyek::className(), ['id_proyek' => 'id_proyek']);
