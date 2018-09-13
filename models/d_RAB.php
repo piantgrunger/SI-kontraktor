@@ -136,7 +136,7 @@ class d_RAB extends \yii\db\ActiveRecord
 
     public function getNama_pekerjaan_detail()
     {
-        return is_null($this->jenisPekerjaan) ? '' : $this->level.' - '.$this->jenisPekerjaan->nama_jenis_pekerjaan.(is_null($this->pekerjaan) ? '' : ' : '.$this->pekerjaan->nama_pekerjaan);
+        return is_null($this->jenisPekerjaan) ? '' : $this->level.' - '.$this->jenisPekerjaan->nama_jenis_pekerjaan.(is_null($this->pekerjaan) ? ''  :($this->pekerjaan->nama_pekerjaan !== $this->jenisPekerjaan->nama_jenis_pekerjaan)? ' : '.$this->pekerjaan->nama_pekerjaan : "");
     }
 
     public function getNama_jenis_pekerjaan()
