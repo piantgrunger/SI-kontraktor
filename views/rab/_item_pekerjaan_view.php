@@ -32,7 +32,7 @@
            <th align="Right">Harga / Upah</th>
 
            <th align="Right">Sub Total</th>
-           
+
            <th align="Right">Qty Progress</th>
                 <th align="Right">Sub tot  Progress</th>
         </tr>
@@ -97,9 +97,9 @@
  <td></td>
  <td></td>
 
- <th>Premise <?= Yii::$app->formatter->asDecimal($model->retensi_persen); ?> %  </th>
+ <th>Premise <?= Yii::$app->formatter->asDecimal(((($model->total_rab==0)?0: $model->progress / $model->total_rab)*100)); ?> %  </th>
 
- <td align="Right"><?= Yii::$app->formatter->asDecimal($model->retensi_rp); ?></td>
+ <td align="Right"><?= Yii::$app->formatter->asDecimal($model->progress); ?></td>
 
  </tr>
 

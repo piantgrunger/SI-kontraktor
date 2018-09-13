@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'tgl_rab:date',
         ],
     ]) ?>
+    <div class="text-bold">Periode : <?= Yii::$app->formatter->asDate($model->periode_awal)?> s/d <?= Yii::$app->formatter->asDate($model->periode_akhir)?>   </div>
 
 
 <table class="table table-condensed table-striped table-hover table-bordered">
@@ -42,8 +43,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <th>Harga</th>
 
-            <th>Sub Total</th>
-     <th>Pagu</th>
+            <th>RAP</th>
+     <th>RAB</th>
 
         </tr>
     </thead>

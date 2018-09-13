@@ -93,7 +93,7 @@ class RAB extends \yii\db\ActiveRecord
             'id_rab' => Yii::t('app', 'Id RAB'),
             'id_proyek' => Yii::t('app', 'Proyek'),
             'no_rab' => Yii::t('app', 'Nomor'),
-            'tgl_rab' => Yii::t('app', 'Tanggal'),
+            'tgl_rab' => Yii::t('app', 'Update'),
             'total_biaya_material' => Yii::t('app', 'Total Biaya Material'),
             'total_biaya_pekerja' => Yii::t('app', 'Total Biaya Pekerja'),
             'total_biaya_peralatan' => Yii::t('app', 'Total Biaya Peralatan'),
@@ -105,9 +105,13 @@ class RAB extends \yii\db\ActiveRecord
             'created_by' => Yii::t('app', 'Created By'),
             'updated_by' => Yii::t('app', 'Updated By'),
             'ppn' => 'PPN (%)',
-            'nilai_real' => 'Nilai RAP',
-            'nilai_kontrak' => 'Nilai RAB',
+            'ppn_rp' => 'PPN',
+
+            'nilai_real' => 'Total RAB',
+           // 'nilai_kontrak' => 'Total RAB',
             'total_rab' => 'Total RAP',
+            'total_dpp' =>'Sub Total RAP',
+            'retensi' => 'Riil Cost (Progress)'
         ];
     }
 
@@ -126,6 +130,34 @@ class RAB extends \yii\db\ActiveRecord
             return 0;
         }
     }
+    public function getPeriode_awal(){
+
+        $d = date_parse_from_format("Y-m-d", $this->tgl_rab);
+        if ($d["day"]<25) {
+            return date_create_from_format("Y-m-d", $d["year"].'-' .($d["month"]-1) ."-26");
+
+        } else
+        {
+            return date_create_from_format("Y-m-d", $d["year"] . '-' . $d["month"]  . "-26");
+
+        }
+
+    }
+
+    public function getPeriode_akhir()
+    {
+
+        $d = date_parse_from_format("Y-m-d", $this->tgl_rab);
+        if ($d["day"] < 25) {
+            return date_create_from_format("Y-m-d", $d["year"] . '-' . $d["month"]  . "-25");
+
+        } else {
+            return date_create_from_format("Y-m-d", $d["year"] . '-' . ($d["month"]+1) . "-25");
+
+        }
+
+    }
+
     public function getProyek()
     {
         return $this->hasOne(Proyek::className(), ['id_proyek' => 'id_proyek']);

@@ -71,6 +71,19 @@ class d_RAB extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+
+    public function getProgress()
+    {
+        $model = Realisasi::find()
+            ->where(['id_d_rab' => $this->id_d_rab]);
+        if (!is_null($model)) {
+            return (is_null($model->sum('total_biaya_material')) ? 0 : $model->sum('total_biaya_material')) + (is_null($model->sum('total_biaya_peralatan')) ? 0 : $model->sum('total_biaya_peralatan')) + (is_null($model->sum('total_biaya_pekerja')) ? 0 : $model->sum('total_biaya_pekerja')) ;
+        } else {
+            return 0;
+        }
+    }
+
+
     public function checkPagu($attribute, $params)
     {
         $total = 0;
