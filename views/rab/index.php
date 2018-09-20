@@ -153,7 +153,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
             'toolbar' => [
         ['content' => ((Mimin::checkRoute($this->context->id.'/create'))) ? Html::a(Yii::t('app', 'R A B Baru'), ['create'], ['class' => 'btn btn-success']) : ''],
-
+        Html::a(Yii::t('app', 'Laporan per Periode'), ['report', 'tgl_aw' => $searchModel->tgl_aw, 'tgl_ak' => $searchModel->tgl_ak], ['class' => 'btn btn-primary', 'id' => 'report',   'data-pjax' => 0]),
         '{export}',
         '{toggleData}',
     ],
